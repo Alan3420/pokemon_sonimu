@@ -1,11 +1,11 @@
 # pokemon_sonimu
 
-##Integrantes del equipo
+## Integrantes del equipo
 
-###Marcos Fernandez Garcia
-###Alan Novas Mateo
+### Marcos Fernandez Garcia
+### Alan Novas Mateo
 
-##Descripcición
+## Descripcición
 Proyecto dedicado a las batallas pokemon utillizando lenguajes como Python, HTML y CSS
 
 ##
