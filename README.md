@@ -8,4 +8,4 @@
 ## Descripcición
 Proyecto dedicado a las batallas pokemon utillizando lenguajes como Python, HTML y CSS
 
-##Fase 0 ❌
+## Fase 0 ❌
