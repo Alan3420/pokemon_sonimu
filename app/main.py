@@ -1,8 +1,16 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
+import json
+from pathlib import Path
 
 app = Flask(__name__, template_folder='templates')
 
+with open(Path("data\pokemon.json"), "r", encoding="utf-8") as f:
+    DATA = json.load(f)
+    
 @app.route('/')
+# def home():
+#     return jsonify(DATA)
+
 def Bienvenido():
     return render_template('base.html')
 

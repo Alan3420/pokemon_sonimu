@@ -1,0 +1,909 @@
+[
+  {
+    "height": 17,
+    "id": 6,
+    "name": "charizard",
+    "stats": [
+      {
+        "name": "hp",
+        "value": 78
+      },
+      {
+        "name": "attack",
+        "value": 84
+      },
+      {
+        "name": "defense",
+        "value": 78
+      },
+      {
+        "name": "special-attack",
+        "value": 109
+      },
+      {
+        "name": "special-defense",
+        "value": 85
+      },
+      {
+        "name": "speed",
+        "value": 100
+      }
+    ],
+    "sprites": {
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/6.png",
+      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png",
+      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/6.png"
+    },
+    "types": [
+      "fire",
+      "flying"
+    ],
+    "weight": 905,
+    "moves": [
+      {
+        "name": "brick-break",
+        "url": "https://pokeapi.co/api/v2/move/280/",
+        "accuracy": 100,
+        "power": 75,
+        "type": "fighting"
+      },
+      {
+        "name": "dragon-claw",
+        "url": "https://pokeapi.co/api/v2/move/337/",
+        "accuracy": 100,
+        "power": 80,
+        "type": "dragon"
+      },
+      {
+        "name": "heat-wave",
+        "url": "https://pokeapi.co/api/v2/move/257/",
+        "accuracy": 90,
+        "power": 95,
+        "type": "fire"
+      },
+      {
+        "name": "solar-beam",
+        "url": "https://pokeapi.co/api/v2/move/76/",
+        "accuracy": 100,
+        "power": 120,
+        "type": "grass"
+      },
+      {
+        "name": "fury-swipes",
+        "url": "https://pokeapi.co/api/v2/move/154/",
+        "accuracy": 80,
+        "power": 18,
+        "type": "normal"
+      },
+      {
+        "name": "incinerate",
+        "url": "https://pokeapi.co/api/v2/move/510/",
+        "accuracy": 100,
+        "power": 60,
+        "type": "fire"
+      },
+      {
+        "name": "dynamic-punch",
+        "url": "https://pokeapi.co/api/v2/move/223/",
+        "accuracy": 50,
+        "power": 100,
+        "type": "fighting"
+      },
+      {
+        "name": "fire-punch",
+        "url": "https://pokeapi.co/api/v2/move/7/",
+        "accuracy": 100,
+        "power": 75,
+        "type": "fire"
+      },
+      {
+        "name": "snore",
+        "url": "https://pokeapi.co/api/v2/move/173/",
+        "accuracy": 100,
+        "power": 50,
+        "type": "normal"
+      },
+      {
+        "name": "secret-power",
+        "url": "https://pokeapi.co/api/v2/move/290/",
+        "accuracy": 100,
+        "power": 70,
+        "type": "normal"
+      }
+    ]
+  },
+  {
+    "height": 20,
+    "id": 3,
+    "name": "venusaur",
+    "stats": [
+      {
+        "name": "hp",
+        "value": 80
+      },
+      {
+        "name": "attack",
+        "value": 82
+      },
+      {
+        "name": "defense",
+        "value": 83
+      },
+      {
+        "name": "special-attack",
+        "value": 100
+      },
+      {
+        "name": "special-defense",
+        "value": 100
+      },
+      {
+        "name": "speed",
+        "value": 80
+      }
+    ],
+    "sprites": {
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
+      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/3.png",
+      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/3.png",
+      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/3.png"
+    },
+    "types": [
+      "grass",
+      "poison"
+    ],
+    "weight": 1000,
+    "moves": [
+      {
+        "name": "earthquake",
+        "url": "https://pokeapi.co/api/v2/move/89/",
+        "accuracy": 100,
+        "power": 100,
+        "type": "ground"
+      },
+      {
+        "name": "mud-slap",
+        "url": "https://pokeapi.co/api/v2/move/189/",
+        "accuracy": 100,
+        "power": 20,
+        "type": "ground"
+      },
+      {
+        "name": "petal-blizzard",
+        "url": "https://pokeapi.co/api/v2/move/572/",
+        "accuracy": 100,
+        "power": 90,
+        "type": "grass"
+      },
+      {
+        "name": "terrain-pulse",
+        "url": "https://pokeapi.co/api/v2/move/805/",
+        "accuracy": 100,
+        "power": 50,
+        "type": "normal"
+      },
+      {
+        "name": "venoshock",
+        "url": "https://pokeapi.co/api/v2/move/474/",
+        "accuracy": 100,
+        "power": 65,
+        "type": "poison"
+      },
+      {
+        "name": "grass-pledge",
+        "url": "https://pokeapi.co/api/v2/move/520/",
+        "accuracy": 100,
+        "power": 80,
+        "type": "grass"
+      },
+      {
+        "name": "knock-off",
+        "url": "https://pokeapi.co/api/v2/move/282/",
+        "accuracy": 100,
+        "power": 65,
+        "type": "dark"
+      },
+      {
+        "name": "petal-dance",
+        "url": "https://pokeapi.co/api/v2/move/80/",
+        "accuracy": 100,
+        "power": 120,
+        "type": "grass"
+      },
+      {
+        "name": "razor-leaf",
+        "url": "https://pokeapi.co/api/v2/move/75/",
+        "accuracy": 95,
+        "power": 55,
+        "type": "grass"
+      },
+      {
+        "name": "take-down",
+        "url": "https://pokeapi.co/api/v2/move/36/",
+        "accuracy": 85,
+        "power": 90,
+        "type": "normal"
+      }
+    ]
+  },
+  {
+    "height": 16,
+    "id": 9,
+    "name": "blastoise",
+    "stats": [
+      {
+        "name": "hp",
+        "value": 79
+      },
+      {
+        "name": "attack",
+        "value": 83
+      },
+      {
+        "name": "defense",
+        "value": 100
+      },
+      {
+        "name": "special-attack",
+        "value": 85
+      },
+      {
+        "name": "special-defense",
+        "value": 105
+      },
+      {
+        "name": "speed",
+        "value": 78
+      }
+    ],
+    "sprites": {
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
+      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/9.png",
+      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/9.png",
+      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/9.png"
+    },
+    "types": [
+      "water"
+    ],
+    "weight": 855,
+    "moves": [
+      {
+        "name": "iron-tail",
+        "url": "https://pokeapi.co/api/v2/move/231/",
+        "accuracy": 75,
+        "power": 100,
+        "type": "steel"
+      },
+      {
+        "name": "tackle",
+        "url": "https://pokeapi.co/api/v2/move/33/",
+        "accuracy": 100,
+        "power": 40,
+        "type": "normal"
+      },
+      {
+        "name": "brick-break",
+        "url": "https://pokeapi.co/api/v2/move/280/",
+        "accuracy": 100,
+        "power": 75,
+        "type": "fighting"
+      },
+      {
+        "name": "mud-shot",
+        "url": "https://pokeapi.co/api/v2/move/341/",
+        "accuracy": 95,
+        "power": 55,
+        "type": "ground"
+      },
+      {
+        "name": "brine",
+        "url": "https://pokeapi.co/api/v2/move/362/",
+        "accuracy": 100,
+        "power": 65,
+        "type": "water"
+      },
+      {
+        "name": "outrage",
+        "url": "https://pokeapi.co/api/v2/move/200/",
+        "accuracy": 100,
+        "power": 120,
+        "type": "dragon"
+      },
+      {
+        "name": "false-swipe",
+        "url": "https://pokeapi.co/api/v2/move/206/",
+        "accuracy": 100,
+        "power": 40,
+        "type": "normal"
+      },
+      {
+        "name": "body-slam",
+        "url": "https://pokeapi.co/api/v2/move/34/",
+        "accuracy": 100,
+        "power": 85,
+        "type": "normal"
+      },
+      {
+        "name": "bulldoze",
+        "url": "https://pokeapi.co/api/v2/move/523/",
+        "accuracy": 100,
+        "power": 60,
+        "type": "ground"
+      },
+      {
+        "name": "dig",
+        "url": "https://pokeapi.co/api/v2/move/91/",
+        "accuracy": 100,
+        "power": 80,
+        "type": "ground"
+      }
+    ]
+  },
+  {
+    "height": 4,
+    "id": 25,
+    "name": "pikachu",
+    "stats": [
+      {
+        "name": "hp",
+        "value": 35
+      },
+      {
+        "name": "attack",
+        "value": 55
+      },
+      {
+        "name": "defense",
+        "value": 40
+      },
+      {
+        "name": "special-attack",
+        "value": 50
+      },
+      {
+        "name": "special-defense",
+        "value": 50
+      },
+      {
+        "name": "speed",
+        "value": 90
+      }
+    ],
+    "sprites": {
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
+      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/25.png",
+      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png",
+      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/25.png"
+    },
+    "types": [
+      "electric"
+    ],
+    "weight": 60,
+    "moves": [
+      {
+        "name": "zap-cannon",
+        "url": "https://pokeapi.co/api/v2/move/192/",
+        "accuracy": 50,
+        "power": 120,
+        "type": "electric"
+      },
+      {
+        "name": "tera-blast",
+        "url": "https://pokeapi.co/api/v2/move/851/",
+        "accuracy": 100,
+        "power": 80,
+        "type": "normal"
+      },
+      {
+        "name": "draining-kiss",
+        "url": "https://pokeapi.co/api/v2/move/577/",
+        "accuracy": 100,
+        "power": 50,
+        "type": "fairy"
+      },
+      {
+        "name": "thunder-punch",
+        "url": "https://pokeapi.co/api/v2/move/9/",
+        "accuracy": 100,
+        "power": 75,
+        "type": "electric"
+      },
+      {
+        "name": "volt-switch",
+        "url": "https://pokeapi.co/api/v2/move/521/",
+        "accuracy": 100,
+        "power": 70,
+        "type": "electric"
+      },
+      {
+        "name": "thunder-shock",
+        "url": "https://pokeapi.co/api/v2/move/84/",
+        "accuracy": 100,
+        "power": 40,
+        "type": "electric"
+      },
+      {
+        "name": "alluring-voice",
+        "url": "https://pokeapi.co/api/v2/move/914/",
+        "accuracy": 100,
+        "power": 80,
+        "type": "fairy"
+      },
+      {
+        "name": "mega-punch",
+        "url": "https://pokeapi.co/api/v2/move/5/",
+        "accuracy": 85,
+        "power": 80,
+        "type": "normal"
+      },
+      {
+        "name": "trailblaze",
+        "url": "https://pokeapi.co/api/v2/move/885/",
+        "accuracy": 100,
+        "power": 50,
+        "type": "grass"
+      },
+      {
+        "name": "thunderbolt",
+        "url": "https://pokeapi.co/api/v2/move/85/",
+        "accuracy": 100,
+        "power": 90,
+        "type": "electric"
+      }
+    ]
+  },
+  {
+    "height": 19,
+    "id": 59,
+    "name": "arcanine",
+    "stats": [
+      {
+        "name": "hp",
+        "value": 90
+      },
+      {
+        "name": "attack",
+        "value": 110
+      },
+      {
+        "name": "defense",
+        "value": 80
+      },
+      {
+        "name": "special-attack",
+        "value": 100
+      },
+      {
+        "name": "special-defense",
+        "value": 80
+      },
+      {
+        "name": "speed",
+        "value": 95
+      }
+    ],
+    "sprites": {
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/59.png",
+      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/59.png",
+      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/59.png",
+      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/59.png"
+    },
+    "types": [
+      "fire"
+    ],
+    "weight": 1550,
+    "moves": [
+      {
+        "name": "heat-wave",
+        "url": "https://pokeapi.co/api/v2/move/257/",
+        "accuracy": 90,
+        "power": 95,
+        "type": "fire"
+      },
+      {
+        "name": "hyper-voice",
+        "url": "https://pokeapi.co/api/v2/move/304/",
+        "accuracy": 100,
+        "power": 90,
+        "type": "normal"
+      },
+      {
+        "name": "bite",
+        "url": "https://pokeapi.co/api/v2/move/44/",
+        "accuracy": 100,
+        "power": 60,
+        "type": "dark"
+      },
+      {
+        "name": "skull-bash",
+        "url": "https://pokeapi.co/api/v2/move/130/",
+        "accuracy": 100,
+        "power": 130,
+        "type": "normal"
+      },
+      {
+        "name": "rage",
+        "url": "https://pokeapi.co/api/v2/move/99/",
+        "accuracy": 100,
+        "power": 20,
+        "type": "normal"
+      },
+      {
+        "name": "round",
+        "url": "https://pokeapi.co/api/v2/move/496/",
+        "accuracy": 100,
+        "power": 60,
+        "type": "normal"
+      },
+      {
+        "name": "temper-flare",
+        "url": "https://pokeapi.co/api/v2/move/915/",
+        "accuracy": 100,
+        "power": 75,
+        "type": "fire"
+      },
+      {
+        "name": "dragon-pulse",
+        "url": "https://pokeapi.co/api/v2/move/406/",
+        "accuracy": 100,
+        "power": 85,
+        "type": "dragon"
+      },
+      {
+        "name": "scorching-sands",
+        "url": "https://pokeapi.co/api/v2/move/815/",
+        "accuracy": 100,
+        "power": 70,
+        "type": "ground"
+      },
+      {
+        "name": "crunch",
+        "url": "https://pokeapi.co/api/v2/move/242/",
+        "accuracy": 100,
+        "power": 80,
+        "type": "dark"
+      }
+    ]
+  },
+  {
+    "height": 65,
+    "id": 130,
+    "name": "gyarados",
+    "stats": [
+      {
+        "name": "hp",
+        "value": 95
+      },
+      {
+        "name": "attack",
+        "value": 125
+      },
+      {
+        "name": "defense",
+        "value": 79
+      },
+      {
+        "name": "special-attack",
+        "value": 60
+      },
+      {
+        "name": "special-defense",
+        "value": 100
+      },
+      {
+        "name": "speed",
+        "value": 81
+      }
+    ],
+    "sprites": {
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png",
+      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/130.png",
+      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/130.png",
+      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/130.png"
+    },
+    "types": [
+      "water",
+      "flying"
+    ],
+    "weight": 2350,
+    "moves": [
+      {
+        "name": "zap-cannon",
+        "url": "https://pokeapi.co/api/v2/move/192/",
+        "accuracy": 50,
+        "power": 120,
+        "type": "electric"
+      },
+      {
+        "name": "avalanche",
+        "url": "https://pokeapi.co/api/v2/move/419/",
+        "accuracy": 100,
+        "power": 60,
+        "type": "ice"
+      },
+      {
+        "name": "brine",
+        "url": "https://pokeapi.co/api/v2/move/362/",
+        "accuracy": 100,
+        "power": 65,
+        "type": "water"
+      },
+      {
+        "name": "power-whip",
+        "url": "https://pokeapi.co/api/v2/move/438/",
+        "accuracy": 85,
+        "power": 120,
+        "type": "grass"
+      },
+      {
+        "name": "muddy-water",
+        "url": "https://pokeapi.co/api/v2/move/330/",
+        "accuracy": 85,
+        "power": 90,
+        "type": "water"
+      },
+      {
+        "name": "incinerate",
+        "url": "https://pokeapi.co/api/v2/move/510/",
+        "accuracy": 100,
+        "power": 60,
+        "type": "fire"
+      },
+      {
+        "name": "water-pulse",
+        "url": "https://pokeapi.co/api/v2/move/352/",
+        "accuracy": 100,
+        "power": 60,
+        "type": "water"
+      },
+      {
+        "name": "facade",
+        "url": "https://pokeapi.co/api/v2/move/263/",
+        "accuracy": 100,
+        "power": 70,
+        "type": "normal"
+      },
+      {
+        "name": "dragon-breath",
+        "url": "https://pokeapi.co/api/v2/move/225/",
+        "accuracy": 100,
+        "power": 60,
+        "type": "dragon"
+      },
+      {
+        "name": "flamethrower",
+        "url": "https://pokeapi.co/api/v2/move/53/",
+        "accuracy": 100,
+        "power": 90,
+        "type": "fire"
+      }
+    ]
+  },
+  {
+    "height": 33,
+    "id": 497,
+    "name": "serperior",
+    "stats": [
+      {
+        "name": "hp",
+        "value": 75
+      },
+      {
+        "name": "attack",
+        "value": 75
+      },
+      {
+        "name": "defense",
+        "value": 95
+      },
+      {
+        "name": "special-attack",
+        "value": 75
+      },
+      {
+        "name": "special-defense",
+        "value": 95
+      },
+      {
+        "name": "speed",
+        "value": 113
+      }
+    ],
+    "sprites": {
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/497.png",
+      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/497.png",
+      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/497.png",
+      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/497.png"
+    },
+    "types": [
+      "grass"
+    ],
+    "weight": 630,
+    "moves": [
+      {
+        "name": "outrage",
+        "url": "https://pokeapi.co/api/v2/move/200/",
+        "accuracy": 100,
+        "power": 120,
+        "type": "dragon"
+      },
+      {
+        "name": "round",
+        "url": "https://pokeapi.co/api/v2/move/496/",
+        "accuracy": 100,
+        "power": 60,
+        "type": "normal"
+      },
+      {
+        "name": "giga-drain",
+        "url": "https://pokeapi.co/api/v2/move/202/",
+        "accuracy": 100,
+        "power": 75,
+        "type": "grass"
+      },
+      {
+        "name": "aerial-ace",
+        "url": "https://pokeapi.co/api/v2/move/332/",
+        "accuracy": null,
+        "power": 60,
+        "type": "flying"
+      },
+      {
+        "name": "brutal-swing",
+        "url": "https://pokeapi.co/api/v2/move/693/",
+        "accuracy": 100,
+        "power": 60,
+        "type": "dark"
+      },
+      {
+        "name": "trailblaze",
+        "url": "https://pokeapi.co/api/v2/move/885/",
+        "accuracy": 100,
+        "power": 50,
+        "type": "grass"
+      },
+      {
+        "name": "dragon-pulse",
+        "url": "https://pokeapi.co/api/v2/move/406/",
+        "accuracy": 100,
+        "power": 85,
+        "type": "dragon"
+      },
+      {
+        "name": "energy-ball",
+        "url": "https://pokeapi.co/api/v2/move/412/",
+        "accuracy": 100,
+        "power": 90,
+        "type": "grass"
+      },
+      {
+        "name": "scale-shot",
+        "url": "https://pokeapi.co/api/v2/move/799/",
+        "accuracy": 90,
+        "power": 25,
+        "type": "dragon"
+      },
+      {
+        "name": "twister",
+        "url": "https://pokeapi.co/api/v2/move/239/",
+        "accuracy": 100,
+        "power": 40,
+        "type": "dragon"
+      }
+    ]
+  },
+  {
+    "height": 14,
+    "id": 181,
+    "name": "ampharos",
+    "stats": [
+      {
+        "name": "hp",
+        "value": 90
+      },
+      {
+        "name": "attack",
+        "value": 75
+      },
+      {
+        "name": "defense",
+        "value": 85
+      },
+      {
+        "name": "special-attack",
+        "value": 115
+      },
+      {
+        "name": "special-defense",
+        "value": 90
+      },
+      {
+        "name": "speed",
+        "value": 55
+      }
+    ],
+    "sprites": {
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/181.png",
+      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/181.png",
+      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/181.png",
+      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/181.png"
+    },
+    "types": [
+      "electric"
+    ],
+    "weight": 615,
+    "moves": [
+      {
+        "name": "rock-climb",
+        "url": "https://pokeapi.co/api/v2/move/431/",
+        "accuracy": 85,
+        "power": 90,
+        "type": "normal"
+      },
+      {
+        "name": "double-edge",
+        "url": "https://pokeapi.co/api/v2/move/38/",
+        "accuracy": 100,
+        "power": 120,
+        "type": "normal"
+      },
+      {
+        "name": "tera-blast",
+        "url": "https://pokeapi.co/api/v2/move/851/",
+        "accuracy": 100,
+        "power": 80,
+        "type": "normal"
+      },
+      {
+        "name": "headbutt",
+        "url": "https://pokeapi.co/api/v2/move/29/",
+        "accuracy": 100,
+        "power": 70,
+        "type": "normal"
+      },
+      {
+        "name": "tackle",
+        "url": "https://pokeapi.co/api/v2/move/33/",
+        "accuracy": 100,
+        "power": 40,
+        "type": "normal"
+      },
+      {
+        "name": "snore",
+        "url": "https://pokeapi.co/api/v2/move/173/",
+        "accuracy": 100,
+        "power": 50,
+        "type": "normal"
+      },
+      {
+        "name": "body-slam",
+        "url": "https://pokeapi.co/api/v2/move/34/",
+        "accuracy": 100,
+        "power": 85,
+        "type": "normal"
+      },
+      {
+        "name": "outrage",
+        "url": "https://pokeapi.co/api/v2/move/200/",
+        "accuracy": 100,
+        "power": 120,
+        "type": "dragon"
+      },
+      {
+        "name": "bulldoze",
+        "url": "https://pokeapi.co/api/v2/move/523/",
+        "accuracy": 100,
+        "power": 60,
+        "type": "ground"
+      },
+      {
+        "name": "facade",
+        "url": "https://pokeapi.co/api/v2/move/263/",
+        "accuracy": 100,
+        "power": 70,
+        "type": "normal"
+      }
+    ]
+  }
+]

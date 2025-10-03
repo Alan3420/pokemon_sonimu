@@ -1,1 +1,20 @@
-/* comentario */
+* {
+    color: white;
+}
+
+body {
+    background-image: url("../img/pokemon_fondo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+footer{
+    width: 100%;
+    padding: 2rem;
+    opacity: 50%;    
+    background-color: black;
+    position: fixed;
+    bottom: 0%;
+    left: 0%;
+}
