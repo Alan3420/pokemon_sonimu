@@ -9,11 +9,60 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-footer{
+
+/* Menu */
+#menu{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1),   /* Negro opaco arriba */
+    rgba(0, 0, 0, 0.3), /* Semitransparente en el medio */
+    rgba(0, 0, 0, 0)    /* Totalmente transparente abajo */
+  );
     width: 100%;
-    padding: 2rem;
-    opacity: 50%;    
-    background-color: black;
+    
+}
+ul{   
+    justify-content: center; 
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    
+}
+a{
+    text-decoration: none;
+}
+
+/* Boton_Jugar */
+
+#jugar{
+    width: 25%;
+    height: 50px;
+
+    position: fixed;
+    bottom: 20%;
+    left: 50%; 
+    transform: translateX(-50%);
+    border: 1px solid red;
+    border-radius: 5px;
+    color: white;
+    background-color: red;
+
+}
+
+/* PiePagina */
+footer{
+    text-align: center;
+    width: 100%;
+    padding: 2rem;  
+    background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1),   /* Negro opaco arriba */
+    rgba(0, 0, 0, 0.3), /* Semitransparente en el medio */
+    rgba(0, 0, 0, 0)    /* Totalmente transparente abajo */
+  );
     position: fixed;
     bottom: 0%;
     left: 0%;
