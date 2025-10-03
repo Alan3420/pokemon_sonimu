@@ -35,6 +35,23 @@ a{
     text-decoration: none;
 }
 
+/* Boton_Jugar */
+
+#jugar{
+    width: 25%;
+    height: 50px;
+
+    position: fixed;
+    bottom: 20%;
+    left: 50%; 
+    transform: translateX(-50%);
+    border: 1px solid red;
+    border-radius: 5px;
+    color: white;
+    background-color: red;
+
+}
+
 /* PiePagina */
 footer{
     text-align: center;
