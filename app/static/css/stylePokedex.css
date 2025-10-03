@@ -1,0 +1,7 @@
+div{
+    background-color: rgb(236, 86, 86);
+    max-width: 15%;
+    border-radius: 8px;
+    font-size: 3rem;
+    padding: 2rem;
+}
