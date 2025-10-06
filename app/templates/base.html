@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>{% block title %}PokemonSonimu{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/style.css') }}">
+  {% block style %}{% endblock %}
 </head>
 
 <body>
@@ -17,7 +18,9 @@
       </ul>
     </div>
   </header>
-
+      <main>
+           {% block content %}{% endblock %}
+      </main>
   <footer>
     <p>
 		<small>&copy; 2026_PokemonSonimu | Creditos Marcos Fernández y Alan Novas</small>

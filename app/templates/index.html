@@ -1,36 +1,8 @@
 {% extends "base.html" %}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/index.css') }}">
+{% endblock %}
 
-<!-- <!DOCTYPE html>
-<html lang="es">
-
-<head>
-  <meta charset="utf-8">
-  <title>PokemonSonimu</title>
-  <link rel="stylesheet" href="../static/css/index.css">
-  <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/index.css') }}">
-  
-</head>
-
-<body>
-  <header>   
-    <div id="menu">
-      <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="./pokemons.html">Pokedex</a></li>
-        <li><a href="#">Jugar</a></li>
-      </ul>
-    </div>
-  </header>
-
-  
-    <input id="jugar" type="button" value="Jugar">
-  
-  <footer>
-    <p>
-		<small>&copy; 2026_PokemonSonimu | Creditos Marcos Fernández y Alan Novas</small>
-	  </p>
-    
-  </footer>
-</body>
-
-</html> -->
+{% block content %}
+  <input id="jugar" type="button" value="Jugar">
+{% endblock %}
