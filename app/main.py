@@ -4,8 +4,8 @@ from pathlib import Path
 
 app = Flask(__name__, template_folder='templates')
 
-with open(Path("data\pokemon.json"), "r", encoding="utf-8") as f:
-    DATA = json.load(f)
+with open("data/data.json", encoding="utf-8") as f:
+    app.config["DATA"] = json.load(f)
     
 @app.route('/')
 def Bienvenido():
