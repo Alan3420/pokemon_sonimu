@@ -1,4 +1,6 @@
 #contenedor {
+    margin-top: 5%;
+    margin-bottom: 10%;
     display: flex;
     /* Tarjetas en línea */
     flex-direction: row;

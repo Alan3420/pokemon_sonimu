@@ -8,15 +8,17 @@
     {%for poke in pokemons%}
     <a href="#">
         <div class="tarjeta">
-        <!-- ejecucion de la informacion de los pokemones disponibles en json pokemon -->
-        <img class="sprites" src="{{poke.sprites.front_default}}" alt="Foto de {{poke.name}}">
-        <h2>{{poke.name}}</h2>
-        <p>{{poke.types}}</p>                
-    </div>
-    </a>     
+            <!-- ejecucion de la informacion de los pokemones disponibles en json pokemon -->
+            <img class="sprites" src="{{poke.sprites.front_default}}" alt="Foto de {{poke.name}}">
+            <h2>{{poke.name}}</h2>
+            {% for tipo in poke.types %}
+            <img src="../static/img/Types_name/{{ tipo }}.png" alt="{{ tipo }}">
+            {% endfor %}
+        </div>
+    </a>
     {% endfor %}
-    
 
-</table>
+
+    </table>
 </div>
 {% endblock %}
