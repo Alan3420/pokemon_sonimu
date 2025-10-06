@@ -5,23 +5,21 @@
 {% endblock %}
 {% block content %}
 <div id="contenedor">
-    <table border="1">
-    <tr>
-        <th>Imagen</th>
-        <th>Nombre</th>
-        <th>Tipo</th>
-    </tr>
+    <h1>HOLA MUNDO</h1>
 
-    ejecucion de la informacion de los pokemones disponibles en json pokemon
+   
 
-    {%for pokemo in pokemon%}
-    <tr>
-        <th>{{ pokemo.sprites.front_default }}</th>
-        <th>{{ pokemo.name }}</th>
-        <th>{{ pokemo.types }}</th>
-    </tr>
+    {%for poke in pokemons%}
+     <div class="tarjeta">
+        <!-- ejecucion de la informacion de los pokemones disponibles en json pokemon -->
+        <img src="{{poke.sprites.front_default}}" alt="Foto de {{poke.name}}">
+        <p>{{poke.name}}</p>
+        
+        
 
+    </div>
     {% endfor %}
+    
 
 </table>
 </div>
