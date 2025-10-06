@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Base</title>
-  <link rel="stylesheet" href="../static/css/style.css">
+  <title>{% block title %}PokemonSonimu{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/style.css') }}">
 </head>
 
 <body>
