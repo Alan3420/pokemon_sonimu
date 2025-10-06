@@ -1,5 +1,13 @@
+body{
+    background-image: url("../img/Fondo_Pokedex.webp");
+    background-size: cover;         /* cubre toda la pantalla */
+  background-position: center;    /* centra la imagen */
+  background-repeat: no-repeat;   /* no se repite */
+  background-attachment: fixed;   /* ⚠️ ESTO LA HACE FIJA */
+
+}
 #contenedor {
-    margin-top: 5%;
+    margin-top: 7%;
     margin-bottom: 10%;
     display: flex;
     /* Tarjetas en línea */
