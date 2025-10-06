@@ -1,12 +1,32 @@
-#contenedor{
-    position: fixed;
-    bottom: 20%;
-    left: 50%; 
+#contenedor {
+    display: flex;
+    /* Tarjetas en línea */
+    flex-direction: row;
+    /* Dirección horizontal */
+    flex-wrap: wrap;
+    /* Permite que bajen de línea */
+    gap: 20px;
+    /* Espacio entre ellas */
+    justify-content: center;
+    /* Centra el contenido */
+    padding: 20px;
 }
-/* div{
-    background-color: rgb(236, 86, 86);
-    max-width: 15%;
-    border-radius: 8px;
-    font-size: 3rem;
-    padding: 2rem;
-} */
+
+.tarjeta {
+    text-transform: uppercase;
+    background-color: #f50909c5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    width: 250px;
+    transition: transform 0.2s;
+}
+
+.tarjeta:hover {
+    transform: scale(1.05);
+}
+
+.sprites{
+    background-color: white;
+    border-radius: 10px;
+}
