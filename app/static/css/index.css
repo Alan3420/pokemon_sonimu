@@ -46,10 +46,16 @@ a{
     bottom: 20%;
     left: 50%; 
     transform: translateX(-50%);
-    border: 1px solid red;
+    border: 1px none;
     border-radius: 5px;
     color: white;
-    background-color: red;
+     background: linear-gradient(
+        to right,
+        orange 0%,
+        rgb(255, 106, 0) 40%,
+        #a020f0 60%,  /* Puedes usar "purple" o un tono como #a020f0 */
+        #6a0dad 100%
+      );
 
 }
 
