@@ -12,7 +12,8 @@ def Bienvenido():
     return render_template('index.html')
 @app.route('/pokedex')
 def home():
-    return jsonify(DATA)
+    return render_template('pokemons.html')
+# ,jsonify(DATA)
 
 if __name__ == '__main__':
     app.run('0.0.0.0', 8080)
