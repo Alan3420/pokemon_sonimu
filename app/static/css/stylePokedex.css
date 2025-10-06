@@ -1,24 +1,29 @@
-body{
+body {
     background-image: url("../img/Fondo_Pokedex.webp");
-    background-size: cover;         /* cubre toda la pantalla */
-  background-position: center;    /* centra la imagen */
-  background-repeat: no-repeat;   /* no se repite */
-  background-attachment: fixed;   /* ⚠️ ESTO LA HACE FIJA */
+    background-size: cover;
+    /* cubre toda la pantalla */
+    background-position: center;
+    /* centra la imagen */
+    background-repeat: no-repeat;
+    /* no se repite */
+    background-attachment: fixed;
+    /* ⚠️ ESTO LA HACE FIJA */
 
 }
+
 #contenedor {
     margin-top: 7%;
     margin-bottom: 10%;
     display: flex;
-    /* Tarjetas en línea */
+
     flex-direction: row;
-    /* Dirección horizontal */
+
     flex-wrap: wrap;
-    /* Permite que bajen de línea */
+
     gap: 20px;
-    /* Espacio entre ellas */
+
     justify-content: center;
-    /* Centra el contenido */
+
     padding: 20px;
 }
 
@@ -36,7 +41,7 @@ body{
     transform: scale(1.05);
 }
 
-.sprites{
+.sprites {
     background-color: white;
     border-radius: 10px;
 }
