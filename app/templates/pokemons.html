@@ -1,29 +1,30 @@
 {% extends "base.html" %}
-
-{% block title %}Base - Pokedex {% enblock %}
-
+{% block title %}Base - Pokedex {% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/stylePokedex.css') }}">
+{% endblock %}
 {% block content %}
-    <table border="1">
-        <tr>
-            <th>Imagen</th>
-            <th>Nombre</th>
-            <th>Tipo</th>
-        </tr>
+<table border="1">
+    <tr>
+        <th>Imagen</th>
+        <th>Nombre</th>
+        <th>Tipo</th>
+    </tr>
 
-        <!-- ejecucion de la informacion de los pokemones disponibles en json pokemon -->
-        
-        {%for pokemon in pokemons%}
-        <tr>
-            <th>{{ pokemon.sprites.front_default }}</th>
-            <th>{{ pokemon.name }}</th>
-            <th>{{ pokemon.types }}</th>
-        </tr>
-         
-    </table>
+    ejecucion de la informacion de los pokemones disponibles en json pokemon
 
-    <!-- <div>
-        <p>Charizar</p>
-        <img src="" alt="imagenCharizar">
-        <p>Fuego y volador</p>
-    </div> -->
-{% endeblock %}
+    {%for pokemon in pokemons%}
+    <tr>
+        <th>{{ pokemon.sprites.front_default }}</th>
+        <th>{{ pokemon.name }}</th>
+        <th>{{ pokemon.types }}</th>
+    </tr>
+
+</table>
+
+<div>
+    <p>Charizar</p>
+    <img src="" alt="imagenCharizar">
+    <p>Fuego y volador</p>
+</div>
+{% endblock %}

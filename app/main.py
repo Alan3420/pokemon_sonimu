@@ -11,7 +11,7 @@ with open(Path("data\pokemon.json"), "r", encoding="utf-8") as f:
 def Bienvenido():
     return render_template('index.html')
 
-@app.route('/pokedex')
+@app.route('/pokedex/')
 def Pokedex():
     return render_template('pokemons.html')
 
