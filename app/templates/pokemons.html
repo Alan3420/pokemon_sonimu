@@ -4,7 +4,8 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/stylePokedex.css') }}">
 {% endblock %}
 {% block content %}
-<table border="1">
+<div id="contenedor">
+    <table border="1">
     <tr>
         <th>Imagen</th>
         <th>Nombre</th>
@@ -23,4 +24,5 @@
     {% endfor %}
 
 </table>
+</div>
 {% endblock %}
