@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+{% block title %}Base - Pokedex {% enblock %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,54 +28,23 @@
             <th>Nombre</th>
             <th>Tipo</th>
         </tr>
-        <tr>
-            <td>Charizar</td>
-            <td><img src="" alt="imagen"></td>
-            <td>Fuego y Volador</td>
-        </tr>
-         <tr>
-            <td>Venusaur</td>
-            <td><img src="" alt="imagen"></td>
-            <td>Planta y Veneno</td>
-        </tr>
 
-         <tr>
-            <td>Blastoise</td>
-            <td><img src="" alt="imagen"></td>
-            <td>Agua</td>
+        <!-- ejecucion de la informacion de los pokemones disponibles en json pokemon -->
+        
+        {%for pokemon in pokemons%}
+        <tr>
+            <th>{{ pokemon.sprites.front_default }}</th>
+            <th>{{ pokemon.name }}</th>
+            <th>{{ pokemon.types }}</th>
         </tr>
-         <tr>
-            <td>Pikachu</td>
-            <td><img src="" alt="imagen"></td>
-            <td>Electrico</td>
-        </tr>
-         <tr>
-            <td>Arcanine</td>
-            <td><img src="" alt="imagen"></td>
-            <td>Fuego</td>
-        </tr>
-         <tr>
-            <td>Gyarados</td>
-            <td><img src="" alt="imagen"></td>
-            <td>Agua y Volador</td>
-        </tr>
-         <tr>
-            <td>Serperior</td>
-            <td><img src="" alt="imagen"></td>
-            <td>Planta</td>
-        </tr>
-         <tr>
-            <td>Ampharos</td>
-            <td><img src="" alt="imagen"></td>
-            <td>Electrico</td>
-        </tr>
+         
     </table>
 
-    <div>
+    <!-- <div>
         <p>Charizar</p>
         <img src="" alt="imagenCharizar">
         <p>Fuego y volador</p>
-    </div>
+    </div> -->
 
     <footer>
         ©2026_PokemonSonimu Creadores Marcos Fernández
