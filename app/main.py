@@ -16,4 +16,4 @@ def Pokedex():
     return render_template('pokemons.html')
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 8080)
+    app.run(debug=True, host='0.0.0.0', port=8080)
