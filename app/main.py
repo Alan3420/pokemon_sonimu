@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, current_app
 import json
 from pathlib import Path
 
@@ -13,7 +13,7 @@ def Bienvenido():
 
 @app.route('/pokedex/')
 def Pokedex():
-    return render_template('pokemons.html')
+    return render_template('pokemons.html'),jsonify(current_app.config["data"])
 
 if __name__ == '__main__':
     app.run('0.0.0.0', 8080)
