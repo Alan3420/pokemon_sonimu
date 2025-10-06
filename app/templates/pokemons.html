@@ -13,18 +13,14 @@
 
     ejecucion de la informacion de los pokemones disponibles en json pokemon
 
-    {%for pokemon in pokemons%}
+    {%for pokemo in pokemon%}
     <tr>
-        <th>{{ pokemon.sprites.front_default }}</th>
-        <th>{{ pokemon.name }}</th>
-        <th>{{ pokemon.types }}</th>
+        <th>{{ pokemo.sprites.front_default }}</th>
+        <th>{{ pokemo.name }}</th>
+        <th>{{ pokemo.types }}</th>
     </tr>
 
-</table>
+    {% endfor %}
 
-<div>
-    <p>Charizar</p>
-    <img src="" alt="imagenCharizar">
-    <p>Fuego y volador</p>
-</div>
+</table>
 {% endblock %}

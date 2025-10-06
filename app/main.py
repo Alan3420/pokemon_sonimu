@@ -4,7 +4,7 @@ from pathlib import Path
 
 app = Flask(__name__, template_folder='templates')
 
-with open("data/data.json", encoding="utf-8") as f:
+with open("data/pokemon.json", encoding="utf-8") as f:
     app.config["DATA"] = json.load(f)
     
 @app.route('/')
@@ -13,7 +13,7 @@ def Bienvenido():
 
 @app.route('/pokedex/')
 def Pokedex():
-    return render_template('pokemons.html'),jsonify(current_app.config["data"])
+    return render_template('pokemons.html')
 
 if __name__ == '__main__':
     app.run('0.0.0.0', 8080)
