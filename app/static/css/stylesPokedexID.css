@@ -27,3 +27,8 @@ div{
     display: flex;
     justify-content: left;
 }
+
+.sprites {
+    width: 50%;
+    border-radius: 10px;
+}

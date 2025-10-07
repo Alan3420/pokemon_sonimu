@@ -17,7 +17,8 @@
             <img src="{{pokemon.sprites.back_shiny}}" alt="Foto de {{pokemon.name}}">
         </div>
         {% for tipo in pokemon.types %}
-            <img src="../static/img/Types_name/{{ tipo }}.png" alt="{{ tipo }}">
+            <!-- <img src="../static/img/Types_name/{{tipo}}.png" alt="{{ tipo }}"> -->
+            <img src="{{ url_for('static', filename='img/Types_name/' + tipo + '.png') }}" alt="{{ tipo }}">
         {% endfor %}
 
         <p>Altura: {{ pokemon.height }}</p>

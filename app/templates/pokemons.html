@@ -12,7 +12,7 @@
             <img class="sprites" src="{{poke.sprites.front_default}}" alt="Foto de {{poke.name}}"><br>
             
             {% for tipo in poke.types %}
-            <img src="../static/img/Types_name/{{ tipo }}.png" alt="{{ tipo }}">
+            <img src="{{ url_for('static', filename='img/Types_name/' + tipo + '.png') }}" alt="{{ tipo }}">
             {% endfor %}
             <h2>{{poke.name}}</h2>
         </div>
