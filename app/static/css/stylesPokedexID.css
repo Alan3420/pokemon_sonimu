@@ -1,0 +1,25 @@
+.tarjeta {
+    text-transform: uppercase;
+    background-color: #f50909c5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    width: 850px;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2rem;
+    margin-top: 5rem;
+    
+}
+
+.tarjeta img{
+    width: 150px;
+    height: 150px;
+}
+div{
+    display: flex;
+    justify-content: center;
+
+    
+}

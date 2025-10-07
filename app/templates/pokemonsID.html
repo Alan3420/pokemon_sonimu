@@ -1,11 +1,39 @@
 {% extends "base.html" %}
 {% block title %}Base - Detalles Pokemon {% endblock %}
 
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/stylesPokedexID.css') }}">
+{% endblock %}
 {% block content %}
 
 
-<div class="tarjeta">
-    <h2>{{pokemon.name}}</h2>
+<div>
+    <div class="tarjeta">
+        <h2>{{pokemon.name}}</h2>
+        <img src="{{pokemon.sprites.front_default}}" alt="Foto de {{pokemon.name}}">
+        <img src="{{pokemon.sprites.back_default}}" alt="Foto de {{pokemon.name}}">
+        {% for tipo in pokemon.types %}
+        <p>{{tipo}}</p>
+        {% endfor %}
+
+        <p>Altura: {{ pokemon.height }}</p>
+
+       
+        {% if 100 >  pokemon.weight  %}
+            <p>Peso: normal</p>
+        
+        {% elif %}
+         
+        {% endif %}
+
+        
+
+    
+
+
+
+    </div>
+
 </div>
 
 
