@@ -1,5 +1,4 @@
 .tarjeta {
-    text-transform: uppercase;
     background-color: #f50909c5;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
@@ -22,4 +21,9 @@ div{
     justify-content: center;
 
     
+}
+
+.pokefoto{
+    display: flex;
+    justify-content: left;
 }
