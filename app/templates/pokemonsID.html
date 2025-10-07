@@ -18,12 +18,12 @@
 
         <p>Altura: {{ pokemon.height }}</p>
 
-       
-        {% if 100 >  pokemon.weight  %}
+        {% if 100 > pokemon.weight %}
+            <p>Peso: ligero</p>                
+        {% elif pokemon.weight > 500 %}
+            <p>Peso: pesado</p>
+        {% else %}
             <p>Peso: normal</p>
-        
-        {% elif %}
-         
         {% endif %}
 
         
