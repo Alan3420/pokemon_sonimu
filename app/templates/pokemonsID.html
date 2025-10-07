@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Base - Detalles Pokemon {% endblock %}
+
+{% block content %}
+
+{%for poke in pokemons%}
+<div class="tarjeta">
+
+    <h2>{{poke.name}}</h2>
+</div>
+{% endfor %}
+
+{% endblock %}

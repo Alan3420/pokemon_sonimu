@@ -15,5 +15,9 @@ def Bienvenido():
 def Pokedex():
     return render_template('pokemons.html', pokemons = current_app.config["data"])
 
+@app.route('/pokedex/details')
+def PokedexDetails():
+    return render_template('pokemonsID.html', pokemons = current_app.config["data"])
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8080)

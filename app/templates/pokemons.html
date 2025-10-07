@@ -6,7 +6,7 @@
 {% block content %}
 <div id="contenedor">
     {%for poke in pokemons%}
-    <a href="#">
+    <a href="/pokedex/details">
         <div class="tarjeta">
             <!-- ejecucion de la informacion de los pokemones disponibles en json pokemon -->
             <img class="sprites" src="{{poke.sprites.front_default}}" alt="Foto de {{poke.name}}"><br>
