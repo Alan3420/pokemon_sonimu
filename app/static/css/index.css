@@ -1,6 +1,8 @@
-* {
-    color: white;
-    font-family: sans-serif;
+@font-face {
+    font-family: 'MiFuente';
+    src: url('../fonts/font_pack__sun_and_moon_by_mucrush_d9t8kqh.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 body {
@@ -9,31 +11,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-}
-
-/* Menu */
-#menu{
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 1),   /* Negro opaco arriba */
-    rgba(0, 0, 0, 0.3), /* Semitransparente en el medio */
-    rgba(0, 0, 0, 0)    /* Totalmente transparente abajo */
-  );
-    width: 100%;
-    
-}
-ul{   
-    justify-content: center; 
-    display: flex;
-    gap: 40px;
-    list-style: none;
-    
-}
-a{
-    text-decoration: none;
+    overflow: hidden;
 }
 
 /* Boton_Jugar */
@@ -56,21 +34,36 @@ a{
         #a020f0 60%,  /* Puedes usar "purple" o un tono como #a020f0 */
         #6a0dad 100%
       );
-
+    transition: filter 0.3s ease;
 }
 
-/* PiePagina */
-footer{
-    text-align: center;
-    width: 100%;
-    padding: 2rem;  
-    background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 1),   /* Negro opaco arriba */
-    rgba(0, 0, 0, 0.3), /* Semitransparente en el medio */
-    rgba(0, 0, 0, 0)    /* Totalmente transparente abajo */
-  );
-    position: fixed;
-    bottom: 0%;
-    left: 0%;
+#jugar:hover{
+    filter: brightness(70%);
+}
+
+/* Titulo */
+#titulo{
+    display: flex;
+    flex-direction: column;      
+    justify-content: center;     
+    align-items: center;         
+    height: 70vh;              
+    text-align: center;       
+}
+#titulo img{
+    width: 500px;
+
+}
+h1{
+    font-family: 'MiFuente', sans-serif;
+    color: yellow;
+}
+
+/* Ttipo */
+#tabla-tiposact{
+    margin-left: 10%;
+    transition: filter 0.3s ease;
+}
+#tabla-tiposact:hover{
+    filter: brightness(70%);
 }
