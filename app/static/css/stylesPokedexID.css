@@ -17,7 +17,6 @@ body{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     padding: 20px;
     width: 650px;
-    transition: transform 0.2s;
     text-align: center;
 
 }
@@ -28,8 +27,8 @@ body{
 .tarjeta h2{
     color: black;
 }
-.tarjeta:hover {
-    transform: scale(1.05);
+.tarjeta p{
+    color: black;
 }
 .pokefoto{
     display: flex;
