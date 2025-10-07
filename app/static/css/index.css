@@ -1,3 +1,25 @@
+@font-face {
+    font-family: 'MiFuente';
+    src: url('../fonts/font_pack__sun_and_moon_by_mucrush_d9t8kqh.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+#titulo{
+    display: flex;
+    flex-direction: column;      
+    justify-content: center;     
+    align-items: center;         
+    height: 70vh;              
+    text-align: center;       
+}
+#titulo img{
+    width: 500px;
+
+}
+h1{
+    font-family: 'MiFuente', sans-serif;
+    color: yellow;
+}
 * {
     color: white;
     font-family: sans-serif;
@@ -9,8 +31,14 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    overflow: hidden;
 }
 
+
+#tabla-tiposact{
+    margin-left: 10%;
+    
+}
 /* Menu */
 #menu{
     position: absolute;
