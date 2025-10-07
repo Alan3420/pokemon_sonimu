@@ -17,6 +17,7 @@ body {
 /* Boton_Jugar */
 
 #jugar{
+    font-family: 'MiFuente', sans-serif;
     width: 25%;
     height: 50px;
 
@@ -43,15 +44,15 @@ body {
 
 /* Titulo */
 #titulo{
-    display: flex;
-    flex-direction: column;      
+    margin-left: 100px;
+    display: flex;    
     justify-content: center;     
     align-items: center;         
     height: 70vh;              
     text-align: center;       
 }
 #titulo img{
-    width: 500px;
+    width: 600px;
 
 }
 h1{
