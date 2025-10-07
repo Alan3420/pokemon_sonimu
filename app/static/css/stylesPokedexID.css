@@ -1,5 +1,15 @@
+body{
+    overflow: hidden;
+}
+
+#contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 .tarjeta {    
-    
 
     text-transform: uppercase;
     background-color: #ffffffc5;
