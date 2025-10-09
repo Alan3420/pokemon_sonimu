@@ -33,11 +33,10 @@
         <!-- Arriba-der -->
 
         <div id="sprites">
+            <img id="miImagen" src="★" alt="Estrella" onclick="pokshyni()">
             <div class="pokefoto">
-                <img src="{{pokemon.sprites.front_default}}" alt="Foto de {{pokemon.name}}">
-                <img src="{{pokemon.sprites.back_default}}" alt="Foto de {{pokemon.name}}">
-                <img src="{{pokemon.sprites.front_shiny}}" alt="Foto de {{pokemon.name}}">
-                <img src="{{pokemon.sprites.back_shiny}}" alt="Foto de {{pokemon.name}}">
+                <img id="pokeA" src="{{pokemon.sprites.front_default}}" alt="Foto de {{pokemon.name}}">
+                <img id="pokeB" src="{{pokemon.sprites.back_default}}" alt="Foto de {{pokemon.name}}">                
             </div>
         </div>
 
@@ -60,4 +59,18 @@
     </div>
     <!-- Fin Derecha -->
 </div>
+<script>
+  const imagen = document.getElementById('pokeA');
+  const imagenB = document.getElementById('pokeB');
+  function pokshyni(){
+    // Cambia la imagen al hacer clic
+    if (imagen.src.includes('{{pokemon.sprites.front_default}}') && imagenB.src.includes('{{pokemon.sprites.back_default}}')) {
+      imagen.src = '{{pokemon.sprites.front_shiny}}';
+      imagenB.src = '{{pokemon.sprites.back_shiny}}';
+    } else {
+      imagen.src = '{{pokemon.sprites.front_default}}';
+      imagenB.src = '{{pokemon.sprites.back_default}}';
+    }
+  };
+</script>
 {% endblock %}
