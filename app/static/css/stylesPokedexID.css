@@ -39,3 +39,21 @@ body{
     width: 50%;
     border-radius: 10px;
 }
+#contenedorMoves{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+#moves{
+    
+    
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 45%;
+    
+
+    
+    
+}

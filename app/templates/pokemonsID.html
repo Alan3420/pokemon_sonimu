@@ -3,6 +3,12 @@
 
 {% block style %}
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/stylesPokedexID.css') }}">
+
+<style>
+
+</style>
+
+
 {% endblock %}
 {% block content %}
 
@@ -19,11 +25,11 @@
         
         <!-- Tipos -->
         {% for tipo in pokemon.types %}
-            <img src="{{ url_for('static', filename='img/Types_name/' + tipo + '.png') }}" alt="{{ tipo }}">
+            <img src="{{ url_for('static', filename='img/Types_name/' + tipo + '.png') }}" alt="{{ tipo }}"   >
         {% endfor %}
 
         <!-- Altura -->
-        <p>Altura: {{ pokemon.height }}0 cm</p>
+        <p>Altura: {{ pokemon.height }}0 cm</p><br>
 
         <!-- Pesos -->
         {% if 100 > pokemon.weight %}
@@ -34,8 +40,25 @@
             <p>Peso: normal</p>
         {% endif %}
 
-    </div>
+        <br>
+
+        <!-- lista de movimientos -->
+         <p>Movimientos:</p>
+        
+        <div id="contenedorMoves">
+            {% for movimiento in pokemon.moves %}
+                <div id="moves" style="background-color: {{ colorM.get(movimiento.type) }};">
+                    {{ movimiento.name }} <img src="{{ url_for('static', filename='img/Types_name/' + movimiento.type + '.png') }}" alt="{{ movimiento.type }}"   ><br>
+                    PC: {{ movimiento.accuracy }}
+                    PW: {{ movimiento.power }}
+                    
+                </div>
+            {% endfor %}
+        </div>
+             
+       
 
     </div>
 
+    </div>
 {% endblock %}
