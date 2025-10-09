@@ -8,59 +8,88 @@ body {
     /* no se repite */
     background-attachment: fixed;
     /* ⚠️ ESTO LA HACE FIJA */
-}
-#contenedor {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    
 }
 header{
     padding: 45px;
 }
-.tarjeta {    
-
-    text-transform: uppercase;
-    background-color: #ffffffc5;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    padding: 20px;
-    width: 650px;
-    text-align: center;
+#contenedor {
+    display: flex;
+    height: 781px; 
+    gap: 10px;
+    padding: 10px;
+    box-sizing: border-box;
 
 }
-
-.tarjeta img{
-    padding: 5%;
+/* Derecha */
+#der{
+    align-items: end;
+    flex: 1; /* Ocupa más espacio que la izquierda */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     
-}
-.tarjeta h2{
-    color: black;
-}
-.tarjeta p{
-    color: black;
+    /* background-color: lightcoral; */
+    padding: 10px;
+    box-sizing: border-box;
 }
 .pokefoto{
     display: flex;
     justify-content: left;
 }
-
+.pokefoto img{
+    width: 150px;
+}
 .sprites {
-    width: 50%;
-    border-radius: 10px;
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
 }
 #contenedorMoves{
+    margin-top: auto; /* Empuja este div hacia el fondo */
+    margin-left: auto;
+    justify-content: flex-end;
+    
+
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     flex-wrap: wrap;
     gap: 1rem;
+    /* overflow-y: auto; scroll si hay muchos movimientos */
+    
+    /* background-color: red; */
+    height: 400px;
+    
 }
 #moves{
     color: black;
     font-weight: bold;
     background-color: white;
-    
     border-radius: 10px;
-    width: 45%;
+    
+    width: 40%;
+    height: 50px;
+    padding: 5px;
+    
+}
+
+/* Izquierda */
+#izq{
+    background-color: #ffffffc5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    
+    flex: 1; /* O ajusta a flex: 1 1 40% para que sea un poco más estrecho */
+    display: flex;
+    flex-direction: column;
+    /* background-color: lightblue; */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+footer{
+    position: fixed;
+    bottom: 0%;
+    left: 0%;
 }

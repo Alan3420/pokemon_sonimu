@@ -3,62 +3,63 @@
 
 {% block style %}
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/stylesPokedexID.css') }}">
-
-<style>
-
-</style>
-
-
 {% endblock %}
+
 {% block content %}
+<div id="contenedor">
+    <!-- Izquierda -->
+    <div id="izq">
+        <div id="stats">
+            Nombre
+            <h2>{{pokemon.name}}</h2>
+            <!-- Tipos -->
+            {% for tipo in pokemon.types %}
+            <img src="{{ url_for('static', filename='img/Types_name/' + tipo + '.png') }}" alt="{{ tipo }}">
+            {% endfor %}
+            <!-- Altura -->
+            <p>Altura: {{ pokemon.height }}0 cm</p><br>
 
-    <div id="contenedor">
-        <div class="tarjeta">
-
-        <h2>{{pokemon.name}}</h2>
-        <div class="pokefoto">
-            <img src="{{pokemon.sprites.front_default}}" alt="Foto de {{pokemon.name}}">
-            <img src="{{pokemon.sprites.back_default}}" alt="Foto de {{pokemon.name}}">
-            <img src="{{pokemon.sprites.front_shiny}}" alt="Foto de {{pokemon.name}}">
-            <img src="{{pokemon.sprites.back_shiny}}" alt="Foto de {{pokemon.name}}">
-        </div>
-        
-        <!-- Tipos -->
-        {% for tipo in pokemon.types %}
-            <img src="{{ url_for('static', filename='img/Types_name/' + tipo + '.png') }}" alt="{{ tipo }}"   >
-        {% endfor %}
-
-        <!-- Altura -->
-        <p>Altura: {{ pokemon.height }}0 cm</p><br>
-
-        <!-- Pesos -->
-        {% if 100 > pokemon.weight %}
-            <p>Peso: ligero</p>                
-        {% elif pokemon.weight > 500 %}
+            <!-- Pesos -->
+            {% if 100 > pokemon.weight %}
+            <p>Peso: ligero</p>
+            {% elif pokemon.weight > 500 %}
             <p>Peso: pesado</p>
-        {% else %}
+            {% else %}
             <p>Peso: normal</p>
-        {% endif %}
+            {% endif %}
+        </div>
+    </div>
+        <!-- Fin Izquierda -->
+        <!-- Derecha -->
+    <div id="der">
+        <!-- Arriba-der -->
 
-        <br>
+        <div id="sprites">
+            <div class="pokefoto">
+                <img src="{{pokemon.sprites.front_default}}" alt="Foto de {{pokemon.name}}">
+                <img src="{{pokemon.sprites.back_default}}" alt="Foto de {{pokemon.name}}">
+                <img src="{{pokemon.sprites.front_shiny}}" alt="Foto de {{pokemon.name}}">
+                <img src="{{pokemon.sprites.back_shiny}}" alt="Foto de {{pokemon.name}}">
+            </div>
+        </div>
 
+        <!-- Abajo-Der -->
         <!-- lista de movimientos -->
-         <p>Movimientos:</p>
-        
         <div id="contenedorMoves">
             {% for movimiento in pokemon.moves %}
-                <div id="moves" style="{{ colorM.get(movimiento.type) }};">
-                    {{ movimiento.name }} <img src="{{ url_for('static', filename='img/Types_name/' + movimiento.type + '.png') }}" alt="{{ movimiento.type }}"   ><br>
-                    PC: {{ movimiento.accuracy }}
-                    PW: {{ movimiento.power }}
-                    
-                </div>
+            <div id="moves" style="{{ colorM.get(movimiento.type) }};">
+                {{ movimiento.name }} <img
+                    src="{{ url_for('static', filename='img/Types_name/' + movimiento.type + '.png') }}"
+                    alt="{{ movimiento.type }}"><br>
+                PC: {{ movimiento.accuracy }}
+                PW: {{ movimiento.power }}
+
+            </div>
             {% endfor %}
         </div>
-             
-       
+
 
     </div>
-
-    </div>
+    <!-- Fin Derecha -->
+</div>
 {% endblock %}
