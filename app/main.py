@@ -13,7 +13,24 @@ def Bienvenido():
 
 @app.route('/pokedex/')
 def Pokedex():
-    return render_template('pokemons.html', pokemons = current_app.config["data"])
+    colorM = {
+            "fire": "background: radial-gradient(circle, white 0%, red 100%)",
+            "dragon": "purple",
+            "grass": "green",
+            "normal": "gray",
+            "fighting": "brown",
+            "ground": "brown",
+            "water": "blue",
+            "dark":"pink",
+            "flying":"aqua",
+            "fairy": "salmon",
+            "electric": "yellow",
+            "steel": "gray",
+            "poison": "purple",
+            "ice": "white"
+        }
+    
+    return render_template('pokemons.html', pokemons = current_app.config["data"], colorM=colorM)
 
 @app.route('/pokedex/<int:id>/')
 def PokedexDetails(id):

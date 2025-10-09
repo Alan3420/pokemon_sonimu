@@ -7,7 +7,7 @@
 <div id="contenedor">
     {%for poke in pokemons%}
     <a href="/pokedex/{{poke.id}}/">
-        <div class="tarjeta">
+        <div class="tarjeta" style="background-color: {{ colorM.get(poke.types[0]) }};">
             <!-- ejecucion de la informacion de los pokemones disponibles en json pokemon -->
             <img class="sprites" src="{{poke.sprites.front_default}}" alt="Foto de {{poke.name}}"><br>
             
