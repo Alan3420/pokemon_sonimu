@@ -11,7 +11,7 @@ body {
     
 }
 header{
-    padding: 45px;
+    padding: 10px;
 }
 #contenedor {
     display: flex;
@@ -48,6 +48,8 @@ header{
     
 }
 #contenedorMoves{
+    
+
     margin-top: auto; /* Empuja este div hacia el fondo */
     margin-left: auto;
     justify-content: flex-end;
@@ -79,7 +81,7 @@ header{
     background-color: #ffffffc5;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    
+
     flex: 1; /* O ajusta a flex: 1 1 40% para que sea un poco más estrecho */
     display: flex;
     flex-direction: column;
@@ -87,7 +89,13 @@ header{
     padding: 10px;
     box-sizing: border-box;
 }
-
+#izq p,h2{
+    color: black;
+    font-weight: bold;
+} 
+#izq h2{
+    text-transform: uppercase;
+}
 footer{
     position: fixed;
     bottom: 0%;

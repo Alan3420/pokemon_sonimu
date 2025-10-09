@@ -17,8 +17,7 @@
             <img src="{{ url_for('static', filename='img/Types_name/' + tipo + '.png') }}" alt="{{ tipo }}">
             {% endfor %}
             <!-- Altura -->
-            <p>Altura: {{ pokemon.height }}0 cm</p><br>
-
+            <p>Altura: {{ pokemon.height }}0 cm </p>
             <!-- Pesos -->
             {% if 100 > pokemon.weight %}
             <p>Peso: ligero</p>
