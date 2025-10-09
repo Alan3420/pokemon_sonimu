@@ -14,17 +14,17 @@ def Bienvenido():
 @app.route('/pokedex/')
 def Pokedex():
     colorM = {
-            "fire": "background: radial-gradient(circle, white 0%, red 100%)",
+            "fire": "background: linear-gradient(to top, white 40%, red 100%);",
             "dragon": "purple",
-            "grass": "green",
+            "grass": "background: linear-gradient(to top, white 40%, green 100%);",
             "normal": "gray",
             "fighting": "brown",
             "ground": "brown",
-            "water": "blue",
+            "water": "background: linear-gradient(to top, white 40%, aqua 100%);",
             "dark":"pink",
             "flying":"aqua",
             "fairy": "salmon",
-            "electric": "yellow",
+            "electric": "background: linear-gradient(to top, white 40%, yellow 100%);",
             "steel": "gray",
             "poison": "purple",
             "ice": "white"
