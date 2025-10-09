@@ -68,3 +68,8 @@ h1{
 #tabla-tiposact:hover{
     filter: brightness(70%);
 }
+footer{
+    position: fixed;
+    bottom: 0%;
+    left: 0%;
+}

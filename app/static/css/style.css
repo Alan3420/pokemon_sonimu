@@ -49,8 +49,5 @@ footer{
     rgba(0, 0, 0, 1),   /* Negro opaco arriba */
     rgba(0, 0, 0, 0.3), /* Semitransparente en el medio */
     rgba(0, 0, 0, 0)    /* Totalmente transparente abajo */
-  );
-    position: fixed;
-    bottom: 0%;
-    left: 0%;
+  );    
 }

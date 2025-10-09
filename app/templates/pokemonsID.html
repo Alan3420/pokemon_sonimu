@@ -47,7 +47,7 @@
         
         <div id="contenedorMoves">
             {% for movimiento in pokemon.moves %}
-                <div id="moves" style="background-color: {{ colorM.get(movimiento.type) }};">
+                <div id="moves" style="{{ colorM.get(movimiento.type) }};">
                     {{ movimiento.name }} <img src="{{ url_for('static', filename='img/Types_name/' + movimiento.type + '.png') }}" alt="{{ movimiento.type }}"   ><br>
                     PC: {{ movimiento.accuracy }}
                     PW: {{ movimiento.power }}

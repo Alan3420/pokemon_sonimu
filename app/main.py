@@ -42,20 +42,20 @@ def PokedexDetails(id):
             break
     
     colorM = {
-        "fire": "red",
-        "dragon": "purple",
-        "grass": "green",
-        "normal": "gray",
-        "fighting": "brown",
-        "ground": "brown",
-        "water": "blue",
-        "dark":"pink",
-        "flying":"aqua",
-        "fairy": "salmon",
-        "electric": "yellow",
-        "steel": "gray",
-        "poison": "purple",
-        "ice": "white"
+        "fire": "border: 4px groove rgba(255, 0, 0, 0.5)",
+        "dragon": "border: 4px groove rgba(255, 0, 0, 0.5)",
+        "grass": "border: 4px groove rgba(255, 0, 0, 0.5)",
+        "normal": "border: 4px groove rgba(255, 0, 0, 0.5)",
+        "fighting": "border: 4px groove rgba(255, 0, 0, 0.5)",
+        "ground": "border: 4px groove rgba(255, 0, 0, 0.5)",
+        "water": "border: 4px groove rgba(255, 0, 0, 0.5)",
+        "dark":"border: 4px groove rgba(255, 0, 0, 0.5)",
+        "flying":"border: 4px groove rgba(255, 0, 0, 0.5)",
+        "fairy": "border: 4px groove rgba(255, 0, 0, 0.5)",
+        "electric": "border: 4px groove rgba(255, 255, 0, 0.5)",
+        "steel": "border: 4px groove rgba(255, 0, 0, 0.5)",
+        "poison": "border: 4px groove rgba(255, 0, 0, 0.5)",
+        "ice": "border: 4px groove rgba(255, 0, 0, 0.5)"
     }
 
 

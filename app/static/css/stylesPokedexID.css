@@ -1,14 +1,12 @@
-body{
-    overflow: hidden;
-}
-
 #contenedor {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
-
+header{
+    padding: 45px;
+}
 .tarjeta {    
 
     text-transform: uppercase;
@@ -20,6 +18,7 @@ body{
     text-align: center;
 
 }
+
 .tarjeta img{
     padding: 5%;
     
@@ -47,13 +46,10 @@ body{
     gap: 1rem;
 }
 #moves{
+    color: black;
+    font-weight: bold;
+    background-color: white;
     
-    
-    border: 1px solid black;
     border-radius: 10px;
     width: 45%;
-    
-
-    
-    
 }
