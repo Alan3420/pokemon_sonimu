@@ -1,3 +1,14 @@
+body {
+    background-image: url("../img/details/fondo_details.png");
+    background-size: cover;
+    /* cubre toda la pantalla */
+    background-position: center;
+    /* centra la imagen */
+    background-repeat: no-repeat;
+    /* no se repite */
+    background-attachment: fixed;
+    /* ⚠️ ESTO LA HACE FIJA */
+}
 #contenedor {
     display: flex;
     justify-content: center;
