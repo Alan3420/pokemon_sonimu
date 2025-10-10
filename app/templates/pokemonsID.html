@@ -33,7 +33,7 @@
         <!-- Arriba-der -->
 
         <div id="sprites">
-            <img id="icon" src="../static/img/icon/estrella-negro.png" alt="Estrella" onclick="pokshyni()">
+<img id="icon" src="{{ url_for('static', filename='img/icon/estrella-negro.png') }}" alt="Estrella" onclick="pokshyni()" width="20px">
 
             <div class="pokefoto">
                 <img id="pokeA" src="{{pokemon.sprites.front_default}}" alt="Foto de {{pokemon.name}}">
@@ -63,15 +63,15 @@
 <script>
   const imagen = document.getElementById('pokeA');
   const imagenB = document.getElementById('pokeB');
-  const Icon = document.getElementById('icon');
+  const icon = document.getElementById('icon');
   function pokshyni(){
     // Cambia la imagen al hacer clic
     if (imagen.src.includes('{{pokemon.sprites.front_default}}') && imagenB.src.includes('{{pokemon.sprites.back_default}}')) {
-      Icon.src = '../static/img/icon/estrella.png'
+      icon.src = '{{ url_for("static", filename="img/icon/estrella.png") }}'
       imagen.src = '{{pokemon.sprites.front_shiny}}';
       imagenB.src = '{{pokemon.sprites.back_shiny}}';
     } else {
-      Icon.src = '../static/img/icon/estrella-negro.png'
+      icon.src = '{{ url_for("static", filename="img/icon/estrella-negro.png") }}'
       imagen.src = '{{pokemon.sprites.front_default}}';
       imagenB.src = '{{pokemon.sprites.back_default}}';
     }
