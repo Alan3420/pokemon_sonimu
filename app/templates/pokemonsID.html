@@ -26,6 +26,15 @@
             <p>Peso: normal</p>
             {% endif %}
         </div>
+
+        <!-- Estadisticas de los pokemones -->
+        <div class="contenedorStats">
+            <h2>Estadisticas</h2>
+            {% for estadistica in pokemon.stats %}
+                <label for="{{estadistica.name}}"> {{estadistica.name}} ({{estadistica.value}}):</label><br>
+                <progress value="{{ estadistica.value }}" max="100"></progress><br>
+            {% endfor %}
+        </div>
     </div>
         <!-- Fin Izquierda -->
         <!-- Derecha -->
@@ -33,7 +42,7 @@
         <!-- Arriba-der -->
 
         <div id="sprites">
-<img id="icon" src="{{ url_for('static', filename='img/icon/estrella-negro.png') }}" alt="Estrella" onclick="pokshyni()" width="20px">
+            <img id="icon" src="{{ url_for('static', filename='img/icon/estrella-negro.png') }}" alt="Estrella" onclick="pokshyni()" width="20px">
 
             <div class="pokefoto">
                 <img id="pokeA" src="{{pokemon.sprites.front_default}}" alt="Foto de {{pokemon.name}}">
@@ -55,7 +64,6 @@
             </div>
             {% endfor %}
         </div>
-
 
     </div>
     <!-- Fin Derecha -->

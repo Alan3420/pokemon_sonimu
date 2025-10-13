@@ -108,3 +108,14 @@ footer{
     transform: scale(1.05);
     filter: brightness(70%);
 }
+
+/* Stats */
+.contenedorStats label{
+    color: black;
+
+    
+}
+.contenedorStats progress{
+    width: 100%;
+    padding: 2rem;
+}
