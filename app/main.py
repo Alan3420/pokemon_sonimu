@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, current_app
+from flask import Flask, render_template, jsonify, current_app, request
 import json
 from pathlib import Path
 
@@ -7,9 +7,17 @@ app = Flask(__name__, template_folder='templates')
 with open("data/pokemon.json", encoding="utf-8") as f:
     app.config["data"] = json.load(f)
     
-@app.route('/')
+@app.route('/', methods="POST")
 def Bienvenido():
-    return render_template('index.html')
+
+    if request.method == "GET":
+        render_template('index.html')
+
+    if request.method == "POST":
+        user = request.form.get("nombre")
+        password = request.form.get("password")
+
+    return f"Hola, {user}, tu password es {password}"
 
 @app.route('/pokedex/')
 def Pokedex():
