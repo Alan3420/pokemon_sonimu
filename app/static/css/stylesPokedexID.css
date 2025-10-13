@@ -35,16 +35,14 @@ header{
 }
 .pokefoto{
     display: flex;
-    justify-content: left;
 }
 .pokefoto img{
-    width: 150px;
+    width: 300px;
 }
 .sprites {
     flex: 1;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    
     
 }
 #contenedorMoves{
@@ -81,7 +79,6 @@ header{
     background-color: #ffffffc5;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-
     flex: 1; /* O ajusta a flex: 1 1 40% para que sea un poco más estrecho */
     display: flex;
     flex-direction: column;
@@ -113,7 +110,6 @@ footer{
 .contenedorStats label{
     color: black;
 
-    
 }
 .contenedorStats progress{
     width: 100%;
