@@ -45,16 +45,15 @@ def Pokedex():
 def PokedexDetails(id):
     
     # validar el nombre del entrenador
-    
-    nombre = str(request.form.get("nombre"))
+    error = None
+    nombre = request.form.get("nombre", "").strip()
 
-    longNombre = len(nombre)
-
-    if longNombre > 3 and longNombre <= 15:
-        return nombre
+    if not nombre:
+        return "El nombre es obligatorio", 400
     
-    else:
-        return "El nombre debe estar comprendido entre 3 y 15 de longitud"
+
+    # if request.method == "GET":
+
     
     
 
