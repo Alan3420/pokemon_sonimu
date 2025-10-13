@@ -5,7 +5,7 @@ function iniciarSesion() {
 
   // Escribe el formulario dentro de la nueva ventana
   nuevaVentana.document.write(`
-    <form method="POST">
+    <form method="POST" action="/pokedex">
     <label for="nombre">Usuarios</label><br> 
     <input type="text" name="nombre" id="nombre"> 
     <label for="password">Contraseña</label><br> 
