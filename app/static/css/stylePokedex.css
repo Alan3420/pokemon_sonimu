@@ -59,6 +59,25 @@ body {
     width: 50%;
     border-radius: 10px;
 }
+form {
+    color: black;
+    font-weight: bold;
+    margin-right: 60px;
+    text-transform: uppercase;
+    background-color: #ffffffc5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+}
+
+form label{
+    color: black;
+}
+form input{
+    color: black;
+}
 footer{
     position: fixed;
     bottom: 0%;
