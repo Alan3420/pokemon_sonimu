@@ -51,13 +51,35 @@ body {
     height: 70vh;              
     text-align: center;       
 }
+form {
+    color: black;
+    font-weight: bold;
+
+    margin-right: 60px;
+    text-transform: uppercase;
+    background-color: #ffffffc5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    width: 250px;
+
+    text-align: center;
+    
+    display: none; /* Oculto al inicio */
+}
+
+form label{
+    color: black;
+}
+form input{
+    color: black;
+}
+form button{
+    color: black;
+}
 #titulo img{
     width: 600px;
 
-}
-h1{
-    font-family: 'MiFuente', sans-serif;
-    color: yellow;
 }
 
 /* Ttipo */
