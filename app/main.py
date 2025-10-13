@@ -7,7 +7,7 @@ app = Flask(__name__, template_folder='templates')
 with open("data/pokemon.json", encoding="utf-8") as f:
     app.config["data"] = json.load(f)
     
-@app.route('/', methods="POST")
+@app.route('/', methods=["POST"])
 def Bienvenido():
 
     if request.method == "GET":
