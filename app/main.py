@@ -41,8 +41,16 @@ def Pokedex():
     
     return render_template('pokemons.html', pokemons = current_app.config["data"], colorM=colorM)
 
-@app.route('/pokedex/<int:id>/')
+@app.route('/pokedex/<int:id>/', methods=["POST", "GET"])
 def PokedexDetails(id):
+    
+    # validar el nombre del entrenador
+    
+    nombre = str(request.form.get("nombre"))
+    
+    if 
+
+
     pokemons = current_app.config["data"]
     idPokemon = None
     for i in pokemons :
