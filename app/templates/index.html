@@ -8,7 +8,16 @@
 {% block content %}
   <div id="titulo">
       <img src="../static/img/index/logopoke-removebg-preview.png" alt="Pokemon Sonimu"><br>
+      <form method="get">
+        <label for="nombre">Usuarios</label><br>
+        <input type="text" name="nombre" id="nombre">
+        <label for="password">Contraseña</label><br>
+        <input type="password" name="password" id="contraseña"><br>
+        <button type="submit">Iniciar Sesion</button>
+    </form>
   </div>
   <img id="tabla-tiposact" onclick="abrirPopUp()" src="../static/img/index/tabla_de_tipos_boton-removebg-preview.png" alt="tabla_tipos" width="200px" title="mostrar tabla de tipos">
   <input id="jugar" type="button" value="Jugar">
+
+ 
 {% endblock %}
