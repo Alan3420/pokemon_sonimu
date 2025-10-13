@@ -7,7 +7,7 @@ app = Flask(__name__, template_folder='templates')
 with open("data/pokemon.json", encoding="utf-8") as f:
     app.config["data"] = json.load(f)
     
-@app.route('/')
+@app.route('/', methods=["POST"])
 def Bienvenido():
 
     if request.method == "GET":
@@ -17,8 +17,18 @@ def Bienvenido():
         user = request.form.get("nombre")
         password = request.form.get("password")
 
-    return render_template('index.html')
-    # , f"Hola, {user}, tu password es {password}"
+    return render_template('index.html') , f"Hola, {user}, tu password es {password}"
+
+@app.route("/procesar", methods=["POST"])
+def procesar():
+    if request.method == "POST":
+        user = request.form.get("nombre").strip()
+        password = request.form.get("password")
+
+    if not user or not password:
+        return "Rellenar todos los parametroses obligatorio", 400
+
+    return f"Hola, {user}, tu password es {password}"
 
 @app.route('/pokedex/')
 def Pokedex():
