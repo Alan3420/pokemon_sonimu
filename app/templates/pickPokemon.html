@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Base - Pokedex {% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/stylePokedex.css') }}">
+{% endblock %}
+{% block content %}
+<div id="contenedor">
+    {%for poke in pokemons%}
+    <a href="/pokedex/{{poke.id}}/">
+        <div class="tarjeta" style="{{ colorM.get(poke.types[0]) }};">
+            <!-- ejecucion de la informacion de los pokemones disponibles en json pokemon -->
+            <img class="sprites" src="{{poke.sprites.front_default}}" alt="Foto de {{poke.name}}"><br>
+            
+            {% for tipo in poke.types %}
+            <img src="{{ url_for('static', filename='img/Types_name/' + tipo + '.png') }}" alt="{{ tipo }}">
+            {% endfor %}
+            <h2>{{poke.name}}</h2>
+        </div>
+    </a>
+    {% endfor %}
+
+
+    </table>
+</div>
+{% endblock %}

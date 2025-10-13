@@ -41,6 +41,27 @@ def Pokedex():
     
     return render_template('pokemons.html', pokemons = current_app.config["data"], colorM=colorM)
 
+@app.route('/pokedexSeleccion/')
+def PokedexS():
+    colorM = {
+            "fire": "background: linear-gradient(to top, white 40%, red 100%);",
+            "dragon": "purple",
+            "grass": "background: linear-gradient(to top, white 40%, green 100%);",
+            "normal": "gray",
+            "fighting": "brown",
+            "ground": "brown",
+            "water": "background: linear-gradient(to top, white 40%, aqua 100%);",
+            "dark":"pink",
+            "flying":"aqua",
+            "fairy": "salmon",
+            "electric": "background: linear-gradient(to top, white 40%, yellow 100%);",
+            "steel": "gray",
+            "poison": "purple",
+            "ice": "white"
+        }
+    
+    return render_template('pickPokemon.html', pokemons = current_app.config["data"], colorM=colorM)
+
 @app.route('/pokedex/<int:id>/', methods=["POST", "GET"])
 def PokedexDetails(id):
     
