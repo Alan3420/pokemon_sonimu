@@ -41,8 +41,16 @@ def Pokedex():
     
     return render_template('pokemons.html', pokemons = current_app.config["data"], colorM=colorM)
 
-@app.route('/pokedexSeleccion/')
+@app.route('/pokedexSeleccion/', methods=["POST", "GET"])
 def PokedexS():
+    # validar el nombre del entrenador
+    error = None
+    nombre = request.args.get("nombre", "")
+    nombre = nombre.strip()
+ 
+    
+
+    # if request.method == "GET":
     colorM = {
             "fire": "background: linear-gradient(to top, white 40%, red 100%);",
             "dragon": "purple",
@@ -60,23 +68,10 @@ def PokedexS():
             "ice": "white"
         }
     
-    return render_template('pickPokemon.html', pokemons = current_app.config["data"], colorM=colorM)
+    return render_template('pickPokemon.html', pokemons = current_app.config["data"], colorM=colorM ,nombreUser = nombre)
 
-@app.route('/pokedex/<int:id>/', methods=["POST", "GET"])
+@app.route('/pokedex/<int:id>/')
 def PokedexDetails(id):
-    
-    # validar el nombre del entrenador
-    error = None
-    nombre = request.form.get("nombre", "").strip()
-
- 
-    
-
-    # if request.method == "GET":
-
-    
-    
-
 
     pokemons = current_app.config["data"]
     idPokemon = None
