@@ -91,5 +91,7 @@ A parte del tipo de pokemon presentamos con mas detalles la altura su peso que s
             {% endif %}
 
 
+## Fase 2 ❌
 
+Pagina princpal con formulario ✅
 
