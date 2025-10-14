@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'MiFuente';
+    src: url('../fonts/font_pack__sun_and_moon_by_mucrush_d9t8kqh.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.batalla{
+    background-image: url("../img/batallas/batalla.png");
+    width: 600px;
+    height: 400px; 
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;    
+
+    display: flex;
+}
+.sprites{
+    display: block;
+    width: 200px;
+    background-image: url("../img/batallas/Diseño_sin_título-removebg-preview.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 220px;
+    background-position: 100% 100%;
+}
+footer{
+    position: fixed;
+    bottom: 0%;
+    left: 0%;
+}

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, current_app, request
-import json
+import json,random
 from pathlib import Path
 
 app = Flask(__name__, template_folder='templates')
@@ -75,8 +75,11 @@ def BatallaP():
 
     nombre = request.args.get("nombre", "")
     nombre = nombre.strip()
-    
-    return render_template('batalla.html', pokemons = current_app.config["data"] ,nombreUser = nombre)
+    pokemons = current_app.config["data"]
+
+    idPokemon = random.choice(pokemons)
+
+    return render_template('batalla.html', pokemons = current_app.config["data"] ,nombreUser = nombre, pokemon = idPokemon)
 
 
 @app.route('/pokedex/<int:id>/')
