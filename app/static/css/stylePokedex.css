@@ -83,3 +83,9 @@ footer{
     bottom: 0%;
     left: 0%;
 }
+button{
+    background-color: red;
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: bold;
+}

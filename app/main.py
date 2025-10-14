@@ -70,6 +70,15 @@ def PokedexS():
     
     return render_template('pickPokemon.html', pokemons = current_app.config["data"], colorM=colorM ,nombreUser = nombre)
 
+@app.route('/batallasPokemon/', methods=["POST", "GET"])
+def BatallaP():
+
+    nombre = request.args.get("nombre", "")
+    nombre = nombre.strip()
+    
+    return render_template('batalla.html', pokemons = current_app.config["data"] ,nombreUser = nombre)
+
+
 @app.route('/pokedex/<int:id>/')
 def PokedexDetails(id):
 
