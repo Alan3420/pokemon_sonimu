@@ -69,8 +69,7 @@ def PokedexDetails(id):
     error = None
     nombre = request.form.get("nombre", "").strip()
 
-    if not nombre:
-        return "El nombre es obligatorio", 400
+ 
     
 
     # if request.method == "GET":
