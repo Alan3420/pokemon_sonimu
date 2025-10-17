@@ -4,11 +4,13 @@
     font-weight: normal;
     font-style: normal;
 }
-
+header{
+    padding: 20px;
+}
 .batalla{
     background-image: url("../img/batallas/batalla.png");
-    width: 600px;
-    height: 400px; 
+    width: 100%;
+    height: 600px; 
     background-size: cover;
     background-position: center; 
     background-repeat: no-repeat;    

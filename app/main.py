@@ -80,9 +80,14 @@ def BatallaP():
     pokemonContrincante = random.choice(pokemons)
 
     pokemonJugador = random.choice(pokemons)
+
     
+
     while pokemonJugador==pokemonContrincante:
         pokemonContrincante = random.choice(pokemons)
+
+    movimientos = random.sample(pokemonJugador["moves"], 4)
+
     
 
     colorM = {
@@ -102,8 +107,7 @@ def BatallaP():
         "ice": "border: 4px groove rgba(173, 216, 230)"
     }
 
-    return render_template('batalla.html', pokemons = pokemons ,nombreUser = nombre, pokemonContrincante = pokemonContrincante,pokemonJugador = pokemonJugador , colorM=colorM)
-
+    return render_template('batalla.html', pokemons = pokemons ,nombreUser = nombre, pokemonContrincante = pokemonContrincante,pokemonJugador = pokemonJugador , colorM=colorM, movimientos = movimientos)
 
 @app.route('/pokedex/<int:id>/')
 def PokedexDetails(id):
