@@ -24,6 +24,19 @@
     background-size: 220px;
     background-position: 100% 100%;
 }
+
+#moves{
+    color: black;
+    font-weight: bold;
+    background-color: white;
+    border-radius: 10px;
+    
+    width: 40%;
+    height: 50px;
+    padding: 5px;
+    
+}
+
 footer{
     position: fixed;
     bottom: 0%;

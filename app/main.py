@@ -77,9 +77,32 @@ def BatallaP():
     nombre = nombre.strip()
     pokemons = current_app.config["data"]
 
-    idPokemon = random.choice(pokemons)
+    pokemonContrincante = random.choice(pokemons)
 
-    return render_template('batalla.html', pokemons = current_app.config["data"] ,nombreUser = nombre, pokemon = idPokemon)
+    pokemonJugador = random.choice(pokemons)
+    
+    while pokemonJugador==pokemonContrincante:
+        pokemonContrincante = random.choice(pokemons)
+    
+
+    colorM = {
+        "fire": "border: 4px groove rgba(255, 0, 0)",
+        "dragon": "border: 4px groove rgba(123,104,238)",
+        "grass": "border: 4px groove rgba(0, 255, 0)",
+        "normal": "border: 4px groove rgba(200, 200, 200)",
+        "fighting": "border: 4px groove rgba(255, 165, 0)",
+        "ground": "border: 4px groove rgb(203, 91, 43)",
+        "water": "border: 4px groove rgba(23, 140, 184)",
+        "dark":"border: 4px groove rgba(30, 30, 30)",
+        "flying":"border: 4px groove rgba(135, 206, 235)",
+        "fairy": "border: 4px groove rgba(255, 192, 203)",
+        "electric": "border: 4px groove rgba(255, 255, 0)",
+        "steel": "border: 4px groove rgb(37, 150, 190)",
+        "poison": "border: 4px groove rgba(128, 0, 128)",
+        "ice": "border: 4px groove rgba(173, 216, 230)"
+    }
+
+    return render_template('batalla.html', pokemons = pokemons ,nombreUser = nombre, pokemonContrincante = pokemonContrincante,pokemonJugador = pokemonJugador , colorM=colorM)
 
 
 @app.route('/pokedex/<int:id>/')

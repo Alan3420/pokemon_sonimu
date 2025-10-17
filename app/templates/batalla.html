@@ -8,15 +8,24 @@
 
 <div class="batalla">
             <div>
-                <!-- ejecucion de la informacion de los pokemones disponibles en json pokemon -->
-            <img class="sprites" src="{{pokemon.sprites.front_default}}" alt="Foto de {{pokemon.name}}"><br>
-            <h2>{{pokemon.name}}</h2>
+            <img class="sprites" src="{{pokemonContrincante.sprites.front_default}}" alt="Foto de {{pokemonContrincante.name}}"><br>
+            <h2>{{pokemonContrincante.name}}</h2>
             </div>
             
             <div>
-                <img class="sprites" src="{{pokemon.sprites.front_default}}" alt="Foto de {{pokemon.name}}"><br>
-            <h2>{{pokemon.name}}</h2>
+                <img class="sprites" src="{{pokemonJugador.sprites.back_default}}" alt="Foto de {{pokemonJugador.name}}"><br>
+            <h2>{{pokemonJugador.name}}</h2>
             </div>
             
 </div>
+<!-- {% for movimiento in pokemonJugador.moves %}
+            <div id="moves" style="{{ colorM.get(movimiento.type) }};">
+                {{ movimiento.name }} <img
+                    src="{{ url_for('static', filename='img/Types_name/' + movimiento.type + '.png') }}"
+                    alt="{{ movimiento.type }}"><br>
+                PC: {{ movimiento.accuracy }}
+                PW: {{ movimiento.power }}
+
+            </div>
+            {% endfor %} -->
 {% endblock %}
