@@ -81,13 +81,8 @@ def BatallaP(name):
     nombre = nombre.strip()
     pokemons = current_app.config["data"]
 
-    # Pokemons aleatorios de contrincante y si el jugador no elige ninguno toma otro de forma aleatorio
+    # Pokemons aleatorios de contrincante
     pokemonContrincante = random.choice(pokemons)
-    pokemonJugador = random.choice(pokemons)
-
-    while pokemonJugador==pokemonContrincante:
-        pokemonContrincante = random.choice(pokemons)
-
 
     # Pokemon elegido por el jugador
     pokemonJugadorUnico = None
@@ -108,7 +103,7 @@ def BatallaP(name):
 
     # En caso contrario se cargaran los movimientos del pokemon que a sido elegido para el jugador tambien de forma aleatoria
     else:
-        movimientos = random.sample(pokemonJugador["moves"], 4)
+        movimientos = random.sample(pokemonJugadorUnico["moves"], 4)
 
     colorM = {
         "fire": "border: 4px groove rgba(255, 0, 0)",
@@ -127,7 +122,7 @@ def BatallaP(name):
         "ice": "border: 4px groove rgba(173, 216, 230)"
     }
 
-    return render_template('batalla.html', pokemons = pokemons, pokemonContrincante = pokemonContrincante, pokemonJugador = pokemonJugador , pokemonJugadorUnico = pokemonJugadorUnico, colorM=colorM, movimientos = movimientos)
+    return render_template('batalla.html', pokemons = pokemons, pokemonContrincante = pokemonContrincante, pokemonJugadorUnico = pokemonJugadorUnico, colorM=colorM, movimientos = movimientos)
 
 @app.route('/pokedex/<int:id>/')
 def PokedexDetails(id):

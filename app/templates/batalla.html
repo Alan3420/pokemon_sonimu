@@ -6,34 +6,34 @@
 
 {% block content %}
 
-<div class="batalla">
-    <div>
-        <img class="sprites" src="{{pokemonContrincante.sprites.front_default}}"
-            alt="Foto de {{pokemonContrincante.name}}"><br>
-        <h2>{{pokemonContrincante.name}}</h2>
-    </div>
+<div id="interfaz">
+    <div class="batalla">
 
-    <div>
-        {% if pokemonJugadorUnico == None  %}
-            <img class="sprites" src="{{pokemonJugador.sprites.back_default}}" alt="Foto de {{pokemonJugador.name}}"><br>
-            <h2>{{pokemonJugador.name}}</h2>
-        
-        {% else %}
-            <img class="sprites" src="{{pokemonJugadorUnico.sprites.back_default}}" alt="Foto de {{pokemonJugadorUnico.name}}" ><br>
-            <h2>{{ pokemonJugadorUnico.name }}</h2>
-        
-        {% endif %}
-    </div>
+        <div id="bloqueIa">
+            <img class="sprites" src="{{pokemonContrincante.sprites.front_default}}"
+                alt="Foto de {{pokemonContrincante.name}}"><br>
+        </div>
 
+        <div id="bloqueJugador">
+            <img class="sprites" src="{{pokemonJugadorUnico.sprites.back_default}}"
+                alt="Foto de {{pokemonJugadorUnico.name}}"><br>
+        </div>
+
+    </div><br>
+
+    <div id="movimientos">
+        {% for movimiento in movimientos %}
+        <div class="moves" style="{{ colorM.get(movimiento.type) }};">
+            {{ movimiento.name }} <img
+                src="{{ url_for('static', filename='img/Types_name/' + movimiento.type + '.png') }}"
+                alt="{{ movimiento.type }}"><br>
+            PC: {{ movimiento.accuracy }}
+            PW: {{ movimiento.power }}
+
+        </div>
+        {% endfor %}
+    </div>
 </div>
 
-{% for movimiento in movimientos %}
-<div id="moves" style="{{ colorM.get(movimiento.type) }};">
-    {{ movimiento.name }} <img src="{{ url_for('static', filename='img/Types_name/' + movimiento.type + '.png') }}"
-        alt="{{ movimiento.type }}"><br>
-    PC: {{ movimiento.accuracy }}
-    PW: {{ movimiento.power }}
 
-</div>
-{% endfor %}
 {% endblock %}

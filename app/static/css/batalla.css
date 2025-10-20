@@ -8,14 +8,26 @@ header{
     padding: 20px;
 }
 .batalla{
+    border: 2px solid black;
     background-image: url("../img/batallas/batalla.png");
     width: 100%;
+    max-width: 1000px;
     height: 600px; 
     background-size: cover;
     background-position: center; 
     background-repeat: no-repeat;    
-
-    display: flex;
+    margin: 0 auto;
+    position: relative;
+}
+#bloqueJugador{
+position: absolute;
+  bottom: 0;
+  left: 0;
+}
+#bloqueIa{
+ position: absolute;
+  top:190px;
+  right: 0;
 }
 .sprites{
     display: block;
@@ -27,16 +39,32 @@ header{
     background-position: 100% 100%;
 }
 
-#moves{
+#interfaz{
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+#movimientos {
+    background-color: #ffffffc5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    padding: 10px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* espacio entre las columnas */
+    gap: 5px;                       /* separación entre filas/columnas */
+    
+}
+.moves{
     color: black;
     font-weight: bold;
     background-color: white;
     border-radius: 10px;
-    
     width: 40%;
     height: 50px;
     padding: 5px;
-    
 }
 
 footer{
