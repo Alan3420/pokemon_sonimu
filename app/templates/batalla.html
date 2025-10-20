@@ -14,8 +14,15 @@
     </div>
 
     <div>
-        <img class="sprites" src="{{pokemonJugador.sprites.back_default}}" alt="Foto de {{pokemonJugador.name}}"><br>
-        <h2>{{pokemonJugador.name}}</h2>
+        {% if pokemonJugadorUnico == None  %}
+            <img class="sprites" src="{{pokemonJugador.sprites.back_default}}" alt="Foto de {{pokemonJugador.name}}"><br>
+            <h2>{{pokemonJugador.name}}</h2>
+        
+        {% else %}
+            <img class="sprites" src="{{pokemonJugadorUnico.sprites.back_default}}" alt="Foto de {{pokemonJugadorUnico.name}}" ><br>
+            <h2>{{ pokemonJugadorUnico.name }}</h2>
+        
+        {% endif %}
     </div>
 
 </div>

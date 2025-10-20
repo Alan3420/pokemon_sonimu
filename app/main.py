@@ -43,14 +43,18 @@ def Pokedex():
 
 @app.route('/pokedexSeleccion/', methods=["POST", "GET"])
 def PokedexS():
+
     # validar el nombre del entrenador
-    error = None
     nombre = request.args.get("nombre", "")
     nombre = nombre.strip()
- 
-    
 
-    # if request.method == "GET":
+    if len(nombre) > 15:
+        mensaje = "Advertencia: el nombre debe tener como maximo 15 caracteres"
+        return render_template("index.html", mensaje = mensaje)
+    elif len(nombre) < 3:
+        mensaje = "Advertencia: el nombre debe tener como minimo 3 caracteres"
+        return render_template("index.html", mensaje = mensaje)
+
     colorM = {
             "fire": "background: linear-gradient(to top, white 40%, red 100%);",
             "dragon": "purple",
@@ -70,25 +74,41 @@ def PokedexS():
     
     return render_template('pickPokemon.html', pokemons = current_app.config["data"], colorM=colorM ,nombreUser = nombre)
 
-@app.route('/batallasPokemon/', methods=["POST", "GET"])
-def BatallaP():
+@app.route('/batallasPokemon/<name>/', methods=["POST", "GET"])
+def BatallaP(name):
 
-    nombre = request.args.get("nombre", "")
+    nombre = request.args.get("pokemon", "")
     nombre = nombre.strip()
     pokemons = current_app.config["data"]
 
+    # Pokemons aleatorios de contrincante y si el jugador no elige ninguno toma otro de forma aleatorio
     pokemonContrincante = random.choice(pokemons)
-
     pokemonJugador = random.choice(pokemons)
-
-    
 
     while pokemonJugador==pokemonContrincante:
         pokemonContrincante = random.choice(pokemons)
 
-    movimientos = random.sample(pokemonJugador["moves"], 4)
 
+    # Pokemon elegido por el jugador
+    pokemonJugadorUnico = None
+
+    for pokemon in pokemons:
+        # verificamos que el nombre que nos envian desde el formulario esta en la lista de pokemones disponibles
+        if pokemon["name"] == nombre.lower()  or pokemon["name"] == name:
+            pokemonJugadorUnico = pokemon
+            break
     
+    # Si el jugador a seleccionado un pokemon se cargaran su sets de movimientos de forma aleatoria
+    if pokemonJugadorUnico != None:
+        movimientos = random.sample(pokemonJugadorUnico["moves"], 4)
+    
+    elif pokemonJugadorUnico == None:
+        mensaje = "El pokemon "+nombre+" no se encuentra en la lista de la Pokedex."
+        return render_template("error404.html", mensaje = mensaje), 404
+
+    # En caso contrario se cargaran los movimientos del pokemon que a sido elegido para el jugador tambien de forma aleatoria
+    else:
+        movimientos = random.sample(pokemonJugador["moves"], 4)
 
     colorM = {
         "fire": "border: 4px groove rgba(255, 0, 0)",
@@ -107,7 +127,7 @@ def BatallaP():
         "ice": "border: 4px groove rgba(173, 216, 230)"
     }
 
-    return render_template('batalla.html', pokemons = pokemons ,nombreUser = nombre, pokemonContrincante = pokemonContrincante,pokemonJugador = pokemonJugador , colorM=colorM, movimientos = movimientos)
+    return render_template('batalla.html', pokemons = pokemons, pokemonContrincante = pokemonContrincante, pokemonJugador = pokemonJugador , pokemonJugadorUnico = pokemonJugadorUnico, colorM=colorM, movimientos = movimientos)
 
 @app.route('/pokedex/<int:id>/')
 def PokedexDetails(id):

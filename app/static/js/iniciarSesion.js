@@ -1,4 +1,3 @@
-
 function iniciarSesion() {
     let img = document.getElementById("tituloPokemon")
     let form = document.getElementById("formTrainer")

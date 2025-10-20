@@ -7,15 +7,15 @@
 
 <div id="contenedor">
 
-<form method="GET" action="/batallasPokemon">
+    <form method="GET" action="/batallasPokemon/<name>">
 
-    <label for="pokemon">Bienvenido {{nombreUser}} Que pokemon utilizaras?</label><br>
-    <input type="text" name="pokemon" id="pokemon"><br><br>
-    <button type="submit">Seleccionar</button>
-</form>
+        <label for="pokemon">Bienvenido {{nombreUser}} Que pokemon utilizaras?</label><br>
+        <input type="text" name="pokemon" id="pokemon"><br><br>
+        <button type="submit">Seleccionar</button>
+    </form>
 
     {%for poke in pokemons%}
-    <a href="/pokedex/{{poke.id}}/">
+    <a href="/batallasPokemon/{{poke.name}}/">
         <div class="tarjeta" style="{{ colorM.get(poke.types[0]) }};">
             <!-- ejecucion de la informacion de los pokemones disponibles en json pokemon -->
             <img class="sprites" src="{{poke.sprites.front_default}}" alt="Foto de {{poke.name}}"><br>
