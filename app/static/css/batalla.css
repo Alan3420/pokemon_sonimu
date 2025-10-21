@@ -4,34 +4,125 @@
     font-weight: normal;
     font-style: normal;
 }
-header{
+
+header {
     padding: 20px;
 }
-.batalla{
+
+/* Interfaz-Batalla */
+#interfaz {
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+/* Bloque-Batalla */
+.batalla {
     border: 2px solid black;
     background-image: url("../img/batallas/batalla.png");
     width: 100%;
     max-width: 1000px;
-    height: 600px; 
+    height: 600px;
     background-size: cover;
-    background-position: center; 
-    background-repeat: no-repeat;    
+    background-position: center;
+    background-repeat: no-repeat;
     margin: 0 auto;
     position: relative;
 
-    overflow: hidden;       /* oculta lo que se sale */
+    overflow: hidden;
+    /* oculta lo que se sale */
 }
-#bloqueJugador{
+
+#bloqueJugador {
     position: absolute;
-  bottom: -100px;
-  left: 0;
+    bottom: -100px;
+    left: 0;
 }
-#bloqueIa{
- position: absolute;
-  top:190px;
-  right: 0;
+
+#bloqueIa {
+    position: absolute;
+    top: 190px;
+    right: 0;
 }
-.sprites{
+
+/* Bloque de estado */
+.bloqueEstado {
+    margin-left: 10px;
+    background: white;
+    border-radius: 8px;
+    padding: 10px 15px;
+    width: 200px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    position: relative;
+    margin-top: 10px;
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 15px;
+    color: #333;
+}
+
+
+.bloque_hpBarra {
+    background: #ccc;
+    border-radius: 6px;
+    height: 10px;
+    margin: 6px 0;
+    overflow: hidden;
+}
+
+.hpBarra {
+    background: #4cd964;
+    /* verde */
+    height: 100%;
+    width: 100%;
+    transition: width 0.4s ease;
+}
+
+.hpText {
+    text-align: right;
+    font-weight: bold;
+    color: #222;
+    font-size: 13px;
+}
+
+/* Fin de estado */
+/* Bloque-Info */
+.informacion{
+  display: none;
+  position: absolute;
+  top: -90px; /* sube el cuadro por encima de la imagen */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  background-color: #ffffffc5;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+
+}
+.contenedorIa:hover .informacion {
+  display: block;
+  opacity: 1;
+}
+.contenedorJugador:hover .informacion {
+  display: block;
+  opacity: 1;
+}
+/* Fin-Bloque-Info */
+
+/* Sprites */
+.sprites {
     display: block;
     width: 250px;
     background-image: url("../img/batallas/Diseño_sin_título-removebg-preview.png");
@@ -40,16 +131,14 @@ header{
     background-size: 290px;
     background-position: 100% 100%;
 }
-#spriteJugador{
+
+#spriteJugador {
     width: 400px;
 }
 
-#interfaz{
-    max-width: 1000px;
-    margin: 0 auto;
-    gap: 10px;
-}
-
+/* Fin-Sprites */
+/* Fin-Bloque-Batalla */
+/* MOVIMIENTOS */
 #movimientos {
     background-color: #ffffffc5;
     border-radius: 10px;
@@ -60,12 +149,16 @@ header{
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 5px;
-    
+
 }
-.moves{
-    display: flex;              /* activa flexbox */
-    align-items: center;        /* centra verticalmente texto e imagen */
-    justify-content: flex-start;/* texto a la izquierda */
+
+.moves {
+    display: flex;
+    /* activa flexbox */
+    align-items: center;
+    /* centra verticalmente texto e imagen */
+    justify-content: flex-start;
+    /* texto a la izquierda */
 
     text-transform: uppercase;
     color: black;
@@ -76,15 +169,19 @@ header{
     border-radius: 10px;
     width: 429px;
     height: 75px;
-
+    cursor: pointer;
 
 }
-.moves img{
+
+.moves img {
     width: 20%;
     margin-left: auto;
     margin-right: 10%;
 }
-footer{
+
+/* Fin-MOVIMIENTOS */
+/* Fin-Interfaz-Batalla */
+footer {
     position: fixed;
     bottom: 0%;
     left: 0%;

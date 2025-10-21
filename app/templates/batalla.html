@@ -7,19 +7,71 @@
 {% block content %}
 
 <div id="interfaz">
+    <!-- Batalla-Interfaz -->
     <div class="batalla">
 
+        <!-- Enemigo -->
         <div id="bloqueIa">
-            <img class="sprites" id="spriteIa" src="{{pokemonContrincante.sprites.front_default}}"
-                alt="Foto de {{pokemonContrincante.name}}"><br>
-        </div>
 
+            <!-- INICIO ESTADO -->
+            <div>
+                <div class="bloqueEstado">
+                    <div class="top-row">
+                        <div class="name">{{ pokemonContrincante.name | capitalize }}</div>
+                    </div>
+
+                    <div class="bloque_hpBarra">
+                        <div class="hpBarra" style="width: 100%;"></div>
+                    </div>
+                    <div class="hpText">200 / 200</div>
+                </div>
+            </div>
+            <!-- FIN ESTADO -->
+            <div class="contenedorIa">
+                <img class="sprites" id="spriteIa" src="{{pokemonContrincante.sprites.front_default}}"
+                    alt="Foto de {{pokemonContrincante.name}}">
+                <div class="informacion">
+                    {{pokemonContrincante.stat}}
+                    {% for tipo in pokemonContrincante.types %}
+                    <img src="{{ url_for('static', filename='img/Types_name/' + tipo + '.png') }}" alt="{{ tipo }}">
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+        <!-- Fin-Enemigo -->
+        <!-- Jugador -->
         <div id="bloqueJugador">
-            <img class="sprites" id="spriteJugador" src="{{pokemonJugadorUnico.sprites.back_default}}"
-                alt="Foto de {{pokemonJugadorUnico.name}}"><br>
-        </div>
 
+            <!-- INICIO ESTADO -->
+            <div>
+                <div class="bloqueEstado">
+                    <div class="top-row">
+                        <div class="name">{{ pokemonJugadorUnico.name | capitalize }}</div>
+                    </div>
+
+                    <div class="bloque_hpBarra">
+                        <div class="hpBarra" style="width: 100%;"></div>
+                    </div>
+                    <div class="hpText">200 / 200</div>
+                </div>
+            </div><br>
+            <!-- FIN ESTADO -->
+            <div class="contenedorJugador">
+                <img class="sprites" id="spriteJugador" src="{{pokemonJugadorUnico.sprites.back_default}}"
+                    alt="Foto de {{pokemonJugadorUnico.name}}">
+                <div class="informacion">
+                    {{pokemonJugadorUnico.stat}}
+                    {% for tipo in pokemonJugadorUnico.types %}
+                    <img src="{{ url_for('static', filename='img/Types_name/' + tipo + '.png') }}" alt="{{ tipo }}">
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- Fin-Jugador -->
     </div><br>
+    <!-- Fin-Batalla-Interfaz -->
+
 
     <div id="movimientos">
         {% for movimiento in movimientos %}
@@ -27,10 +79,8 @@
             {{ movimiento.name }} &nbsp;&nbsp;
             PC: {{ movimiento.accuracy }}%
             PW: {{ movimiento.power }}
-            <img
-                src="{{ url_for('static', filename='img/Types_name/' + movimiento.type + '.png') }}"
+            <img src="{{ url_for('static', filename='img/Types_name/' + movimiento.type + '.png') }}"
                 alt="{{ movimiento.type }}">
-            
         </button>
         {% endfor %}
     </div>
