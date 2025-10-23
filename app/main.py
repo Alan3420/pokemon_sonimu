@@ -15,10 +15,8 @@ def Bienvenido():
 
     if request.method == "POST":
         user = request.form.get("nombre")
-        password = request.form.get("password")
 
     return render_template('index.html')
-    # , f"Hola, {user}, tu password es {password}"
 
 @app.route('/pokedex/')
 def Pokedex():

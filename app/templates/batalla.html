@@ -23,7 +23,14 @@
                     <div class="bloque_hpBarra">
                         <div class="hpBarra" style="width: 100%;"></div>
                     </div>
-                    <div class="hpText">200 / 200</div>
+                    <div class="hpText">
+                        {% for statsContrincante in pokemonContrincante.stats %}
+                            {% if statsContrincante.name == "hp" %}
+                                {{statsContrincante.value}} / {{statsContrincante.value}}
+                            {% endif %}
+                        {% endfor %}
+                        
+                        </div>
                 </div>
             </div>
             <!-- FIN ESTADO -->
@@ -53,7 +60,13 @@
                     <div class="bloque_hpBarra">
                         <div class="hpBarra" style="width: 100%;"></div>
                     </div>
-                    <div class="hpText">200 / 200</div>
+                    <div class="hpText">
+                        {% for statsJugador in pokemonJugadorUnico.stats %}
+                            {% if statsJugador.name == "hp" %}
+                                {{statsJugador.value}} / {{statsJugador.value}}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div><br>
             <!-- FIN ESTADO -->
