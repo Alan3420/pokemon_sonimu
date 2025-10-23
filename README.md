@@ -95,3 +95,6 @@ A parte del tipo de pokemon presentamos con mas detalles la altura su peso que s
 
 Pagina princpal con formulario ✅
 
+Listado de Pokémon (/pokemons) ✅
+
+Página de batalla (/battle) ✅
