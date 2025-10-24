@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, current_app, request
 import json,random
 from pathlib import Path
+import services.pokemon_services as pokemon_services
 
 app = Flask(__name__, template_folder='templates')
 
@@ -17,6 +18,7 @@ def Bienvenido():
         user = request.form.get("nombre")
 
     return render_template('index.html')
+
 
 @app.route('/pokedex/')
 def Pokedex():
@@ -38,6 +40,8 @@ def Pokedex():
         }
     
     return render_template('pokemons.html', pokemons = current_app.config["data"], colorM=colorM)
+
+
 
 @app.route('/pokedexSeleccion/', methods=["POST", "GET"])
 def PokedexS():
@@ -125,12 +129,7 @@ def BatallaP(name):
 @app.route('/pokedex/<int:id>/')
 def PokedexDetails(id):
 
-    pokemons = current_app.config["data"]
-    idPokemon = None
-    for i in pokemons :
-        if i['id'] == id:
-            idPokemon = i
-            break
+    idPokemon = pokemon_services.obtener_pokemon_por_id(id)
     
     colorM = {
         "fire": "border: 4px groove rgba(255, 0, 0)",
