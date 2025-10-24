@@ -2,6 +2,7 @@ from flask import Flask, render_template, jsonify, current_app, request
 import json,random
 from pathlib import Path
 import services.pokemon_services as pokemon_services
+import colors as color
 
 app = Flask(__name__, template_folder='templates')
 
@@ -22,24 +23,9 @@ def Bienvenido():
 
 @app.route('/pokedex/')
 def Pokedex():
-    colorM = {
-            "fire": "background: linear-gradient(to top, white 40%, red 100%);",
-            "dragon": "purple",
-            "grass": "background: linear-gradient(to top, white 40%, green 100%);",
-            "normal": "gray",
-            "fighting": "brown",
-            "ground": "brown",
-            "water": "background: linear-gradient(to top, white 40%, aqua 100%);",
-            "dark":"pink",
-            "flying":"aqua",
-            "fairy": "salmon",
-            "electric": "background: linear-gradient(to top, white 40%, yellow 100%);",
-            "steel": "gray",
-            "poison": "purple",
-            "ice": "white"
-        }
     
-    return render_template('pokemons.html', pokemons = current_app.config["data"], colorM=colorM)
+    
+    return render_template('pokemons.html', pokemons = current_app.config["data"], colorM=color.colorT)
 
 
 
@@ -57,24 +43,8 @@ def PokedexS():
         mensaje = "Advertencia: el nombre debe tener como minimo 3 caracteres"
         return render_template("index.html", mensaje = mensaje)
 
-    colorM = {
-            "fire": "background: linear-gradient(to top, white 40%, red 100%);",
-            "dragon": "purple",
-            "grass": "background: linear-gradient(to top, white 40%, green 100%);",
-            "normal": "gray",
-            "fighting": "brown",
-            "ground": "brown",
-            "water": "background: linear-gradient(to top, white 40%, aqua 100%);",
-            "dark":"pink",
-            "flying":"aqua",
-            "fairy": "salmon",
-            "electric": "background: linear-gradient(to top, white 40%, yellow 100%);",
-            "steel": "gray",
-            "poison": "purple",
-            "ice": "white"
-        }
     
-    return render_template('pickPokemon.html', pokemons = current_app.config["data"], colorM=colorM ,nombreUser = nombre)
+    return render_template('pickPokemon.html', pokemons = current_app.config["data"], colorM=color.colorT ,nombreUser = nombre)
 
 @app.route('/batallasPokemon/<name>/', methods=["POST", "GET"])
 def BatallaP(name):
@@ -107,49 +77,17 @@ def BatallaP(name):
     else:
         movimientos = random.sample(pokemonJugadorUnico["moves"], 4)
 
-    colorM = {
-        "fire": "border: 4px groove rgba(255, 0, 0)",
-        "dragon": "border: 4px groove rgba(123,104,238)",
-        "grass": "border: 4px groove rgba(0, 255, 0)",
-        "normal": "border: 4px groove rgba(200, 200, 200)",
-        "fighting": "border: 4px groove rgba(255, 165, 0)",
-        "ground": "border: 4px groove rgb(203, 91, 43)",
-        "water": "border: 4px groove rgba(23, 140, 184)",
-        "dark":"border: 4px groove rgba(30, 30, 30)",
-        "flying":"border: 4px groove rgba(135, 206, 235)",
-        "fairy": "border: 4px groove rgba(255, 192, 203)",
-        "electric": "border: 4px groove rgba(255, 255, 0)",
-        "steel": "border: 4px groove rgb(37, 150, 190)",
-        "poison": "border: 4px groove rgba(128, 0, 128)",
-        "ice": "border: 4px groove rgba(173, 216, 230)"
-    }
+    
 
-    return render_template('batalla.html', pokemons = pokemons, pokemonContrincante = pokemonContrincante, pokemonJugadorUnico = pokemonJugadorUnico, colorM=colorM, movimientos = movimientos)
+    return render_template('batalla.html', pokemons = pokemons, pokemonContrincante = pokemonContrincante, pokemonJugadorUnico = pokemonJugadorUnico, colorM=color.colorM, movimientos = movimientos)
 
 @app.route('/pokedex/<int:id>/')
 def PokedexDetails(id):
 
     idPokemon = pokemon_services.obtener_pokemon_por_id(id)
-    
-    colorM = {
-        "fire": "border: 4px groove rgba(255, 0, 0)",
-        "dragon": "border: 4px groove rgba(123,104,238)",
-        "grass": "border: 4px groove rgba(0, 255, 0)",
-        "normal": "border: 4px groove rgba(200, 200, 200)",
-        "fighting": "border: 4px groove rgba(255, 165, 0)",
-        "ground": "border: 4px groove rgb(203, 91, 43)",
-        "water": "border: 4px groove rgba(23, 140, 184)",
-        "dark":"border: 4px groove rgba(30, 30, 30)",
-        "flying":"border: 4px groove rgba(135, 206, 235)",
-        "fairy": "border: 4px groove rgba(255, 192, 203)",
-        "electric": "border: 4px groove rgba(255, 255, 0)",
-        "steel": "border: 4px groove rgb(37, 150, 190)",
-        "poison": "border: 4px groove rgba(128, 0, 128)",
-        "ice": "border: 4px groove rgba(173, 216, 230)"
-    }
 
 
-    return render_template('pokemonsID.html', pokemon = idPokemon, colorM = colorM)
+    return render_template('pokemonsID.html', pokemon = idPokemon, colorM = color.colorM)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8080)
