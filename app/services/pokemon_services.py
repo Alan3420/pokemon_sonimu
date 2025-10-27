@@ -1,4 +1,4 @@
-import repositories.pokemon_Repo as pokemon_repo
+import app.repositories.pokemon_Repo as pokemon_repo
 
 
 def listar_pokemons():

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, jsonify, current_app, request
 import json,random
 from pathlib import Path
-import services.pokemon_services as pokemon_services
+import app.services.pokemon_services as pokemon_services
 import colors as color
 
 app = Flask(__name__, template_folder='templates')

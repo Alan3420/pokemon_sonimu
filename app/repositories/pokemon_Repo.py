@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from models.pokemon import Pokemon
+from app.models.pokemon import Pokemon
 
 
 with open(Path("data/pokemon.json"), encoding="utf-8") as fichero_data:
