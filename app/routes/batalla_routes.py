@@ -1,6 +1,6 @@
 import random
 from flask import Blueprint, current_app, render_template, request
-import colors as color
+import app.colors as color
 batalla_pb = Blueprint('batalla_route',__name__,template_folder='templates')
 
 @batalla_pb.route('/pokedexSeleccion/', methods=["POST", "GET"])
