@@ -1,4 +1,4 @@
-from flask import Blueprint, current_app, render_template, request
+from flask import Blueprint, current_app, render_template
 import colors as color
 from app.services import pokemon_services
 
