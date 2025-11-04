@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request
-# from app.forms.trainer_form import TrainerForm
+from app.forms.trainer_form import TrainerForm
 home_pb = Blueprint('home_route',__name__,template_folder='templates')
 
 @home_pb.route('/')

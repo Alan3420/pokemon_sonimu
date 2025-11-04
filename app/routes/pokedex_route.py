@@ -7,7 +7,7 @@ pokedex_pb = Blueprint('pokedex_route',__name__,template_folder='templates')
 @pokedex_pb.route('/')
 def Pokedex():
 
-    return render_template('pokemons.html', pokemons = current_app.config["data"], colorM=color.colorT)
+    return render_template('pokemons.html', pokemons = pokemon_services.listar_pokemons(), colorM=color.colorT)
 
 @pokedex_pb.route('/<int:id>/')
 def PokedexDetails(id):
