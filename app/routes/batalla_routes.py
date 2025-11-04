@@ -1,5 +1,5 @@
 import random
-from flask import Blueprint, current_app, render_template, request
+from flask import Blueprint, render_template, request
 import app.colors as color
 from app.services import pokemon_services
 
@@ -37,13 +37,13 @@ def BatallaP(name):
 
     for pokemon in pokemons:
         # verificamos que el nombre que nos envian desde el formulario esta en la lista de pokemones disponibles
-        if pokemon["name"] == nombre.lower()  or pokemon["name"] == name:
+        if pokemon.name.lower() == nombre.lower()  or pokemon.name.lower() == name:
             pokemonJugadorUnico = pokemon
             break
     
     # Si el jugador a seleccionado un pokemon se cargaran su sets de movimientos de forma aleatoria
     if pokemonJugadorUnico != None:
-        movimientos = random.sample(pokemonJugadorUnico["moves"], 4)
+        movimientos = random.sample(pokemonJugadorUnico.moves, 4)
     
     elif pokemonJugadorUnico == None:
         mensaje = "El pokemon "+nombre+" no se encuentra en la lista de la Pokedex."
@@ -51,7 +51,7 @@ def BatallaP(name):
 
     # En caso contrario se cargaran los movimientos del pokemon que a sido elegido para el jugador tambien de forma aleatoria
     else:
-        movimientos = random.sample(pokemonJugadorUnico["moves"], 4)
+        movimientos = random.sample(pokemonJugadorUnico.moves, 4)
 
     
 
