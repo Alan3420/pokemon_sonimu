@@ -13,7 +13,8 @@ def Bienvenido():
     # if request.method == "GET":
     #     render_template('index.html')
 
-    # if request.method == "POST":
-    #     user = request.form.get("nombre")
+    if request.method == "POST":
+        user = request.form.get("nombre")
+        
 
     return render_template('index.html')

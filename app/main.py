@@ -2,6 +2,8 @@ from flask import Flask
 from app.routes.batalla_routes import batalla_pb
 from app.routes.home_routes import home_pb
 from app.routes.pokedex_route import pokedex_pb
+from flask import Flask, session
+from flask_session import Session
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = "pokemonSonimu"
