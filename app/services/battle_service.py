@@ -1,6 +1,6 @@
 import random
 
-from flask import request
+from flask import render_template, request
 import app.repositories.pokemon_Repo as pokemon_repo
 from app.services import pokemon_services 
 
@@ -8,10 +8,8 @@ def pokemonContrincante():
 
     pokemons = pokemon_services.listar_pokemons()
 
-    # Pokemons aleatorios de contrincante
-    pokemonContrincante = random.choice(pokemons)
 
-    return pokemonContrincante
+    return random.choice(pokemons)
     
 
 def pokemonJugador(name):
@@ -28,15 +26,18 @@ def pokemonJugador(name):
         if pokemon.name.lower() == nombre.lower()  or pokemon.name.lower() == name:
             pokemonJugadorUnico = pokemon
             break
-    
-    # Si el jugador a seleccionado un pokemon se cargaran su sets de movimientos de forma aleatoria
-    if pokemonJugadorUnico != None:
-        movimientos = random.sample(pokemonJugadorUnico.moves, 4)
-    
-    elif pokemonJugadorUnico == None:
+
+    if pokemonJugadorUnico == None:
         mensaje = "El pokemon "+nombre+" no se encuentra en la lista de la Pokedex."
         return render_template("error404.html", mensaje = mensaje), 404
 
-    # En caso contrario se cargaran los movimientos del pokemon que a sido elegido para el jugador tambien de forma aleatoria
-    else:
-        movimientos = random.sample(pokemonJugadorUnico.moves, 4)
+    return pokemonJugadorUnico
+    
+
+def movimientosJugador(pokemonJugadorUnico):
+
+    # Si el jugador a seleccionado un pokemon se cargaran su sets de movimientos de forma aleatoria
+    if pokemonJugadorUnico != None:
+        movimientos = random.sample(pokemonJugadorUnico.moves, 4)        
+    
+    return movimientos
