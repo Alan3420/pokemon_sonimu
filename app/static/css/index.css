@@ -40,7 +40,9 @@ body {
 
 #jugar:hover{
     filter: brightness(70%);
+    cursor: pointer;
 }
+
 
 /* Titulo */
 #titulo{
@@ -89,6 +91,7 @@ form button{
 }
 #tabla-tiposact:hover{
     filter: brightness(70%);
+    cursor: pointer;
 }
 footer{
     position: fixed;
