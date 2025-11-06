@@ -1,6 +1,7 @@
 import random
 from flask import Blueprint, render_template, request
 import app.colors as color
+from app.services import battle_services
 from app.services import pokemon_services
 
 batalla_pb = Blueprint('batalla_route',__name__,template_folder='templates')
