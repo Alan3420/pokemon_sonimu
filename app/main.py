@@ -9,7 +9,7 @@ app = Flask(__name__, template_folder='templates')
 app.secret_key = "pokemonSonimu"
 
 app.config["SESSION_TYPE"] = "filesystem"   # Guardar en ficheros
-app.config["SESSION_PERMANENT"] = False     # Sesiones temporales
+app.config["SESSION_PERMANENT"] = True     # Sesiones temporales
 app.config["SESSION_FILE_DIR"] = "./.flask_session"  # Carpeta donde se guardan
 app.secret_key = "clave_super_secreta"
 
