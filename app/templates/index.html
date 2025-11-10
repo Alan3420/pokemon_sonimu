@@ -10,10 +10,11 @@
 <div id="titulo">
   <img id="tituloPokemon" src="../static/img/index/logopoke-removebg-preview.png" alt="Pokemon Sonimu"><br>
 
-  <form method="GET" action="/" id="formTrainer">
+  <form method="POST" action="/" id="formTrainer">
+    {{ form.hidden_tag() }}
     <label for="trainer">Entrenador</label><br>
-    <input type="text" name="trainer" id="trainer">
-    <button type="submit">Iniciar Sesion</button><br>
+    {{ form.trainer(size=20) }}<br>
+    {{ form.enviar() }}<br>
   </form>
 
 </div>
