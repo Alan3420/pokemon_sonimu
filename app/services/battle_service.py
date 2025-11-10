@@ -10,7 +10,14 @@ def pokemonContrincante():
 
 
     return random.choice(pokemons)
+
+def movimientosContrincante(pokemonContrincanteUnico):
+
+    # Si el jugador a seleccionado un pokemon se cargaran su sets de movimientos de forma aleatoria
+    if pokemonContrincanteUnico != None:
+        movimientos = random.sample(pokemonContrincanteUnico.moves, 4)        
     
+    return movimientos
 
 def pokemonJugador(name):
     
@@ -42,3 +49,14 @@ def movimientosJugador(pokemonJugadorUnico):
     
     return movimientos
 
+class Batlla():
+    turno = 0
+    datos_pokemon_jugador = {
+        pokemonJugador(),
+        movimientosJugador()
+    }
+
+    datos_pokemon_rival = {
+        pokemonContrincante(),
+        movimientosContrincante()
+    }
