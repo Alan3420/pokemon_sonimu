@@ -8,6 +8,13 @@ from flask_session import Session
 app = Flask(__name__, template_folder='templates')
 app.secret_key = "pokemonSonimu"
 
+app.config["SESSION_TYPE"] = "filesystem"   # Guardar en ficheros
+app.config["SESSION_PERMANENT"] = False     # Sesiones temporales
+app.config["SESSION_FILE_DIR"] = "./.flask_session"  # Carpeta donde se guardan
+app.secret_key = "clave_super_secreta"
+
+# Inicializar la extensión
+Session(app)
 
 app.register_blueprint(batalla_pb, url_prefix='/')
 app.register_blueprint(home_pb, url_prefix='/')
