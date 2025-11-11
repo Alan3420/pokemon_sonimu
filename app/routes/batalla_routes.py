@@ -4,6 +4,7 @@ import app.colors as color
 from app.forms.pokemon_form import PokemonForm
 from app.services import battle_service
 from app.services import pokemon_services
+from app.models import pokemon
 
 batalla_pb = Blueprint('batalla_route', __name__, template_folder='templates')
 
@@ -33,4 +34,7 @@ def BatallaP(name):
     pokemonJugadorUnico = battle_service.pokemonJugador(name)
     movimientos = battle_service.movimientosJugador(pokemonJugadorUnico)
 
-    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombre, movimientos=movimientos)
+    batalla = pokemon.Batalla(pokemonJugadorUnico,pokemonContrincante,pokemonJugadorUnico.stats[0].values, pokemonContrincante.stats[0].values)
+
+
+    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombre, movimientos=movimientos, batalla = batalla)
