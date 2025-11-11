@@ -26,4 +26,9 @@ def BatallaP(name):
     pokemonJugadorUnico = battle_service.pokemonJugador(name)
     movimientos = battle_service.movimientosJugador(pokemonJugadorUnico)
 
+
+
+
+
+
     return render_template('batalla.html', pokemons = pokemons, pokemonContrincante = pokemonContrincante, pokemonJugadorUnico = pokemonJugadorUnico, colorM=color.colorM, movimientos = movimientos)
