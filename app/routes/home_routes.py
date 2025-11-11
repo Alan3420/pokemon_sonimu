@@ -18,14 +18,3 @@ def Bienvenido():
         return redirect(url_for("batalla_route.BatallaP"))
 
     return render_template('index.html', form=form)
-
-
-@home_pb.route('/pickpokemon/<name>', methods=['GET', 'POST'])
-def pick_pokemon():
-    form = PokemonForm()
-
-    if form.validate_on_submit():
-        session["pokemon"] = form.pokemon.data
-        return redirect(url_for('batalla_route.BatallaP'))
-
-    return render_template('pickpokemon.html', form=form)
