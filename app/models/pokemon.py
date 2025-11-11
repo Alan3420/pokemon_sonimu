@@ -28,13 +28,19 @@ class Batalla():
             if stat["name"] == nombreStat:
                 return stat["value"]
 
-    def siguienteTurno(self):
-        self.turno += 1
-        self.log.append(f"--- Turno {self.turno} ---")
+    def getPW(self, poke ,nombreMove):
+        for move in poke.stats:
+            if move["name"] == nombreMove:
+                return move["power"]
+            
+    def getPC(self, poke, nombreMove):
+        for move in poke.stats:
+            if move["name"] == nombreMove:
+                return move["accuracy"]                
 
     def dañoInflingido(self, golpea, recibe, movimiento):
 
-        if self.datos_pokemon_jugador.stats["speed"].values > self.datos_pokemon_rival.stats["speed"].values:
+        if self.getStat(self.datos_pokemon_jugador, 'speed') > self.getStat(self.datos_pokemon_rival, 'speed'):
             golpea = self.datos_pokemon_jugador
             recibe = self.datos_pokemon_rival
         else:
@@ -42,17 +48,22 @@ class Batalla():
             golpea = self.datos_pokemon_rival
 
         # daño simple = daño base * (ataque / defensa)
-        dano = (golpea.stats["attack"].values*movimiento["power"].values)/recibe.stats["defense"].values
+        dano = (self.getStat(golpea, 'attack')*self.getPW(golpea, movimiento))/self.getStat(recibe, 'defense')
         return dano
 
-    def formatMovimientoLog(self, movimiento, dano):
+    def siguienteTurno(self, movimiento, dano):
+
+        self.turno += 1
+        self.hp_rival -= dano
+        self.log.append(f"--- Turno {self.turno} ---")
+
         mensaje = (
             f"{self.datos_pokemon_jugador.name} utilizó {movimiento}. "
             f"{self.datos_pokemon_rival.name} ha perdido {dano} puntos de salud. "
             f"PS restantes: {self.hp_rival - dano}."
         )
         self.log.append(mensaje)
-        self.hp_rival -= dano
+        
 
     def mostrarLog(self):
         for entrada in self.log:

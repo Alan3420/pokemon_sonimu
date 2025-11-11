@@ -25,7 +25,7 @@
                     </div>
                     <div class="hpText">
 
-                        {{batalla.hp_rival}} / {{batalla.hp_rival}}
+                        {{batalla.hp_rival}} / {{batalla.getStat(batalla.datos_pokemon_jugador, 'hp')}}
 
 
                     </div>
@@ -59,11 +59,7 @@
                         <div class="hpBarra" style="width: 100%;"></div>
                     </div>
                     <div class="hpText">
-                        {% for statsJugador in pokemonJugadorUnico.stats %}
-                        {% if statsJugador.name == "hp" %}
-                        {{statsJugador.value}} / {{statsJugador.value}}
-                        {% endif %}
-                        {% endfor %}
+                        {{batalla.hp_player}} / {{batalla.hp_player}}
                     </div>
                 </div>
             </div><br>
@@ -86,7 +82,7 @@
 
     <div id="movimientos">
         {% for movimiento in movimientos %}
-        <button type="button" class="moves" style="{{ colorM.get(movimiento.type) }};">
+        <button type="button" class="moves" style="{{ colorM.get(movimiento.type) }};" name="movimiento" value="{{ movimiento.name }}">
             {{ movimiento.name }} &nbsp;&nbsp;
             PC: {{ movimiento.accuracy }}%
             PW: {{ movimiento.power }}
