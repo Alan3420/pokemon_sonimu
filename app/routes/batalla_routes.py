@@ -34,7 +34,7 @@ def BatallaP(name):
     pokemonJugadorUnico = battle_service.pokemonJugador(name)
     movimientos = battle_service.movimientosJugador(pokemonJugadorUnico)
 
-    batalla = pokemon.Batalla(pokemonJugadorUnico,pokemonContrincante,pokemonJugadorUnico.stats[0].values, pokemonContrincante.stats[0].values)
+    batalla = pokemon.Batalla(pokemonJugadorUnico,pokemonContrincante)
 
 
     return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombre, movimientos=movimientos, batalla = batalla)

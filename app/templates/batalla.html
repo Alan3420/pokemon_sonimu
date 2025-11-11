@@ -24,11 +24,9 @@
                         <div class="hpBarra" style="width: 100%;"></div>
                     </div>
                     <div class="hpText">
-                        {% for statsContrincante in pokemonContrincante.stats %}
-                        {% if statsContrincante.name == "hp" %}
-                        {{statsContrincante.value}} / {{statsContrincante.value}}
-                        {% endif %}
-                        {% endfor %}
+
+                        {{batalla.hp_rival}} / {{batalla.hp_rival}}
+
 
                     </div>
                 </div>

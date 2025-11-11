@@ -15,13 +15,18 @@ class Pokemon:
     
 class Batalla():
 
-    def __init__(self, datos_pokemon_jugador, datos_pokemon_rival, hp_player, hp_rival):
+    def __init__(self, datos_pokemon_jugador, datos_pokemon_rival):
         self.turno = 0
         self.log = []
-        self.hp_player = hp_player
-        self.hp_rival = hp_rival
+        self.hp_player = self.getStat(datos_pokemon_jugador, 'hp')
+        self.hp_rival = self.getStat(datos_pokemon_rival, 'hp')
         self.datos_pokemon_jugador = datos_pokemon_jugador
         self.datos_pokemon_rival = datos_pokemon_rival
+
+    def getStat(self, poke, nombreStat):
+        for stat in poke.stats:
+            if stat["name"] == nombreStat:
+                return stat["value"]
 
     def siguienteTurno(self):
         self.turno += 1
