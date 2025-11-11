@@ -25,12 +25,12 @@
                     </div>
                     <div class="hpText">
                         {% for statsContrincante in pokemonContrincante.stats %}
-                            {% if statsContrincante.name == "hp" %}
-                                {{statsContrincante.value}} / {{statsContrincante.value}}
-                            {% endif %}
+                        {% if statsContrincante.name == "hp" %}
+                        {{statsContrincante.value}} / {{statsContrincante.value}}
+                        {% endif %}
                         {% endfor %}
-                        
-                        </div>
+
+                    </div>
                 </div>
             </div>
             <!-- FIN ESTADO -->
@@ -62,9 +62,9 @@
                     </div>
                     <div class="hpText">
                         {% for statsJugador in pokemonJugadorUnico.stats %}
-                            {% if statsJugador.name == "hp" %}
-                                {{statsJugador.value}} / {{statsJugador.value}}
-                            {% endif %}
+                        {% if statsJugador.name == "hp" %}
+                        {{statsJugador.value}} / {{statsJugador.value}}
+                        {% endif %}
                         {% endfor %}
                     </div>
                 </div>
@@ -98,6 +98,5 @@
         {% endfor %}
     </div>
 </div>
-
 
 {% endblock %}
