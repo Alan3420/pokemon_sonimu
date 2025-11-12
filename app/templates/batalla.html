@@ -6,94 +6,97 @@
 
 {% block content %}
 
-<div id="interfaz">
-    <!-- Batalla-Interfaz -->
-    <div class="batalla">
+<div class="contenedor-principal">
+    <div id="interfaz">
+        <!-- Batalla-Interfaz -->
+        <div class="batalla">
 
-        <!-- Enemigo -->
-        <div id="bloqueIa">
+            <!-- Enemigo -->
+            <div id="bloqueIa">
 
-            <!-- INICIO ESTADO -->
-            <div>
-                <div class="bloqueEstado">
-                    <div class="top-row">
-                        <div class="name">{{ pokemonContrincante.name | capitalize }}</div>
-                    </div>
+                <!-- INICIO ESTADO -->
+                <div>
+                    <div class="bloqueEstado">
+                        <div class="top-row">
+                            <div class="name">{{ pokemonContrincante.name | capitalize }}</div>
+                        </div>
 
-                    <div class="bloque_hpBarra">
-                        <div class="hpBarra" style="width: 100%;"></div>
-                    </div>
-                    <div class="hpText">
+                        <div class="bloque_hpBarra">
+                            <div class="hpBarra" style="width: 100%;"></div>
+                        </div>
+                        <div class="hpText">
 
-                        {{batalla.hp_rival}} / {{batalla.hp_rival}}
+                            {{batalla.hp_rival}} / {{batalla.hp_rival}}
 
 
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- FIN ESTADO -->
-            <div class="contenedorIa">
-                <img class="sprites" id="spriteIa" src="{{pokemonContrincante.sprites.front_default}}"
-                    alt="Foto de {{pokemonContrincante.name}}">
-                <div class="informacion">
-                    {{pokemonContrincante.stat}}
-                    {% for tipo in pokemonContrincante.types %}
-                    <img src="{{ url_for('static', filename='img/Types_name/' + tipo + '.png') }}" alt="{{ tipo }}">
-                    {% endfor %}
-                </div>
-            </div>
-
-        </div>
-        <!-- Fin-Enemigo -->
-        <!-- Jugador -->
-        <div id="bloqueJugador">
-
-            <!-- INICIO ESTADO -->
-            <div>
-                <div class="bloqueEstado">
-                    <div class="top-row">
-                        <div class="name">{{ pokemonJugadorUnico.name | capitalize }}</div>
-                    </div>
-
-                    <div class="bloque_hpBarra">
-                        <div class="hpBarra" style="width: 100%;"></div>
-                    </div>
-                    <div class="hpText">
-                        {% for statsJugador in pokemonJugadorUnico.stats %}
-                        {% if statsJugador.name == "hp" %}
-                        {{statsJugador.value}} / {{statsJugador.value}}
-                        {% endif %}
+                <!-- FIN ESTADO -->
+                <div class="contenedorIa">
+                    <img class="sprites" id="spriteIa" src="{{pokemonContrincante.sprites.front_default}}"
+                        alt="Foto de {{pokemonContrincante.name}}">
+                    <div class="informacion">
+                        {{pokemonContrincante.stat}}
+                        {% for tipo in pokemonContrincante.types %}
+                        <img src="{{ url_for('static', filename='img/Types_name/' + tipo + '.png') }}" alt="{{ tipo }}">
                         {% endfor %}
                     </div>
                 </div>
-            </div><br>
-            <!-- FIN ESTADO -->
-            <div class="contenedorJugador">
-                <img class="sprites" id="spriteJugador" src="{{pokemonJugadorUnico.sprites.back_default}}"
-                    alt="Foto de {{pokemonJugadorUnico.name}}">
-                <div class="informacion">
-                    {{pokemonJugadorUnico.stat}}
-                    {% for tipo in pokemonJugadorUnico.types %}
-                    <img src="{{ url_for('static', filename='img/Types_name/' + tipo + '.png') }}" alt="{{ tipo }}">
-                    {% endfor %}
+
+            </div>
+            <!-- Fin-Enemigo -->
+            <!-- Jugador -->
+            <div id="bloqueJugador">
+
+                <!-- INICIO ESTADO -->
+                <div>
+                    <div class="bloqueEstado">
+                        <div class="top-row">
+                            <div class="name">{{ pokemonJugadorUnico.name | capitalize }}</div>
+                        </div>
+
+                        <div class="bloque_hpBarra">
+                            <div class="hpBarra" style="width: 100%;"></div>
+                        </div>
+                        <div class="hpText">
+                            {{batalla.hp_player }} / {{ batalla.hp_player }}
+                        </div>
+                    </div>
+                </div><br>
+                <!-- FIN ESTADO -->
+                <div class="contenedorJugador">
+                    <img class="sprites" id="spriteJugador" src="{{pokemonJugadorUnico.sprites.back_default}}"
+                        alt="Foto de {{pokemonJugadorUnico.name}}">
+                    <div class="informacion">
+                        {{pokemonJugadorUnico.stat}}
+                        {% for tipo in pokemonJugadorUnico.types %}
+                        <img src="{{ url_for('static', filename='img/Types_name/' + tipo + '.png') }}" alt="{{ tipo }}">
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
+            <!-- Fin-Jugador -->
+        </div><br>
+        <!-- Fin-Batalla-Interfaz -->
+
+
+        <div class="movimientos">
+            {% for movimiento in movimientos %}
+            <button type="button" class="moves" style="{{ colorM.get(movimiento.type) }};">
+                {{ movimiento.name }} &nbsp;&nbsp;
+                PC: {{ movimiento.accuracy }}%
+                PW: {{ movimiento.power }}
+                <img src="{{ url_for('static', filename='img/Types_name/' + movimiento.type + '.png') }}"
+                    alt="{{ movimiento.type }}">
+            </button>
+            {% endfor %}
         </div>
-        <!-- Fin-Jugador -->
-    </div><br>
-    <!-- Fin-Batalla-Interfaz -->
+    </div>
 
+    <div class="movimientos">
+        <h2>Log</h2>
 
-    <div id="movimientos">
-        {% for movimiento in movimientos %}
-        <button type="button" class="moves" style="{{ colorM.get(movimiento.type) }};">
-            {{ movimiento.name }} &nbsp;&nbsp;
-            PC: {{ movimiento.accuracy }}%
-            PW: {{ movimiento.power }}
-            <img src="{{ url_for('static', filename='img/Types_name/' + movimiento.type + '.png') }}"
-                alt="{{ movimiento.type }}">
-        </button>
-        {% endfor %}
     </div>
 </div>
 
