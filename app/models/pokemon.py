@@ -38,31 +38,66 @@ class Batalla():
             if move["name"] == nombreMove:
                 return move["accuracy"]                
 
-    def dañoInflingido(self, golpea, recibe, movimiento):
+    def gethp(self, pokemon):
+        if pokemon == self.datos_pokemon_jugador:
+            return self.hp_player
+        elif pokemon == self.datos_pokemon_rival:
+            return self.hp_rival
 
-        if self.getStat(self.datos_pokemon_jugador, 'speed') > self.getStat(self.datos_pokemon_rival, 'speed'):
-            golpea = self.datos_pokemon_jugador
-            recibe = self.datos_pokemon_rival
+    def calcularDano(self, atacante, defensor, movimiento):
+        ataque = self.getStat(atacante, 'attack')
+        defensa = self.getStat(defensor, 'defense')
+
+        dano = (ataque*self.getPW(atacante, movimiento))/defensa
+        return round(dano, 1)
+    
+    def combate(self, movimiento_jugador, movimiento_rival):
+
+        if self.getStat(self.datos_pokemon_jugador, 'speed') >= self.getStat(self.datos_pokemon_rival, 'speed'):
+            primero = {"poke":self.datos_pokemon_jugador, "move":movimiento_jugador}
+            segundo = {"poke":self.datos_pokemon_rival, "move":movimiento_rival}
         else:
-            recibe = self.datos_pokemon_jugador
-            golpea = self.datos_pokemon_rival
+            primero = {"poke":self.datos_pokemon_rival, "move":movimiento_rival}
+            segundo = {"poke":self.datos_pokemon_jugador, "move":movimiento_jugador}
 
-        # daño simple = daño base * (ataque / defensa)
-        dano = (self.getStat(golpea, 'attack')*self.getPW(golpea, movimiento))/self.getStat(recibe, 'defense')
-        return dano
+        # Primer ataque
+        dano = self.calcularDano(primero["poke"], segundo["poke"], primero["move"])
+        self.aplicarDano(primero, dano)
 
-    def siguienteTurno(self, movimiento, dano):
+        self.log.append(f"{primero['poke']} usó {primero['move']} e hizo {dano} de daño.")
+        self.log.append(
+            f"{segundo['poke']} tiene ahora 10 PS.")
 
+        # Segundo ataque
+        if self.hp_player > 0 and self.hp_rival > 0:
+            dano = self.calcularDano(segundo["poke"], primero["poke"], segundo["move"])
+            self.aplicarDano(segundo, dano)
+
+        self.log.append(f"{segundo['poke']} usó {segundo['move']} e hizo {dano} de daño.")
+        self.log.append(
+            f"{primero['poke']} tiene ahora 10 PS.")
+    
+    def aplicarDano(self, hace, dano):
+        if hace["poke"] == self.datos_pokemon_jugador:
+            self.hp_rival-=dano
+            if self.hp_rival < 0:
+                self.hp_rival = 0
+        else:
+            self.hp_player-=dano
+            if self.hp_player < 0:
+                self.hp_player = 0
+
+
+
+    # Ejecutar un turno completo
+    def ejecutarTurno(self, movimiento_jugador, movimiento_rival):
         self.turno += 1
-        self.hp_rival -= dano
         self.log.append(f"--- Turno {self.turno} ---")
 
-        mensaje = (
-            f"{self.datos_pokemon_jugador.name} utilizó {movimiento}. "
-            f"{self.datos_pokemon_rival.name} ha perdido {dano} puntos de salud. "
-            f"PS restantes: {self.hp_rival - dano}."
-        )
-        self.log.append(mensaje)
+        self.combate(movimiento_jugador, movimiento_rival)
+
+        self.mostrarLog()
+
         
 
     def mostrarLog(self):

@@ -9,6 +9,19 @@ header {
     padding: 20px;
 }
 
+.contenedor-principal {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    /* interfaz ocupa 3 partes, log 1 parte */
+    gap: 20px;
+    /* separación entre columnas */
+    align-items: start;
+    /* alinea arriba ambos */
+    max-width: 1300px;
+    /* ajusta a gusto */
+    margin: 0 auto;
+}
+
 /* Interfaz-Batalla */
 #interfaz {
     max-width: 1000px;
@@ -95,30 +108,34 @@ header {
 
 /* Fin de estado */
 /* Bloque-Info */
-.informacion{
-  display: none;
-  position: absolute;
-  top: -90px; /* sube el cuadro por encima de la imagen */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 9999;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.informacion {
+    display: none;
+    position: absolute;
+    top: -90px;
+    /* sube el cuadro por encima de la imagen */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 
-  background-color: #ffffffc5;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  padding: 20px;
+    background-color: #ffffffc5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    padding: 20px;
 
 }
+
 .contenedorIa:hover .informacion {
-  display: block;
-  opacity: 1;
+    display: block;
+    opacity: 1;
 }
+
 .contenedorJugador:hover .informacion {
-  display: block;
-  opacity: 1;
+    display: block;
+    opacity: 1;
 }
+
 /* Fin-Bloque-Info */
 
 /* Sprites */
@@ -139,7 +156,7 @@ header {
 /* Fin-Sprites */
 /* Fin-Bloque-Batalla */
 /* MOVIMIENTOS */
-#movimientos {
+.movimientos {
     background-color: #ffffffc5;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
@@ -180,6 +197,7 @@ header {
 }
 
 /* Fin-MOVIMIENTOS */
+
 /* Fin-Interfaz-Batalla */
 footer {
     position: fixed;
