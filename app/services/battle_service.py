@@ -50,5 +50,3 @@ def movimientosJugador(pokemonJugadorUnico):
         movimientos = random.sample(pokemonJugadorUnico.moves, 4)
 
     return movimientos
-
-
