@@ -27,6 +27,11 @@ def BatallaP(name):
     nombre = session.get("pokemon")
     pokemons = pokemon_services.listar_pokemons()
 
+    # mensaje = ""
+    # if name != nombre:
+    #     mensaje = "El pokemon "+name+" no se encuentra en la pokedex."
+    #     return render_template("error404.html", mensaje=mensaje), 404
+
     # Pokemons aleatorios de contrincante
     pokemonContrincante = battle_service.pokemonContrincante()
 
@@ -36,14 +41,14 @@ def BatallaP(name):
 
     if "batalla" not in session:
         batalla = pokemon.Batalla(pokemonJugadorUnico, pokemonContrincante)
-        session["batalla"] = batalla  # Nota: objetos complejos no se guardan directamente, se debe usar pickle o guardar solo datos necesarios
+        # Nota: objetos complejos no se guardan directamente, se debe usar pickle o guardar solo datos necesarios
+        session["batalla"] = batalla
     else:
         batalla = session["batalla"]
 
     movimientoDelTurno = request.form.get('movimiento')
 
-    danoInflingido = batalla.dañoInflingido
+    danoInflingido = batalla.combate()
     batalla.siguienteTurno(movimientoDelTurno, danoInflingido)
 
-
-    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombre, movimientos=movimientos, batalla = batalla)
+    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombre, movimientos=movimientos, batalla=batalla)

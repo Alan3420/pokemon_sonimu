@@ -1,5 +1,4 @@
 from flask import Blueprint, redirect, render_template, request, session, url_for
-from app.forms.pokemon_form import PokemonForm
 from app.forms.trainer_form import TrainerForm
 home_pb = Blueprint('home_route', __name__, template_folder='templates')
 
