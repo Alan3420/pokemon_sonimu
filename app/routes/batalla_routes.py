@@ -38,7 +38,8 @@ def BatallaP(name):
     # Pokemon elegido por el jugador
     pokemonJugadorUnico = battle_service.pokemonJugador(name)
     movimientos = battle_service.movimientosJugador(pokemonJugadorUnico)
-    movimientoRival = battle_service.movimientosContrincante(pokemonContrincante)
+    movimientoRival = battle_service.movimientosContrincante(
+        pokemonContrincante)
 
     if "batalla" not in session:
         batalla = pokemon.Batalla(pokemonJugadorUnico, pokemonContrincante)
@@ -46,14 +47,7 @@ def BatallaP(name):
         session["batalla"] = batalla
     else:
         batalla = session["batalla"]
-    
+
     movimientoDelTurno = request.form.get('movimiento')
 
-<<<<<<< HEAD
-    danoInflingido = batalla.combate()
-    batalla.siguienteTurno(movimientoDelTurno, danoInflingido)
-
     return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombre, movimientos=movimientos, batalla=batalla)
-=======
-    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombre, movimientos=movimientos, batalla = batalla)
->>>>>>> 058b4a02dea1e37e6c8ff9ab0ba73d9b07a8c2d4
