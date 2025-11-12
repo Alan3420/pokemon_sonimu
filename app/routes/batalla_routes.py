@@ -33,17 +33,14 @@ def BatallaP(name):
     # Pokemon elegido por el jugador
     pokemonJugadorUnico = battle_service.pokemonJugador(name)
     movimientos = battle_service.movimientosJugador(pokemonJugadorUnico)
+    movimientoRival = battle_service.movimientosContrincante(pokemonContrincante)
 
     if "batalla" not in session:
         batalla = pokemon.Batalla(pokemonJugadorUnico, pokemonContrincante)
         session["batalla"] = batalla  # Nota: objetos complejos no se guardan directamente, se debe usar pickle o guardar solo datos necesarios
     else:
         batalla = session["batalla"]
-
+    
     movimientoDelTurno = request.form.get('movimiento')
-
-    danoInflingido = batalla.dañoInflingido
-    batalla.siguienteTurno(movimientoDelTurno, danoInflingido)
-
 
     return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombre, movimientos=movimientos, batalla = batalla)
