@@ -13,8 +13,4 @@ def Bienvenido():
         session["trainer"] = form.trainer.data
         return redirect(url_for('batalla_route.PokedexS'))
 
-    if form.validate_on_submit():
-        session["pokemon"] = form.trainer.data
-        return redirect(url_for("batalla_route.BatallaP"))
-
     return render_template('index.html', form=form)
