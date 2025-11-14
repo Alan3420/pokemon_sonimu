@@ -11,7 +11,7 @@
   <img id="tituloPokemon" src="../static/img/index/logopoke-removebg-preview.png" alt="Pokemon Sonimu"><br>
 
   <form method="POST" action="/" id="formTrainer">
-    {{ form.hidden_tag() }}
+    <input type="hidden" name="csrf_token" value="{{ form.csrf_token._value() }}">
     <label for="trainer">Entrenador</label><br>
     {{ form.trainer(size=20) }}<br>
     {{ form.enviar() }}<br>
