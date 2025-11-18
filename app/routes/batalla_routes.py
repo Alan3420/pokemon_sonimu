@@ -21,10 +21,14 @@ def PokedexS():
     return render_template('pickPokemon.html', pokemons=pokemon_services.listar_pokemons(), colorM=color.colorT, nombreUser=nombre, form=form)
 
 
-@batalla_pb.route('/batallasPokemon/<name>/', methods=["POST", "GET"])
-def BatallaP(name):
+@batalla_pb.route('/batallasPokemon', methods=["POST", "GET"])
+def BatallaP():
 
-    nombre = session.get("pokemon")
+    nombrePokemon = session.get("pokemon")
+
+    if not nombrePokemon:
+        return redirect(url_for('batalla_route.PokedexS'))
+
     pokemons = pokemon_services.listar_pokemons()
 
     # mensaje = ""
@@ -36,7 +40,12 @@ def BatallaP(name):
     pokemonContrincante = battle_service.pokemonContrincante()
 
     # Pokemon elegido por el jugador
-    pokemonJugadorUnico = battle_service.pokemonJugador(name)
+    pokemonJugadorUnico = battle_service.pokemonJugador(nombrePokemon)
+
+    if pokemonJugadorUnico == None:
+        mensaje = "El pokemon "+nombrePokemon+" no se encuentra en la lista de la Pokedex."
+        return render_template("error404.html", mensaje=mensaje), 404
+    
     movimientos = battle_service.movimientosJugador(pokemonJugadorUnico)
     movimientoRival = battle_service.movimientosContrincante(
         pokemonContrincante)
@@ -50,4 +59,4 @@ def BatallaP(name):
 
     movimientoDelTurno = request.form.get('movimiento')
 
-    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombre, movimientos=movimientos, batalla=batalla)
+    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientos, batalla=batalla)

@@ -30,7 +30,7 @@ Revisa las versiones que tienes que sean iguales al archivo ``requirements.txt``
     ./.venv/Script/pip.exe freeze 
 Para ver las versiones que tienes.
 
-3. Para ejecutar el proyecto debe situarse en el main y ejecutarlo
+3. Para ejecutar el proyecto python -m app.main
 
 ## Fase 0 ✅
 El proyecto tiene la siguiente estructura:
