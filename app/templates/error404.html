@@ -13,6 +13,20 @@
   <h2>
 
     {{mensaje}}
+    {% for producto in productos %}
+    <table border="2px" style="display: flex; background-color: white;">
+      <tr>
+        <td style="color: black;">nombre</td>
+        <td style="color: black;">precio</td>
+
+      </tr>
+      <tr>
+        <td style="color: black;">{{producto.nombre}}</td>
+        <td style="color: black;">{{producto.precio}}</td>
+      </tr>
+    </table>
+    <br>
+    {%endfor%}
 
   </h2>
 </div>

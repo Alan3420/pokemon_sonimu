@@ -56,6 +56,8 @@ def BatallaP():
 
     return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=batalla.datos_pokemon_rival, pokemonJugadorUnico=batalla.datos_pokemon_jugador, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientos, batalla=batalla, log=log)
 
+# Ejemplo profesor
+
 
 @batalla_pb.route("/test")
 def listar_productos():
@@ -67,4 +69,4 @@ def listar_productos():
 
     cur.close()
     conn.close()
-    return render_template("productos.html", productos=productos)
+    return render_template("error404.html", productos=productos)
