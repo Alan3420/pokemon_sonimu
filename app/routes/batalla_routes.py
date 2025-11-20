@@ -47,7 +47,7 @@ def BatallaP():
     movimientosRival = battle_service.movimientosContrincante(pokemonContrincante)
 
     if "batalla" not in session:
-        batalla = pokemon.Batalla(pokemonJugadorUnico, movimientosJugador, pokemonContrincante)
+        batalla = pokemon.Batalla(pokemonJugadorUnico, movimientosJugador, pokemonContrincante, movimientosRival)
         session["batalla"] = batalla.to_dict()
     else:
         datos = session["batalla"]
@@ -57,20 +57,22 @@ def BatallaP():
             datos_pokemon_jugador=datos["datos_pokemon_jugador"],
             movimientosJugador=datos["movimientosJugador"],
             datos_pokemon_rival=datos["datos_pokemon_rival"],
+            movimientosRival=datos["movimientosRival"]
             )
             batalla.log = datos["log"]
         else:
-            batalla = pokemon.Batalla(pokemonJugadorUnico, movimientosJugador, pokemonContrincante)
+            batalla = pokemon.Batalla(pokemonJugadorUnico, movimientosJugador, pokemonContrincante, movimientosRival)
             session["batalla"] = batalla.to_dict()
 
 
     pokemonJugadorUnico = batalla.datos_pokemon_jugador
-    movimientos = batalla.movimientosJugador
+    movimientosJ = batalla.movimientosJugador
     pokemonContrincante = batalla.datos_pokemon_rival
+
 
     log = batalla.mostrarLog(pokemonJugadorUnico,pokemonContrincante)
     session["batalla"] = batalla.to_dict()
-    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientos, batalla=batalla, log=log)
+    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientosJ, batalla=batalla, log=log)
 
 # Ejemplo profesor
 
