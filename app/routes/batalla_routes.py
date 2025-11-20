@@ -72,6 +72,8 @@ def BatallaP():
     session["batalla"] = batalla.to_dict()
     return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientos, batalla=batalla, log=log)
 
+# Ejemplo profesor
+
 
 
 @batalla_pb.route("/test")
@@ -84,4 +86,4 @@ def listar_productos():
 
     cur.close()
     conn.close()
-    return render_template("productos.html", productos=productos)
+    return render_template("error404.html", productos=productos)
