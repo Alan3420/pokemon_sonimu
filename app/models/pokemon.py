@@ -12,3 +12,17 @@ class Pokemon:
 
     def __str__(self):
         return f"{self.name.capitalize()} (ID: {self.id})"
+    
+class Batalla():
+
+    def __init__(self, datos_pokemon_jugador, datos_pokemon_rival):
+        self.turno = 0
+        self.log = []
+        self.datos_pokemon_jugador = datos_pokemon_jugador
+        self.datos_pokemon_rival = datos_pokemon_rival
+
+    def mostrarLog(self, pokemonAtaque, pokemonDañado):
+        self.log.append(
+        f"{pokemonAtaque} usó lanzallams e hizo 10 de daño."
+        f"{pokemonDañado} tiene ahora 10 PS.")
+        return self.log

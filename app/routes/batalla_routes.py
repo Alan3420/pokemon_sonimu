@@ -31,11 +31,6 @@ def BatallaP():
 
     pokemons = pokemon_services.listar_pokemons()
 
-    # mensaje = ""
-    # if name != nombre:
-    #     mensaje = "El pokemon "+name+" no se encuentra en la pokedex."
-    #     return render_template("error404.html", mensaje=mensaje), 404
-
     # Pokemons aleatorios de contrincante
     pokemonContrincante = battle_service.pokemonContrincante()
 
@@ -47,8 +42,7 @@ def BatallaP():
         return render_template("error404.html", mensaje=mensaje), 404
     
     movimientos = battle_service.movimientosJugador(pokemonJugadorUnico)
-    movimientoRival = battle_service.movimientosContrincante(
-        pokemonContrincante)
+
 
     if "batalla" not in session:
         batalla = pokemon.Batalla(pokemonJugadorUnico, pokemonContrincante)
@@ -57,6 +51,7 @@ def BatallaP():
     else:
         batalla = session["batalla"]
 
-    movimientoDelTurno = request.form.get('movimiento')
+    log = batalla.mostrarLog(batalla.datos_pokemon_jugador,batalla.datos_pokemon_rival)
+    
+    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=batalla.datos_pokemon_rival, pokemonJugadorUnico=batalla.datos_pokemon_jugador, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientos, batalla=batalla, log=log)
 
-    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientos, batalla=batalla)
