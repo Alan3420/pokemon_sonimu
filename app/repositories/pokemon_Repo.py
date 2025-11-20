@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+import sqlite3
 
 from app.models.pokemon import Pokemon
 
@@ -33,3 +34,11 @@ def buscar_por_id(id):
             break
 
     return pokemon
+
+# PRUEBA IRA EN LA CAPA REPOSITORIO
+
+
+def get_connection():
+    conn = sqlite3.connect("data/test.db")
+    conn.row_factory = sqlite3.Row
+    return conn
