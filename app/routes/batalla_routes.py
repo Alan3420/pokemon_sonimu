@@ -1,9 +1,9 @@
-import random
 from flask import Blueprint, redirect, render_template, request, session, url_for
 import app.colors as color
 from app.forms.pokemon_form import PokemonForm
 from app.services import battle_service
 from app.services import pokemon_services
+from app.repositories import pokemon_Repo
 from app.models import pokemon
 
 batalla_pb = Blueprint('batalla_route', __name__, template_folder='templates')
@@ -38,7 +38,8 @@ def BatallaP():
     pokemonJugadorUnico = battle_service.pokemonJugador(nombrePokemon)
 
     if pokemonJugadorUnico == None:
-        mensaje = "El pokemon "+nombrePokemon+" no se encuentra en la lista de la Pokedex."
+        mensaje = "El pokemon "+nombrePokemon + \
+            " no se encuentra en la lista de la Pokedex."
         return render_template("error404.html", mensaje=mensaje), 404
     
     movimientos = battle_service.movimientosJugador(pokemonJugadorUnico)
@@ -61,3 +62,15 @@ def BatallaP():
     
     return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientos, batalla=batalla, log=log)
 
+
+@batalla_pb.route("/test")
+def listar_productos():
+    conn = pokemon_Repo.get_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT id, nombre, precio FROM productos ORDER BY id;")
+
+    productos = cur.fetchall()
+
+    cur.close()
+    conn.close()
+    return render_template("productos.html", productos=productos)
