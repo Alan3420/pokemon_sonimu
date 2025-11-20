@@ -15,11 +15,10 @@ class Pokemon:
     
 class Batalla():
 
-    def __init__(self, datos_pokemon_jugador, datos_pokemon_rival):
+    def __init__(self, datos_pokemon_jugador, movimientosJugador, datos_pokemon_rival):
         self.turno = 0
         self.log = []
-        # self.movimientos_jugador = movimientos_jugador
-        # self.movimientos_rival = movimientos_rival
+        self.movimientosJugador = movimientosJugador
         self.datos_pokemon_jugador = datos_pokemon_jugador
         self.datos_pokemon_rival = datos_pokemon_rival
 
@@ -33,8 +32,7 @@ class Batalla():
         return {
             "turno": self.turno,
             "log": self.log,
-            # "movimientos_jugador": self.movimientos_jugador,
-            # "movimientos_rival": self.movimientos_rival,
+            "movimientosJugador": self.movimientosJugador,
             "datos_pokemon_jugador": self.datos_pokemon_jugador,
             "datos_pokemon_rival": self.datos_pokemon_rival
         }

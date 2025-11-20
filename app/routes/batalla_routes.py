@@ -14,6 +14,7 @@ def PokedexS():
     form = PokemonForm()
 
     if form.validate_on_submit():
+
         session["pokemon"] = form.pokemon.data
         return redirect(url_for('batalla_route.BatallaP'))
 
@@ -42,25 +43,35 @@ def BatallaP():
             " no se encuentra en la lista de la Pokedex."
         return render_template("error404.html", mensaje=mensaje), 404
     
-    movimientos = battle_service.movimientosJugador(pokemonJugadorUnico)
+    movimientosJugador = battle_service.movimientosJugador(pokemonJugadorUnico)
     movimientosRival = battle_service.movimientosContrincante(pokemonContrincante)
 
     if "batalla" not in session:
-        batalla = pokemon.Batalla(pokemonJugadorUnico, pokemonContrincante)
+        batalla = pokemon.Batalla(pokemonJugadorUnico, movimientosJugador, pokemonContrincante)
         session["batalla"] = batalla.to_dict()
     else:
         datos = session["batalla"]
-        batalla = pokemon.Batalla(
+        # Comprobacion por si cambio de pokemon en caso de que si, reiniciar la batalla
+        if pokemonJugadorUnico.name == datos["datos_pokemon_jugador"].name:
+            batalla = pokemon.Batalla(
             datos_pokemon_jugador=datos["datos_pokemon_jugador"],
+            movimientosJugador=datos["movimientosJugador"],
             datos_pokemon_rival=datos["datos_pokemon_rival"],
-        )
-        batalla.log = datos["log"]
-    
+            )
+            batalla.log = datos["log"]
+        else:
+            batalla = pokemon.Batalla(pokemonJugadorUnico, movimientosJugador, pokemonContrincante)
+            session["batalla"] = batalla.to_dict()
+
+
     pokemonJugadorUnico = batalla.datos_pokemon_jugador
+    movimientos = batalla.movimientosJugador
     pokemonContrincante = batalla.datos_pokemon_rival
-    log = batalla.mostrarLog(pokemonJugadorUnico["name"],pokemonContrincante["name"])
-    
+
+    log = batalla.mostrarLog(pokemonJugadorUnico,pokemonContrincante)
+    session["batalla"] = batalla.to_dict()
     return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientos, batalla=batalla, log=log)
+
 
 
 @batalla_pb.route("/test")

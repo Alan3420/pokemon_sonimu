@@ -13,3 +13,8 @@ def Bienvenido():
         return redirect(url_for('batalla_route.PokedexS'))
 
     return render_template('index.html', form=form)
+
+@home_pb.route("/logout")
+def logout():
+    session.clear()
+    return "Sesión cerrada. Hasta pronto."
