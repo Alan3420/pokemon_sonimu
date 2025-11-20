@@ -42,16 +42,22 @@ def BatallaP():
         return render_template("error404.html", mensaje=mensaje), 404
     
     movimientos = battle_service.movimientosJugador(pokemonJugadorUnico)
-
+    movimientosRival = battle_service.movimientosContrincante(pokemonContrincante)
 
     if "batalla" not in session:
         batalla = pokemon.Batalla(pokemonJugadorUnico, pokemonContrincante)
-        # Nota: objetos complejos no se guardan directamente, se debe usar pickle o guardar solo datos necesarios
-        session["batalla"] = batalla
+        session["batalla"] = batalla.to_dict()
     else:
-        batalla = session["batalla"]
-
-    log = batalla.mostrarLog(batalla.datos_pokemon_jugador,batalla.datos_pokemon_rival)
+        datos = session["batalla"]
+        batalla = pokemon.Batalla(
+            datos_pokemon_jugador=datos["datos_pokemon_jugador"],
+            datos_pokemon_rival=datos["datos_pokemon_rival"],
+        )
+        batalla.log = datos["log"]
     
-    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=batalla.datos_pokemon_rival, pokemonJugadorUnico=batalla.datos_pokemon_jugador, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientos, batalla=batalla, log=log)
+    pokemonJugadorUnico = batalla.datos_pokemon_jugador
+    pokemonContrincante = batalla.datos_pokemon_rival
+    log = batalla.mostrarLog(pokemonJugadorUnico["name"],pokemonContrincante["name"])
+    
+    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientos, batalla=batalla, log=log)
 
