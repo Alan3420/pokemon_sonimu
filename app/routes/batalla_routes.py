@@ -44,7 +44,6 @@ def BatallaP():
 
     movimientos = battle_service.movimientosJugador(pokemonJugadorUnico)
 
-
     if "batalla" not in session:
         batalla = pokemon.Batalla(pokemonJugadorUnico, pokemonContrincante)
         # Nota: objetos complejos no se guardan directamente, se debe usar pickle o guardar solo datos necesarios
@@ -52,12 +51,10 @@ def BatallaP():
     else:
         batalla = session["batalla"]
 
-    log = batalla.mostrarLog(batalla.datos_pokemon_jugador,batalla.datos_pokemon_rival)
-    
-    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=batalla.datos_pokemon_rival, pokemonJugadorUnico=batalla.datos_pokemon_jugador, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientos, batalla=batalla, log=log)
+    log = batalla.mostrarLog(
+        batalla.datos_pokemon_jugador, batalla.datos_pokemon_rival)
 
-<<<<<<< HEAD
-    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientos, batalla=batalla)
+    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=batalla.datos_pokemon_rival, pokemonJugadorUnico=batalla.datos_pokemon_jugador, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientos, batalla=batalla, log=log)
 
 
 @batalla_pb.route("/test")
@@ -71,5 +68,3 @@ def listar_productos():
     cur.close()
     conn.close()
     return render_template("productos.html", productos=productos)
-=======
->>>>>>> 4b867e8f49f9d01e66504dfe746a7a8836ed2349
