@@ -84,8 +84,13 @@ form input {
     margin: 10px;
 }
 
-form button {
+#enviar {
     color: black;
+    cursor: pointer;
+}
+
+#enviar:hover {
+    background-color: gray;
 }
 
 #titulo img {
