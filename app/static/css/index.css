@@ -16,43 +16,43 @@ body {
 
 /* Boton_Jugar */
 
-#jugar{
+#jugar {
     font-family: 'MiFuente', sans-serif;
     width: 25%;
     height: 50px;
 
     position: fixed;
     bottom: 20%;
-    left: 50%; 
+    left: 50%;
     transform: translateX(-50%);
     border: 1px none;
     border-radius: 5px;
     color: white;
-     background: linear-gradient(
-        to right,
-        orange 0%,
-        rgb(255, 106, 0) 40%,
-        #a020f0 60%,  /* Puedes usar "purple" o un tono como #a020f0 */
-        #6a0dad 100%
-      );
+    background: linear-gradient(to right,
+            orange 0%,
+            rgb(255, 106, 0) 40%,
+            #a020f0 60%,
+            /* Puedes usar "purple" o un tono como #a020f0 */
+            #6a0dad 100%);
     transition: filter 0.3s ease;
 }
 
-#jugar:hover{
+#jugar:hover {
     filter: brightness(70%);
     cursor: pointer;
 }
 
 
 /* Titulo */
-#titulo{
+#titulo {
     margin-left: 100px;
-    display: flex;    
-    justify-content: center;     
-    align-items: center;         
-    height: 70vh;              
-    text-align: center;       
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    text-align: center;
 }
+
 form {
     color: black;
     font-weight: bold;
@@ -66,34 +66,45 @@ form {
     width: 250px;
 
     text-align: center;
-    
-    display: none; /* Oculto al inicio */
+
+    display: none;
+    /* Oculto al inicio */
 }
 
-form label{
+form label {
     color: black;
 }
-form input{
+
+form input {
+    color: black;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: none;
+    margin: 10px;
+}
+
+form button {
     color: black;
 }
-form button{
-    color: black;
-}
-#titulo img{
+
+#titulo img {
     width: 600px;
 
 }
 
 /* Ttipo */
-#tabla-tiposact{
+#tabla-tiposact {
     margin-left: 10%;
     transition: filter 0.3s ease;
 }
-#tabla-tiposact:hover{
+
+#tabla-tiposact:hover {
     filter: brightness(70%);
     cursor: pointer;
 }
-footer{
+
+footer {
     position: fixed;
     bottom: 0%;
     left: 0%;
