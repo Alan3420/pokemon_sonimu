@@ -80,10 +80,10 @@
         </div><br>
         <!-- Fin-Batalla-Interfaz -->
 
-
+        <form method="POST">
         <div class="movimientos">
             {% for movimiento in movimientos %}
-            <button type="button" class="moves" style="{{ colorM.get(movimiento.type) }};">
+            <button type="submit" name="movimiento" value="{{ movimiento.name }}"  class="moves" style="{{ colorM.get(movimiento.type) }};">
                 {{ movimiento.name }} &nbsp;&nbsp;
                 PC: {{ movimiento.accuracy }}%
                 PW: {{ movimiento.power }}
@@ -92,6 +92,7 @@
             </button>
             {% endfor %}
         </div>
+        </form>
     </div>
 
     <div class="movimientos">

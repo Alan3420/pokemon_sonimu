@@ -59,9 +59,11 @@ def BatallaP():
             movimientosJugador=datos["movimientosJugador"],
             datos_pokemon_rival=datos["datos_pokemon_rival"],
             movimientosRival=datos["movimientosRival"],
-            hp_rival=datos["hp_rival"]
+            hp_rival=datos["hp_rival"],
+            turno=datos["turno"],
+            log = datos["log"]
             )
-            batalla.log = datos["log"]
+            
         else:
             batalla = pokemon.Batalla(pokemonJugadorUnico, movimientosJugador, pokemonContrincante, movimientosRival, "lanzallamas", hp_rival)
             session["batalla"] = batalla.to_dict()
@@ -70,16 +72,27 @@ def BatallaP():
     pokemonJugadorUnico = batalla.datos_pokemon_jugador
     movimientosJ = batalla.movimientosJugador
     pokemonContrincante = batalla.datos_pokemon_rival
+    hp_rival = batalla.hp_rival
+    log = batalla.log
 
-    hp_rival = batalla.calcularDano(
-        pokemonJugadorUnico, 
-        "incinerate", 
-        batalla.hp_rival
-    )
+    if request.method == "POST":
+        movimiento_usado = request.form.get("movimiento")
 
-    batalla.hp_rival=hp_rival
+        hp_rival = batalla.calcularDano(
+            pokemonJugadorUnico, 
+            movimiento_usado, 
+            batalla.hp_rival
+        )
 
-    log = batalla.mostrarLog(pokemonJugadorUnico,pokemonContrincante,hp_rival)
+        
+        if hp_rival <= 0:
+            batalla.hp_rival = 0
+            log = "Rival derrotado"
+        else:
+            batalla.hp_rival = hp_rival
+            log = batalla.mostrarLog(pokemonJugadorUnico,movimiento_usado, pokemonContrincante,hp_rival)
+
+
     session["batalla"] = batalla.to_dict()
     return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, hp_rival=hp_rival, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientosJ, batalla=batalla, log=log)
 
