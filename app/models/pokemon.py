@@ -29,11 +29,23 @@ class Batalla():
         f"{pokemonAtaque.name} usó lanzallams e hizo 10 de daño."
         f"{pokemonDañado.name} tiene ahora {vidaDañado} PS.")
         return self.log
-
+    
+    def calcularDano(self, pokemonAtaque , habilidad, hp_rival):
+        power = self.get_move_stat(pokemonAtaque, habilidad, "power")
+        dano = power
+        hp_restante = hp_rival-dano
+        return hp_restante
+    
     def get_stat(pokemon, nombre):
         for stat in pokemon.stats:
             if stat["name"] == nombre:
                 return stat["value"]
+        return 0
+    
+    def get_move_stat(self,pokemon, move_name, key):
+        for move in pokemon.moves:
+            if move["name"] == move_name:
+                return move.get(key)
         return None
 
 

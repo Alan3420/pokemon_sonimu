@@ -63,15 +63,21 @@ def BatallaP():
             )
             batalla.log = datos["log"]
         else:
-            batalla = pokemon.Batalla(pokemonJugadorUnico, movimientosJugador, pokemonContrincante, movimientosRival, hp_rival)
+            batalla = pokemon.Batalla(pokemonJugadorUnico, movimientosJugador, pokemonContrincante, movimientosRival, "lanzallamas", hp_rival)
             session["batalla"] = batalla.to_dict()
 
 
     pokemonJugadorUnico = batalla.datos_pokemon_jugador
     movimientosJ = batalla.movimientosJugador
     pokemonContrincante = batalla.datos_pokemon_rival
-    hp_rival = batalla.hp_rival
 
+    hp_rival = batalla.calcularDano(
+        pokemonJugadorUnico, 
+        "incinerate", 
+        batalla.hp_rival
+    )
+
+    batalla.hp_rival=hp_rival
 
     log = batalla.mostrarLog(pokemonJugadorUnico,pokemonContrincante,hp_rival)
     session["batalla"] = batalla.to_dict()
