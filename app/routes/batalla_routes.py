@@ -34,6 +34,7 @@ def BatallaP():
 
     # Pokemons aleatorios de contrincante
     pokemonContrincante = battle_service.pokemonContrincante()
+    hp_rival = pokemon.Batalla.get_stat(pokemonContrincante, "hp")
 
     # Pokemon elegido por el jugador
     pokemonJugadorUnico = battle_service.pokemonJugador(nombrePokemon)
@@ -47,7 +48,7 @@ def BatallaP():
     movimientosRival = battle_service.movimientosContrincante(pokemonContrincante)
 
     if "batalla" not in session:
-        batalla = pokemon.Batalla(pokemonJugadorUnico, movimientosJugador, pokemonContrincante, movimientosRival)
+        batalla = pokemon.Batalla(pokemonJugadorUnico, movimientosJugador, pokemonContrincante, movimientosRival, hp_rival)
         session["batalla"] = batalla.to_dict()
     else:
         datos = session["batalla"]
@@ -57,22 +58,24 @@ def BatallaP():
             datos_pokemon_jugador=datos["datos_pokemon_jugador"],
             movimientosJugador=datos["movimientosJugador"],
             datos_pokemon_rival=datos["datos_pokemon_rival"],
-            movimientosRival=datos["movimientosRival"]
+            movimientosRival=datos["movimientosRival"],
+            hp_rival=datos["hp_rival"]
             )
             batalla.log = datos["log"]
         else:
-            batalla = pokemon.Batalla(pokemonJugadorUnico, movimientosJugador, pokemonContrincante, movimientosRival)
+            batalla = pokemon.Batalla(pokemonJugadorUnico, movimientosJugador, pokemonContrincante, movimientosRival, hp_rival)
             session["batalla"] = batalla.to_dict()
 
 
     pokemonJugadorUnico = batalla.datos_pokemon_jugador
     movimientosJ = batalla.movimientosJugador
     pokemonContrincante = batalla.datos_pokemon_rival
+    hp_rival = batalla.hp_rival
 
 
-    log = batalla.mostrarLog(pokemonJugadorUnico,pokemonContrincante)
+    log = batalla.mostrarLog(pokemonJugadorUnico,pokemonContrincante,hp_rival)
     session["batalla"] = batalla.to_dict()
-    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientosJ, batalla=batalla, log=log)
+    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, hp_rival=hp_rival, pokemonJugadorUnico=pokemonJugadorUnico, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientosJ, batalla=batalla, log=log)
 
 # Ejemplo profesor
 

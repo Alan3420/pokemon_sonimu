@@ -15,19 +15,27 @@ class Pokemon:
     
 class Batalla():
 
-    def __init__(self, datos_pokemon_jugador, movimientosJugador, datos_pokemon_rival, movimientosRival):
+    def __init__(self, datos_pokemon_jugador, movimientosJugador, datos_pokemon_rival, movimientosRival, hp_rival):
         self.turno = 0
         self.log = []
         self.movimientosJugador = movimientosJugador
         self.movimientosRival = movimientosRival
         self.datos_pokemon_jugador = datos_pokemon_jugador
         self.datos_pokemon_rival = datos_pokemon_rival
+        self.hp_rival = hp_rival
 
-    def mostrarLog(self, pokemonAtaque, pokemonDañado):
+    def mostrarLog(self, pokemonAtaque, pokemonDañado , vidaDañado):
         self.log.append(
-        f"{pokemonAtaque} usó lanzallams e hizo 10 de daño."
-        f"{pokemonDañado} tiene ahora 10 PS.")
+        f"{pokemonAtaque.name} usó lanzallams e hizo 10 de daño."
+        f"{pokemonDañado.name} tiene ahora {vidaDañado} PS.")
         return self.log
+
+    def get_stat(pokemon, nombre):
+        for stat in pokemon.stats:
+            if stat["name"] == nombre:
+                return stat["value"]
+        return None
+
 
     def to_dict(self):
         return {
@@ -36,5 +44,6 @@ class Batalla():
             "movimientosJugador": self.movimientosJugador,
             "movimientosRival": self.movimientosRival,
             "datos_pokemon_jugador": self.datos_pokemon_jugador,
-            "datos_pokemon_rival": self.datos_pokemon_rival
+            "datos_pokemon_rival": self.datos_pokemon_rival,
+            "hp_rival": self.hp_rival
         }
