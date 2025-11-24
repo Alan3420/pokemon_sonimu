@@ -71,7 +71,7 @@ def BatallaP():
             batalla = pokemon.Batalla(pokemonJugadorUnico, movimientosJugador, hp_Jugador, pokemonContrincante, movimientosRival, hp_rival)
             session["batalla"] = batalla.to_dict()
 
-
+    # Recoger los datos de las sesion
     pokemonJugadorUnico = batalla.datos_pokemon_jugador
     hp_Jugador = batalla.hp_rival
     hp_max_jugador = pokemon.Batalla.get_stat(pokemonJugadorUnico, "hp")
@@ -82,6 +82,7 @@ def BatallaP():
     hp_max_rival = pokemon.Batalla.get_stat(pokemonContrincante, "hp")
     log = batalla.log
 
+    # Ejecucion de los movimientos
     if request.method == "POST":
         movimiento_usado = request.form.get("movimiento")
         movimiento_usado_rival = random.choice(movimientoR)["name"]
@@ -105,6 +106,7 @@ def BatallaP():
             batalla.hp_rival = hp_rival
             batalla.hp_Jugador = hp_Jugador
 
+    # devolver datos a la sesion
     session["batalla"] = batalla.to_dict()
     return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, hp_rival=hp_rival,hp_max_rival=hp_max_rival, pokemonJugadorUnico=pokemonJugadorUnico, hp_Jugador=hp_Jugador,hp_max_jugador=hp_max_jugador ,colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientosJ, batalla=batalla, log=log)
 
