@@ -77,13 +77,14 @@ def BatallaP():
     hp_max_jugador = pokemon.Batalla.get_stat(pokemonJugadorUnico, "hp")
     movimientosJ = batalla.movimientosJugador
     pokemonContrincante = batalla.datos_pokemon_rival
+    movimientoR = batalla.movimientosRival
     hp_rival = batalla.hp_rival
     hp_max_rival = pokemon.Batalla.get_stat(pokemonContrincante, "hp")
     log = batalla.log
 
     if request.method == "POST":
         movimiento_usado = request.form.get("movimiento")
-        movimiento_usado_rival = random.choice(movimientosRival)["name"]
+        movimiento_usado_rival = random.choice(movimientoR)["name"]
         hp_Jugador, hp_rival = batalla.ejecutarTurno(
                                 pokemonJugadorUnico, 
                                 pokemonContrincante, 
@@ -97,6 +98,9 @@ def BatallaP():
         if hp_rival <= 0:
             batalla.hp_rival = 0
             log = "Rival derrotado"
+        elif hp_Jugador <= 0:
+            batalla.hp_Jugador = 0
+            log = "Has sido derrotado"
         else:
             batalla.hp_rival = hp_rival
             batalla.hp_Jugador = hp_Jugador

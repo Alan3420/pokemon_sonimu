@@ -35,59 +35,45 @@ class Batalla():
         self.log.insert(0, mensaje)
         return self.log
     
-    # def ejecutarTurno(self, pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, habilidadRival, hp_rival):
-    #     self.turno +=1
-    #     if self.get_stat(pokemonJugador, "speed") >= self.get_stat(pokemonRival, "speed"):
-    #         primero = {
-    #             "name": pokemonJugador,
-    #             "habilidad": habilidadJugador,
-    #             "hp": hp_Jugador
-    #         }
-    #         segundo = {
-    #             "name": pokemonRival,
-    #             "habilidad": habilidadRival,
-    #             "hp": hp_rival
-    #         }
-    #     else :
-    #         primero = {
-    #             "name": pokemonRival,
-    #             "habilidad": habilidadRival,
-    #             "hp": hp_rival
-    #         }
-    #         segundo = {
-    #             "name": pokemonJugador,
-    #             "habilidad": habilidadJugador,
-    #             "hp": hp_Jugador
-    #         }
-
-    #     dano = self.calcularDano(primero["name"], primero["habilidad"])
-    #     hp_segundo = self.restarHp(segundo["hp"], dano)
-
-    #     self.mostrarLog(primero["name"], primero["habilidad"], segundo["name"], segundo["hp"], dano)
-
-    #     dano = self.calcularDano(segundo["name"], segundo["habilidad"])
-    #     hp_primero = self.restarHp(primero["hp"], dano)
-
-    #     self.mostrarLog(segundo["name"], segundo["habilidad"], primero["name"], primero["hp"], dano)
-
-
-    #     return hp_primero, hp_segundo
-
     def ejecutarTurno(self, pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, habilidadRival, hp_rival):
         self.turno +=1
+        if self.get_stat(pokemonJugador, "speed") >= self.get_stat(pokemonRival, "speed"):
+            primero = {
+                "name": pokemonJugador,
+                "habilidad": habilidadJugador,
+                "hp": hp_Jugador
+            }
+            segundo = {
+                "name": pokemonRival,
+                "habilidad": habilidadRival,
+                "hp": hp_rival
+            }
+        else :
+            primero = {
+                "name": pokemonRival,
+                "habilidad": habilidadRival,
+                "hp": hp_rival
+            }
+            segundo = {
+                "name": pokemonJugador,
+                "habilidad": habilidadJugador,
+                "hp": hp_Jugador
+            }
 
-        dano = self.calcularDano(pokemonJugador, habilidadJugador)
-        hp_segundo = self.restarHp(hp_rival, dano)
+        dano = self.calcularDano(primero["name"], primero["habilidad"])
+        hp_segundo = self.restarHp(segundo["hp"], dano)
 
-        self.mostrarLog(pokemonJugador, habilidadJugador, pokemonRival, hp_rival, dano)
+        self.mostrarLog(primero["name"], primero["habilidad"], segundo["name"], segundo["hp"], dano)
 
-        dano = self.calcularDano(pokemonRival, habilidadRival)
-        hp_primero = self.restarHp(hp_Jugador, dano)
+        dano = self.calcularDano(segundo["name"], segundo["habilidad"])
+        hp_primero = self.restarHp(primero["hp"], dano)
 
-        self.mostrarLog(pokemonRival, habilidadRival, pokemonJugador, hp_Jugador, dano)
+        self.mostrarLog(segundo["name"], segundo["habilidad"], primero["name"], primero["hp"], dano)
 
-
-        return hp_primero, hp_segundo
+        if primero["name"] == pokemonJugador.name:
+            return hp_primero, hp_segundo
+        else:
+            return hp_segundo, hp_primero
         
     def calcularDano(self, pokemonAtaque , habilidad):
         power = self.get_move_stat(pokemonAtaque, habilidad, "power")
