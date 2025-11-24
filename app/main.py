@@ -39,6 +39,7 @@ app.cli.command("crear-tablas")
 
 
 def crear_tablas():
+    db.drop_all()
     print("Vamos a crear tablas de ejemplos...")
     db.create_all()
     print("Tablas creadas")
