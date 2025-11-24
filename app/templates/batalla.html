@@ -98,11 +98,15 @@
         </div>
         </form>
     </div>
-
     <div class="movimientos">
         <h2>Log</h2>
-        {% for lineaLog in log %}
-        <p>{{lineaLog}}</p>
+
+        {% for turno in log %}
+            <div class="turno">
+                {% for linea in turno %}
+                    <p>{{ linea }}</p>
+                {% endfor %}
+            </div>
         {% endfor %}
     </div>
 </div>
