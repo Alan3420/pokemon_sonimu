@@ -35,9 +35,7 @@ app.register_blueprint(pokedex_pb, url_prefix='/pokedex/')
 
 
 # Comando CLI
-app.cli.command("crear-tablas")
-
-
+@app.cli.command("crear_tablas")
 def crear_tablas():
     db.drop_all()
     print("Vamos a crear tablas de ejemplos...")

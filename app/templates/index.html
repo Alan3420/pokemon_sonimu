@@ -14,14 +14,13 @@
     <input type="hidden" name="csrf_token" value="{{ form.csrf_token._value() }}">
     <label for="trainer">Entrenador</label><br>
     {{ form.trainer(size=20) }}<br>
+    <label for="passwd">Contraseña</label><br>
+    {{ form.passwd() }}<br>
     {{ form.enviar() }}<br>
   </form>
 
 </div>
 
-<div class="mensajeUser">
-  <p>{{mensaje}}</p>
-</div>
 
 <img id="tabla-tiposact" onclick="abrirPopUp()" src="../static/img/index/tabla_de_tipos_boton-removebg-preview.png"
   alt="tabla_tipos" width="200px" title="mostrar tabla de tipos">
