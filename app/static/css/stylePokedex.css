@@ -10,11 +10,14 @@ body {
     /* ⚠️ ESTO LA HACE FIJA */
     overflow: hidden;
 }
-@media (max-width: 768px), (max-height: 1350px) {
+
+@media (max-width: 768px),
+(max-height: 1350px) {
     body {
         overflow: auto;
     }
 }
+
 #contenedor {
     margin-top: 7%;
     margin-bottom: 10%;
@@ -31,8 +34,8 @@ body {
     padding: 20px;
 }
 
-.tarjeta {    
-    
+.tarjeta {
+
 
     text-transform: uppercase;
     background-color: #ffffffc5;
@@ -44,13 +47,16 @@ body {
     text-align: center;
 
 }
-.tarjeta img{
+
+.tarjeta img {
     padding: 5%;
-    
+
 }
-.tarjeta h2{
+
+.tarjeta h2 {
     color: black;
 }
+
 .tarjeta:hover {
     transform: scale(1.05);
 }
@@ -59,6 +65,7 @@ body {
     width: 50%;
     border-radius: 10px;
 }
+
 form {
     color: black;
     font-weight: bold;
@@ -72,18 +79,40 @@ form {
     text-align: center;
 }
 
-form label{
+form label {
     color: black;
 }
-form input{
+
+form input {
     color: black;
 }
-footer{
+
+footer {
     position: fixed;
     bottom: 0%;
     left: 0%;
 }
-button{
+
+form input {
+    color: black;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: none;
+    margin: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+#enviar {
+    color: black;
+    cursor: pointer;
+}
+
+#enviar:hover {
+    background-color: gray;
+}
+
+button {
     background-color: red;
     border-radius: 5px;
     padding: 5px;

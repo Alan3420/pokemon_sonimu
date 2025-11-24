@@ -4,7 +4,7 @@ from app.routes.batalla_routes import batalla_pb
 from app.routes.home_routes import home_pb
 from app.routes.pokedex_route import pokedex_pb
 from flask_session import Session
-from app.database import db
+from app.database.db import db
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = "pokemonSonimu"
@@ -13,12 +13,12 @@ app.config["SESSION_TYPE"] = "filesystem"   # Guardar en ficheros
 app.config["SESSION_PERMANENT"] = False     # Sesiones temporales
 app.config["SESSION_FILE_DIR"] = "./.flask_session"  # Carpeta donde se guardan
 
-# BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-# BD_PATH = os.path.join(BASE_DIR, "data", "pokemons.db")
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+BD_PATH = os.path.join(BASE_DIR, "data", "pokemons.db")
 
-# # Configuracion alchemy
-# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///{BD_PATH}"
-# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+# Configuracion alchemy
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///{BD_PATH}"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # Clave session
 app.secret_key = "clave_super_secreta"
@@ -26,7 +26,7 @@ app.secret_key = "clave_super_secreta"
 
 # Inicializar la extensión
 Session(app)
-# db.init_app(app)
+db.init_app(app)
 
 
 app.register_blueprint(batalla_pb, url_prefix='/')
@@ -35,13 +35,14 @@ app.register_blueprint(pokedex_pb, url_prefix='/pokedex/')
 
 
 # Comando CLI
-# app.cli.command("crear-tablas")
+app.cli.command("crear-tablas")
 
 
-# def crear_tablas():
-#     print("Vamos a crear tablas de ejemplos...")
-#     db.create_all()
-#     print("Tablas creadas")
+def crear_tablas():
+    db.drop_all()
+    print("Vamos a crear tablas de ejemplos...")
+    db.create_all()
+    print("Tablas creadas")
 
 
 if __name__ == '__main__':
