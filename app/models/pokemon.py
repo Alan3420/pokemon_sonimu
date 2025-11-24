@@ -56,16 +56,26 @@ class Batalla():
         dano = self.calcularDano(primero["name"], primero["habilidad"])
         segundo["hp"] -= dano
 
-        bloque.append(f"1º: {primero['name'].name} usó {primero['habilidad']} e hizo {dano} de daño. {segundo['name'].name} tiene ahora {segundo["hp"]} PS.")
+        bloque.append(f"1º: {primero['name'].name} usó {primero['habilidad']} e hizo {dano} de daño. {segundo['name'].name} tiene ahora {max(0, segundo['hp'])} PS.")
+        # Comprobacion si alguno se debilito
+        if segundo["hp"]<= 0:
 
+            segundo["hp"] = 0
+
+            if primero["name"] == pokemonJugador.name:
+                return primero["hp"], segundo["hp"]
+            else:
+                return segundo["hp"], primero["hp"]
+
+        
         dano = self.calcularDano(segundo["name"], segundo["habilidad"])
         primero["hp"] -= dano
 
-        bloque.append(f"2º: {segundo['name'].name} usó {segundo['habilidad']} e hizo {dano} de daño. {primero['name'].name} tiene ahora {primero["hp"]} PS.")
+        bloque.append(f"2º: {segundo['name'].name} usó {segundo['habilidad']} e hizo {dano} de daño. {primero['name'].name} tiene ahora {primero['hp']} PS.")
         
         self.log.insert(0, bloque)
 
-        if primero["name"] == pokemonJugador.name:
+        if primero["name"].name == pokemonJugador.name:
             return primero["hp"], segundo["hp"]
         else:
             return segundo["hp"], primero["hp"]
