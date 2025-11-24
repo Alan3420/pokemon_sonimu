@@ -169,6 +169,14 @@ header {
 
 }
 
+.movimientos:nth-child(2) {
+    width: 300px;
+    height: 550px;
+    overflow: auto;
+    border: 2px solid #333;
+    padding: 10px;
+}
+
 .moves {
     display: flex;
     /* activa flexbox */
