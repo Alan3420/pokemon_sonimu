@@ -98,10 +98,8 @@ def BatallaP():
         
         if hp_rival <= 0:
             batalla.hp_rival = 0
-            log = "Rival derrotado"
         elif hp_Jugador <= 0:
             batalla.hp_Jugador = 0
-            log = "Has sido derrotado"
         else:
             batalla.hp_rival = hp_rival
             batalla.hp_Jugador = hp_Jugador
