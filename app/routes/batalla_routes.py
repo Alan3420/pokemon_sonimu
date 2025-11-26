@@ -45,30 +45,33 @@ def BatallaP():
         mensaje = "El pokemon "+nombrePokemon + \
             " no se encuentra en la lista de la Pokedex."
         return render_template("error404.html", mensaje=mensaje), 404
-    
+
     movimientosJugador = battle_service.movimientosJugador(pokemonJugadorUnico)
-    movimientosRival = battle_service.movimientosContrincante(pokemonContrincante)
+    movimientosRival = battle_service.movimientosContrincante(
+        pokemonContrincante)
 
     if "batalla" not in session:
-        batalla = pokemon.Batalla(pokemonJugadorUnico, movimientosJugador,hp_Jugador, pokemonContrincante, movimientosRival, hp_rival)
+        batalla = pokemon.Batalla(pokemonJugadorUnico, movimientosJugador,
+                                  hp_Jugador, pokemonContrincante, movimientosRival, hp_rival)
         session["batalla"] = batalla.to_dict()
     else:
         datos = session["batalla"]
         # Comprobacion por si el pokemon esta en sesion, reiniciar la batalla
         if pokemonJugadorUnico.name == datos["datos_pokemon_jugador"].name:
             batalla = pokemon.Batalla(
-            datos_pokemon_jugador=datos["datos_pokemon_jugador"],
-            movimientosJugador=datos["movimientosJugador"],
-            hp_Jugador=datos["hp_Jugador"],
-            datos_pokemon_rival=datos["datos_pokemon_rival"],
-            movimientosRival=datos["movimientosRival"],
-            hp_rival=datos["hp_rival"],
-            turno=datos["turno"],
-            log = datos["log"]
+                datos_pokemon_jugador=datos["datos_pokemon_jugador"],
+                movimientosJugador=datos["movimientosJugador"],
+                hp_Jugador=datos["hp_Jugador"],
+                datos_pokemon_rival=datos["datos_pokemon_rival"],
+                movimientosRival=datos["movimientosRival"],
+                hp_rival=datos["hp_rival"],
+                turno=datos["turno"],
+                log=datos["log"]
             )
-            
+
         else:
-            batalla = pokemon.Batalla(pokemonJugadorUnico, movimientosJugador, hp_Jugador, pokemonContrincante, movimientosRival, hp_rival)
+            batalla = pokemon.Batalla(pokemonJugadorUnico, movimientosJugador,
+                                      hp_Jugador, pokemonContrincante, movimientosRival, hp_rival)
             session["batalla"] = batalla.to_dict()
 
     # Recoger los datos de las sesion
@@ -87,15 +90,14 @@ def BatallaP():
         movimiento_usado = request.form.get("movimiento")
         movimiento_usado_rival = random.choice(movimientoR)["name"]
         hp_Jugador, hp_rival = batalla.ejecutarTurno(
-                                pokemonJugadorUnico, 
-                                pokemonContrincante, 
-                                movimiento_usado, 
-                                hp_Jugador,
-                                movimiento_usado_rival, 
-                                hp_rival
-                            )
+            pokemonJugadorUnico,
+            pokemonContrincante,
+            movimiento_usado,
+            hp_Jugador,
+            movimiento_usado_rival,
+            hp_rival
+        )
 
-        
         if hp_rival <= 0:
             batalla.hp_rival = 0
         elif hp_Jugador <= 0:
@@ -106,10 +108,9 @@ def BatallaP():
 
     # devolver datos a la sesion
     session["batalla"] = batalla.to_dict()
-    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, hp_rival=hp_rival,hp_max_rival=hp_max_rival, pokemonJugadorUnico=pokemonJugadorUnico, hp_Jugador=hp_Jugador,hp_max_jugador=hp_max_jugador ,colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientosJ, batalla=batalla, log=log)
+    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, hp_rival=hp_rival, hp_max_rival=hp_max_rival, pokemonJugadorUnico=pokemonJugadorUnico, hp_Jugador=hp_Jugador, hp_max_jugador=hp_max_jugador, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientosJ, batalla=batalla, log=log)
 
 # Ejemplo profesor
-
 
 
 @batalla_pb.route("/test")
