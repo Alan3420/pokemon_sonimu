@@ -75,16 +75,30 @@ def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, ha
             "hp": hp_Jugador
         }
 
-    dano = calcularDano(primero["name"], primero["habilidad"], segundo["name"])
+    dano, mult = calcularDano(primero["name"], primero["habilidad"], segundo["name"])
+    if mult > 1:
+        efecto = "¡Es super efectivo!"
+    elif mult < 1:
+        efecto = "No es muy efectivo..."
+    else:
+        efecto = ""
+
     segundo["hp"] -= dano
 
-    bloque.append(f"1º: {primero['name'].name} usó {primero['habilidad']} e hizo {dano} de daño. {segundo['name'].name} tiene ahora {max(0, segundo['hp'])} PS.")
+    bloque.append(f"1º: {primero['name'].name} usó {primero['habilidad']}, el ataque {efecto} hizo {dano} de daño. {segundo['name'].name} tiene ahora {max(0, segundo['hp'])} PS.")
     
     if segundo['hp'] > 0:
-        dano = calcularDano(segundo["name"], segundo["habilidad"], primero["name"])
+        dano, mult = calcularDano(segundo["name"], segundo["habilidad"], primero["name"])
+        if mult > 1:
+            efecto = "¡Es super efectivo!"
+        elif mult < 1:
+            efecto = "no es muy efectivo..."
+        else:
+            efecto = ""
+
         primero["hp"] -= dano
 
-        bloque.append(f"2º: {segundo['name'].name} usó {segundo['habilidad']} e hizo {dano} de daño. {primero['name'].name} tiene ahora {max(0,primero['hp'])} PS.")
+        bloque.append(f"2º: {segundo['name'].name} usó {segundo['habilidad']}, el ataque {efecto} e hizo {dano} de daño. {primero['name'].name} tiene ahora {max(0,primero['hp'])} PS.")
         
     log.insert(0, bloque)
     if primero["name"].name == pokemonJugador.name:
@@ -106,7 +120,7 @@ def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, ha
 def efectividad(move_tipo, defensor_tipos):
     mult = 1.0
     for tipo in defensor_tipos:
-        multiplier *= type_chart.get(move_tipo, {}).get(tipo, 1.0)
+        mult *= type_chart.get(move_tipo, {}).get(tipo, 1.0)
     return mult
      
 def calcularDano(pokemonAtaque , habilidad, pokemonAtacado):
@@ -117,7 +131,7 @@ def calcularDano(pokemonAtaque , habilidad, pokemonAtacado):
 
     power = get_move_stat(pokemonAtaque, habilidad, "power")
     dano = int((power * (ataque / defensa) * mult) / 4) + 1
-    return int(dano)
+    return int(dano), mult
 
 def get_move_stat(pokemon, move_name, key):
     for move in pokemon.moves:
