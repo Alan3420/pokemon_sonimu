@@ -38,7 +38,8 @@
                 </div>
                 <!-- FIN ESTADO -->
                 <div class="contenedorIa">
-                    <img class="sprites" id="spriteIa" src="{{pokemonContrincante.sprites.front_default}}"
+                    <img class="sprites" id="spriteIa" 
+                    src="{% if num_sini_lokete > 950 %}{{pokemonContrincante.sprites.front_shiny}}{%else%}{{pokemonContrincante.sprites.front_default}}{% endif %}"
                         alt="Foto de {{pokemonContrincante.name}}">
                     <div class="informacion">
                         {{pokemonContrincante.stat}}
@@ -70,7 +71,8 @@
                 </div><br>
                 <!-- FIN ESTADO -->
                 <div class="contenedorJugador">
-                    <img class="sprites" id="spriteJugador" src="{{pokemonJugadorUnico.sprites.back_default}}"
+                    <img  class="sprites {% if pokemonContrincante.name in orden_ataques %}attack{% endif %}" id="spriteJugador" 
+                    src="{% if num_sini_lokete < 50 %}{{pokemonJugadorUnico.sprites.back_shiny}}{%else%}{{pokemonJugadorUnico.sprites.back_default}}{% endif %}"
                         alt="Foto de {{pokemonJugadorUnico.name}}">
                     <div class="informacion">
                         {{pokemonJugadorUnico.stat}}

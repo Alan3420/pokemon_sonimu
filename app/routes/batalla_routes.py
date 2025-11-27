@@ -25,7 +25,10 @@ def PokedexS():
 
 @batalla_pb.route('/batallasPokemon', methods=["POST", "GET"])
 def BatallaP():
+    # No se guarda en sesion a posta
+    num_sini = random.randint(1,1000)
     resultado = ''
+    orden_ataques = ''
     nombrePokemon = session.get("pokemon")
 
     if not nombrePokemon:
@@ -91,7 +94,7 @@ def BatallaP():
     if request.method == "POST":
         movimiento_usado = request.form.get("movimiento")
         movimiento_usado_rival = random.choice(movimientoR)["name"]
-        hp_Jugador, hp_rival, turno, resultado = battle_service.ejecutarTurno(
+        hp_Jugador, hp_rival, turno, resultado, orden_ataques= battle_service.ejecutarTurno(
             pokemonJugadorUnico,
             pokemonContrincante,
             movimiento_usado,
@@ -101,7 +104,7 @@ def BatallaP():
             turno,
             log
         )
-
+        
         if hp_rival <= 0:
             batalla.hp_rival = 0
             batalla.hp_Jugador = hp_Jugador
@@ -115,4 +118,4 @@ def BatallaP():
 
     # devolver datos a la sesion
     session["batalla"] = batalla.to_dict()
-    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, hp_rival=hp_rival, hp_max_rival=hp_max_rival, pokemonJugadorUnico=pokemonJugadorUnico, hp_Jugador=hp_Jugador, hp_max_jugador=hp_max_jugador, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientosJ, batalla=batalla, log=log, resultado=resultado)
+    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, hp_rival=hp_rival, hp_max_rival=hp_max_rival, pokemonJugadorUnico=pokemonJugadorUnico, hp_Jugador=hp_Jugador, hp_max_jugador=hp_max_jugador, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientosJ, batalla=batalla, log=log, resultado=resultado, orden_ataques=orden_ataques, num_sini_lokete=num_sini)
