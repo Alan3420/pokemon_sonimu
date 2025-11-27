@@ -4,7 +4,7 @@ from app.database.db import db
 
 
 class trainer(db.Model):
-    __tablename__ = "Usuario"
+    __tablename__ = "Entrenador"
     id = Column(Integer, primary_key=True, autoincrement=True)
     nombre = Column(String(100), unique=True, nullable=False)
     password = Column(String(100), nullable=False)

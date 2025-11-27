@@ -2,6 +2,7 @@ from flask import Blueprint, redirect, render_template, session, url_for
 from app.forms.trainer_form import TrainerForm
 from app.database.db import db
 from app.models.trainer import trainer
+from app.repositories.entrenador_Repo import crear_entrenador, obtener_entrenador_por_nombre
 home_pb = Blueprint('home_route', __name__, template_folder='templates')
 
 
@@ -17,10 +18,8 @@ def Bienvenido():
         nombreTrainer = form.trainer.data
         passwdTrainer = form.passwd.data
 
-        usuarioTrainer = trainer(nombreTrainer, passwdTrainer, id=None)
-        db.session.add(usuarioTrainer)
-        db.session.commit()
-
+        # Recordar que la funcion crear_entrenador crear y retorna el objeto trainer, lo añade a la session y un commit en la bd.
+        crear_entrenador(nombreTrainer, passwdTrainer)
         return redirect(url_for('batalla_route.PokedexS'))
 
     return render_template('index.html', form=form)
