@@ -48,6 +48,7 @@ def movimientosJugador(pokemonJugadorUnico):
 # Logica de batalla
 def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, habilidadRival, hp_rival,turno, log):        
     turno +=1
+    resultado = None  
     bloque = []
     bloque.append(f"___ Turno {turno} ___")
 
@@ -74,28 +75,40 @@ def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, ha
             "hp": hp_Jugador
         }
 
-    dano = calcularDano(primero["name"], primero["habilidad"])
+    dano = calcularDano(primero["name"], primero["habilidad"], segundo["name"])
     segundo["hp"] -= dano
 
     bloque.append(f"1º: {primero['name'].name} usó {primero['habilidad']} e hizo {dano} de daño. {segundo['name'].name} tiene ahora {max(0, segundo['hp'])} PS.")
     
-    dano = calcularDano(segundo["name"], segundo["habilidad"])
-    primero["hp"] -= dano
+    if segundo['hp'] > 0:
+        dano = calcularDano(segundo["name"], segundo["habilidad"], primero["name"])
+        primero["hp"] -= dano
 
-    bloque.append(f"2º: {segundo['name'].name} usó {segundo['habilidad']} e hizo {dano} de daño. {primero['name'].name} tiene ahora {primero['hp']} PS.")
-    
-    log.insert(0, bloque)
-
-    if primero["name"].name == pokemonJugador.name:
-        return primero["hp"], segundo["hp"], turno
-    else:
-        return segundo["hp"], primero["hp"], turno
+        bloque.append(f"2º: {segundo['name'].name} usó {segundo['habilidad']} e hizo {dano} de daño. {primero['name'].name} tiene ahora {max(0,primero['hp'])} PS.")
         
-def calcularDano(pokemonAtaque , habilidad):
+    log.insert(0, bloque)
+    if primero["name"].name == pokemonJugador.name:
+
+        if segundo["hp"] < 0:
+            resultado ="Ganado"
+        elif primero["hp"] < 0:
+            resultado="Perdido"
+
+        return primero["hp"], segundo["hp"], turno, resultado
+    else:
+        if segundo["hp"] < 0:
+            resultado ="Perdido"
+        elif primero["hp"] < 0:
+            resultado="Ganado"
+
+        return segundo["hp"], primero["hp"], turno, resultado      
+def calcularDano(pokemonAtaque , habilidad, pokemonAtacado):
+    ataque =  Batalla.get_stat(pokemonAtaque, 'attack')
+    defensa = Batalla.get_stat(pokemonAtacado, 'defense')
+
+        
     power = get_move_stat(pokemonAtaque, habilidad, "power")
-    if power is None:
-        power = 0
-    dano = power*0.10
+    dano = int((power * (ataque / defensa)) / 4) + 1
     return int(dano)
 
 def get_move_stat(pokemon, move_name, key):

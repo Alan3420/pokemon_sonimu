@@ -25,6 +25,8 @@ header {
 /* Interfaz-Batalla */
 #interfaz {
     max-width: 1000px;
+    min-width: 500px;
+    width: 100%;
     margin: 0 auto;
     gap: 10px;
 }
@@ -209,11 +211,55 @@ h2,
     margin-right: 10%;
 }
 
+/* Resultado */
+.mensaje_resultado{
+    text-align: center;
+
+    background-color: #ffffffc5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    padding: 10px;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    justify-content: center;
+    gap: 10px;
+}
+
+.mensaje_resultado h1{
+    color: black;
+}
+.botones{
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+.menu-btn{
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(250, 0, 0);
+
+    height: 50px;
+    width: 300px;
+    padding: 1%;
+}
+
+.menu-btn:hover{
+    filter: brightness(0.8);
+    cursor: pointer;
+}
+.menu-btn:active{
+    filter: brightness(0.4);
+}
 /* Fin-MOVIMIENTOS */
 
 /* Fin-Interfaz-Batalla */
 footer {
-    position: fixed;
+
     bottom: 0%;
     left: 0%;
 }
