@@ -46,7 +46,6 @@ def movimientosJugador(pokemonJugadorUnico):
 
 # Logica de batalla
 
-
 def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, habilidadRival, hp_rival, turno, log):
     turno += 1
     resultado = None
