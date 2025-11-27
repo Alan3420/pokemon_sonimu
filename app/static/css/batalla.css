@@ -95,10 +95,9 @@ header {
 
 .hpBarra {
     background: #4cd964;
-    /* verde */
     height: 100%;
     width: 100%;
-    transition: width 0.4s ease;
+    transition: width 0.8s cubic-bezier(.4, 0, .2, 1);
 }
 
 .hpText {
@@ -212,7 +211,7 @@ h2,
 }
 
 /* Resultado */
-.mensaje_resultado{
+.mensaje_resultado {
     text-align: center;
 
     background-color: #ffffffc5;
@@ -228,17 +227,19 @@ h2,
     gap: 10px;
 }
 
-.mensaje_resultado h1{
+.mensaje_resultado h1 {
     color: black;
 }
-.botones{
+
+.botones {
 
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
 }
-.menu-btn{
+
+.menu-btn {
     border: none;
     border-radius: 5px;
     background-color: rgb(250, 0, 0);
@@ -248,13 +249,15 @@ h2,
     padding: 1%;
 }
 
-.menu-btn:hover{
+.menu-btn:hover {
     filter: brightness(0.8);
     cursor: pointer;
 }
-.menu-btn:active{
+
+.menu-btn:active {
     filter: brightness(0.4);
 }
+
 /* Fin-MOVIMIENTOS */
 
 /* Fin-Interfaz-Batalla */
@@ -262,4 +265,172 @@ footer {
 
     bottom: 0%;
     left: 0%;
+}
+
+/* Animación suave para la barra de vida */
+.hpBarra {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.8s ease-out;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Colores según el porcentaje de vida */
+/* Vida alta (>50%) - Verde */
+.hpBarra {
+    background: linear-gradient(to bottom, #7FFF00, #32CD32);
+    box-shadow: 0 0 10px rgba(127, 255, 0, 0.5);
+}
+
+/* Vida media (21-50%) - Amarillo */
+.hpBarra[style*="width: 2"],
+.hpBarra[style*="width: 3"],
+.hpBarra[style*="width: 4"],
+.hpBarra[style*="width: 50%"] {
+    background: linear-gradient(to bottom, #FFD700, #FFA500);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+/* Vida crítica (0-20%) - Rojo con parpadeo */
+.hpBarra[style*="width: 0%"],
+.hpBarra[style*="width: 1%"],
+.hpBarra[style*="width: 20%"] {
+    background: linear-gradient(to bottom, #FF4500, #DC143C);
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.8);
+    animation: parpadeo 0.6s infinite;
+}
+
+/* Animación de parpadeo para vida crítica */
+@keyframes parpadeo {
+
+    0%,
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 15px rgba(255, 69, 0, 0.8);
+    }
+
+    50% {
+        opacity: 0.5;
+        box-shadow: 0 0 5px rgba(255, 69, 0, 0.4);
+    }
+}
+
+/* Contenedor de la barra mejorado */
+.bloque_hpBarra {
+    width: 100%;
+    height: 12px;
+    background-color: #2a2a2a;
+    border-radius: 5px;
+    border: 2px solid #000;
+    overflow: hidden;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+/* Efecto de brillo animado en la barra */
+.hpBarra::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent);
+    animation: brillo 2.5s infinite;
+}
+
+@keyframes brillo {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* Pulso sutil constante en la barra */
+.hpBarra::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    animation: pulso 1.5s ease-in-out infinite;
+}
+
+@keyframes pulso {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Estilo mejorado para el bloque de estado */
+.bloqueEstado {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #444;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.bloqueEstado:hover {
+    transform: scale(1.02);
+    border-color: #666;
+}
+
+/* Texto de HP con estilo */
+.hpText {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    color: #fff;
+    text-shadow: 2px 2px 0 #000;
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* Nombre del Pokémon */
+.bloqueEstado .name {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    color: #FFD700;
+    text-shadow: 2px 2px 0 #000;
+    margin-bottom: 8px;
+}
+
+
+/* Animación continua de vibración sutil para vida crítica */
+.hpBarra[style*="width: 0%"],
+.hpBarra[style*="width: 1%"],
+.hpBarra[style*="width: 20%"] {
+    animation: parpadeo 0.6s infinite, vibracion 0.15s infinite;
+}
+
+@keyframes vibracion {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-1px);
+    }
+
+    75% {
+        transform: translateX(1px);
+    }
 }
