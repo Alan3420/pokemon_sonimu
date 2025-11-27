@@ -70,7 +70,7 @@
                 </div><br>
                 <!-- FIN ESTADO -->
                 <div class="contenedorJugador">
-                    <img class="sprites" id="spriteJugador" src="{{pokemonJugadorUnico.sprites.back_default}}"
+                    <img  class="sprites {% if pokemonContrincante.name in orden_ataques %}attack{% endif %}" id="spriteJugador" src="{{pokemonJugadorUnico.sprites.back_default}}"
                         alt="Foto de {{pokemonJugadorUnico.name}}">
                     <div class="informacion">
                         {{pokemonJugadorUnico.stat}}

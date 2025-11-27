@@ -75,6 +75,8 @@ def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, ha
             "hp": hp_Jugador
         }
 
+    orde_ataques = []
+
     dano, mult = calcularDano(primero["name"], primero["habilidad"], segundo["name"])
     if mult > 1:
         efecto = "¡Es super efectivo!"
@@ -86,7 +88,8 @@ def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, ha
     segundo["hp"] -= dano
 
     bloque.append(f"1º: {primero['name'].name} usó {primero['habilidad']}, el ataque {efecto} hizo {dano} de daño. {segundo['name'].name} tiene ahora {max(0, segundo['hp'])} PS.")
-    
+    # Asi identifico a quien poner la animacion
+    orde_ataques.append(primero["name"].name)
     if segundo['hp'] > 0:
         dano, mult = calcularDano(segundo["name"], segundo["habilidad"], primero["name"])
         if mult > 1:
@@ -99,6 +102,8 @@ def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, ha
         primero["hp"] -= dano
 
         bloque.append(f"2º: {segundo['name'].name} usó {segundo['habilidad']}, el ataque {efecto} e hizo {dano} de daño. {primero['name'].name} tiene ahora {max(0,primero['hp'])} PS.")
+        # Por si ataque despues
+        orde_ataques.append(segundo["name"].name)
         
     log.insert(0, bloque)
     if primero["name"].name == pokemonJugador.name:
@@ -108,14 +113,14 @@ def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, ha
         elif primero["hp"] < 0:
             resultado="Perdido"
 
-        return primero["hp"], segundo["hp"], turno, resultado
+        return primero["hp"], segundo["hp"], turno, resultado, orde_ataques
     else:
         if segundo["hp"] < 0:
             resultado ="Perdido"
         elif primero["hp"] < 0:
             resultado="Ganado"
 
-        return segundo["hp"], primero["hp"], turno, resultado 
+        return segundo["hp"], primero["hp"], turno, resultado, orde_ataques
 
 def efectividad(move_tipo, defensor_tipos):
     mult = 1.0
