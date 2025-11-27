@@ -125,10 +125,10 @@ def BatallaP():
 def listar_productos():
     conn = pokemon_Repo.get_connection()
     cur = conn.cursor()
-    cur.execute("SELECT id, nombre, precio FROM productos ORDER BY id;")
+    cur.execute("SELECT id, nombre, password FROM entrenador ORDER BY id;")
 
-    productos = cur.fetchall()
+    entrenadores = cur.fetchall()
 
     cur.close()
     conn.close()
-    return render_template("error404.html", productos=productos)
+    return render_template("error404.html", entrenadores=entrenadores)
