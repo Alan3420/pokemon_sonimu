@@ -5,7 +5,6 @@ from app.forms.pokemon_form import PokemonForm
 from app.services import battle_service
 from app.services import pokemon_services
 from app.repositories import pokemon_Repo
-from app.models import pokemon
 from app.models.batalla import Batalla
 
 
@@ -76,7 +75,7 @@ def BatallaP():
 
     # Recoger los datos de las sesion
     pokemonJugadorUnico = batalla.datos_pokemon_jugador
-    hp_Jugador = batalla.hp_rival
+    hp_Jugador = batalla.hp_Jugador
     hp_max_jugador = batalla.get_stat(pokemonJugadorUnico, "hp")
     movimientosJ = batalla.movimientosJugador
     pokemonContrincante = batalla.datos_pokemon_rival
@@ -84,18 +83,21 @@ def BatallaP():
     hp_rival = batalla.hp_rival
     hp_max_rival = batalla.get_stat(pokemonContrincante, "hp")
     log = batalla.log
+    turno = batalla.turno
 
     # Ejecucion de los movimientos
     if request.method == "POST":
         movimiento_usado = request.form.get("movimiento")
         movimiento_usado_rival = random.choice(movimientoR)["name"]
-        hp_Jugador, hp_rival = batalla.ejecutarTurno(
+        hp_Jugador, hp_rival, turno = battle_service.ejecutarTurno(                 
             pokemonJugadorUnico,
             pokemonContrincante,
             movimiento_usado,
             hp_Jugador,
             movimiento_usado_rival,
-            hp_rival
+            hp_rival,
+            turno,
+            log
         )
 
         if hp_rival <= 0:
@@ -105,6 +107,7 @@ def BatallaP():
         else:
             batalla.hp_rival = hp_rival
             batalla.hp_Jugador = hp_Jugador
+            batalla.turno = turno
 
     # devolver datos a la sesion
     session["batalla"] = batalla.to_dict()

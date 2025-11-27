@@ -2,6 +2,7 @@ import random
 
 import app.repositories.pokemon_Repo as pokemon_repo
 from app.services import pokemon_services
+from app.models.batalla import Batalla
 
 
 def pokemonContrincante():
@@ -44,92 +45,62 @@ def movimientosJugador(pokemonJugadorUnico):
 
     return movimientos
 
-def getStat(self, poke, nombreStat):
-    for stat in poke.stats:
-        if stat["name"] == nombreStat:
-            return stat["value"]
+# Logica de batalla
+def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, habilidadRival, hp_rival,turno, log):        
+    turno +=1
+    bloque = []
+    bloque.append(f"___ Turno {turno} ___")
 
-def getPW(self, poke, nombreMove):
-    for move in poke.stats:
-        if move["name"] == nombreMove:
-            return move["power"]
+    if Batalla.get_stat(pokemonJugador, "speed") >= Batalla.get_stat(pokemonRival, "speed"):
+        primero = {
+            "name": pokemonJugador,
+            "habilidad": habilidadJugador,
+            "hp": hp_Jugador
+        }
+        segundo = {
+            "name": pokemonRival,
+            "habilidad": habilidadRival,
+            "hp": hp_rival
+        }
+    else :
+        primero = {
+            "name": pokemonRival,
+            "habilidad": habilidadRival,
+            "hp": hp_rival
+        }
+        segundo = {
+            "name": pokemonJugador,
+            "habilidad": habilidadJugador,
+            "hp": hp_Jugador
+        }
 
-def getPC(self, poke, nombreMove):
-    for move in poke.stats:
-        if move["name"] == nombreMove:
-            return move["accuracy"]
+    dano = calcularDano(primero["name"], primero["habilidad"])
+    segundo["hp"] -= dano
 
-def getName(self, poke):
-    for name in poke.stats:
-        return name["name"]
+    bloque.append(f"1º: {primero['name'].name} usó {primero['habilidad']} e hizo {dano} de daño. {segundo['name'].name} tiene ahora {max(0, segundo['hp'])} PS.")
+    
+    dano = calcularDano(segundo["name"], segundo["habilidad"])
+    primero["hp"] -= dano
 
-def gethp(self, pokemon):
-    if pokemon == self.datos_pokemon_jugador:
-        return self.hp_player
-    elif pokemon == self.datos_pokemon_rival:
-        return self.hp_rival
+    bloque.append(f"2º: {segundo['name'].name} usó {segundo['habilidad']} e hizo {dano} de daño. {primero['name'].name} tiene ahora {primero['hp']} PS.")
+    
+    log.insert(0, bloque)
 
-def calcularDano(self, atacante, defensor, movimiento):
-    ataque = self.getStat(atacante, 'attack')
-    defensa = self.getStat(defensor, 'defense')
-
-    dano = (ataque*self.getPW(atacante, movimiento))/defensa
-    return round(dano, 1)
-
-def combate(self, movimiento_jugador, movimiento_rival):
-
-    if self.getStat(self.datos_pokemon_jugador, 'speed') >= self.getStat(self.datos_pokemon_rival, 'speed'):
-        primero = {"poke": self.datos_pokemon_jugador,
-                    "move": movimiento_jugador}
-        segundo = {"poke": self.datos_pokemon_rival,
-                    "move": movimiento_rival}
+    if primero["name"].name == pokemonJugador.name:
+        return primero["hp"], segundo["hp"], turno
     else:
-        primero = {"poke": self.datos_pokemon_rival,
-                    "move": movimiento_rival}
-        segundo = {"poke": self.datos_pokemon_jugador,
-                    "move": movimiento_jugador}
+        return segundo["hp"], primero["hp"], turno
+        
+def calcularDano(pokemonAtaque , habilidad):
+    power = get_move_stat(pokemonAtaque, habilidad, "power")
+    if power is None:
+        power = 0
+    dano = power*0.10
+    return int(dano)
 
-    # Primer ataque
-    dano = self.calcularDano(
-        primero["poke"], segundo["poke"], primero["move"])
-    self.aplicarDano(primero, dano)
-
-    self.log.append(
-        f"{primero['poke']} usó {primero['move']} e hizo {dano} de daño.")
-    self.log.append(
-        f"{segundo['poke']} tiene ahora 10 PS.")
-
-    # Segundo ataque
-    if self.hp_player > 0 and self.hp_rival > 0:
-        dano = self.calcularDano(
-            segundo["poke"], primero["poke"], segundo["move"])
-        self.aplicarDano(segundo, dano)
-
-    self.log.append(
-        f"{segundo['poke']} usó {segundo['move']} e hizo {dano} de daño.")
-    self.log.append(
-        f"{primero['poke']} tiene ahora 10 PS.")
-
-def aplicarDano(self, hace, dano):
-    if hace["poke"] == self.datos_pokemon_jugador:
-        self.hp_rival -= dano
-        if self.hp_rival < 0:
-            self.hp_rival = 0
-    else:
-        self.hp_player -= dano
-        if self.hp_player < 0:
-            self.hp_player = 0
-
-# Ejecutar un turno completo
-
-def ejecutarTurno(self, movimiento_jugador, movimiento_rival):
-    self.turno += 1
-    self.log.append(f"--- Turno {self.turno} ---")
-
-    self.combate(movimiento_jugador, movimiento_rival)
-
-    self.mostrarLog()
-
-def mostrarLog(self):
-    for entrada in self.log:
-        print(entrada)
+def get_move_stat(pokemon, move_name, key):
+    for move in pokemon.moves:
+        if move["name"] == move_name:
+            return move.get(key)
+    return None
+# Fin logica de batalla
