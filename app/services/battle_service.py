@@ -105,7 +105,7 @@ def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, ha
 
         bloque.append(f"2º: {segundo['name'].name} usó {segundo['habilidad']}, el ataque {efecto} e hizo {dano} de daño. {primero['name'].name} tiene ahora {max(0,primero['hp'])} PS.")
         # Por si ataque despues
-        orde_ataques.append(segundo["name"].name)
+    orde_ataques.append(segundo["name"].name)
         
     log.insert(0, bloque)
     if primero["name"].name == pokemonJugador.name:

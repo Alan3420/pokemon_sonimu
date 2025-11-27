@@ -25,6 +25,8 @@ def PokedexS():
 
 @batalla_pb.route('/batallasPokemon', methods=["POST", "GET"])
 def BatallaP():
+    # No se guarda en sesion a posta
+    num_sini = random.randint(1,1000)
     resultado = ''
     orden_ataques = ''
     nombrePokemon = session.get("pokemon")
@@ -116,4 +118,4 @@ def BatallaP():
 
     # devolver datos a la sesion
     session["batalla"] = batalla.to_dict()
-    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, hp_rival=hp_rival, hp_max_rival=hp_max_rival, pokemonJugadorUnico=pokemonJugadorUnico, hp_Jugador=hp_Jugador, hp_max_jugador=hp_max_jugador, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientosJ, batalla=batalla, log=log, resultado=resultado, orden_ataques=orden_ataques)
+    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, hp_rival=hp_rival, hp_max_rival=hp_max_rival, pokemonJugadorUnico=pokemonJugadorUnico, hp_Jugador=hp_Jugador, hp_max_jugador=hp_max_jugador, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientosJ, batalla=batalla, log=log, resultado=resultado, orden_ataques=orden_ataques, num_sini_lokete=num_sini)
