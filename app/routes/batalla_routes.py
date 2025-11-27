@@ -26,7 +26,7 @@ def PokedexS():
 
 @batalla_pb.route('/batallasPokemon', methods=["POST", "GET"])
 def BatallaP():
-    resultado=''
+    resultado = ''
     nombrePokemon = session.get("pokemon")
 
     if not nombrePokemon:
@@ -36,41 +36,44 @@ def BatallaP():
 
     # Pokemons aleatorios de contrincante
     pokemonContrincante = battle_service.pokemonContrincante()
-    hp_rival = Batalla.get_stat(pokemonContrincante, "hp")
 
     # Pokemon elegido por el jugador
     pokemonJugadorUnico = battle_service.pokemonJugador(nombrePokemon)
-    hp_Jugador = Batalla.get_stat(pokemonJugadorUnico, "hp")
 
     if pokemonJugadorUnico == None:
         mensaje = "El pokemon "+nombrePokemon + \
             " no se encuentra en la lista de la Pokedex."
         return render_template("error404.html", mensaje=mensaje), 404
 
+    hp_Jugador = Batalla.get_stat(pokemonJugadorUnico, "hp")
+    hp_rival = Batalla.get_stat(pokemonContrincante, "hp")
+
     movimientosJugador = battle_service.movimientosJugador(pokemonJugadorUnico)
     movimientosRival = battle_service.movimientosContrincante(
         pokemonContrincante)
 
     if "batalla" not in session:
-        batalla = Batalla(pokemonJugadorUnico, movimientosJugador,hp_Jugador, pokemonContrincante, movimientosRival, hp_rival)
+        batalla = Batalla(pokemonJugadorUnico, movimientosJugador,
+                          hp_Jugador, pokemonContrincante, movimientosRival, hp_rival)
         session["batalla"] = batalla.to_dict()
     else:
         datos = session["batalla"]
         # Comprobacion por si el pokemon esta en sesion, reiniciar la batalla
         if pokemonJugadorUnico.name == datos["datos_pokemon_jugador"].name:
             batalla = Batalla(
-            datos_pokemon_jugador=datos["datos_pokemon_jugador"],
-            movimientosJugador=datos["movimientosJugador"],
-            hp_Jugador=datos["hp_Jugador"],
-            datos_pokemon_rival=datos["datos_pokemon_rival"],
-            movimientosRival=datos["movimientosRival"],
-            hp_rival=datos["hp_rival"],
-            turno=datos["turno"],
-            log = datos["log"]
+                datos_pokemon_jugador=datos["datos_pokemon_jugador"],
+                movimientosJugador=datos["movimientosJugador"],
+                hp_Jugador=datos["hp_Jugador"],
+                datos_pokemon_rival=datos["datos_pokemon_rival"],
+                movimientosRival=datos["movimientosRival"],
+                hp_rival=datos["hp_rival"],
+                turno=datos["turno"],
+                log=datos["log"]
             )
 
         else:
-            batalla = Batalla(pokemonJugadorUnico, movimientosJugador, hp_Jugador, pokemonContrincante, movimientosRival, hp_rival)
+            batalla = Batalla(pokemonJugadorUnico, movimientosJugador,
+                              hp_Jugador, pokemonContrincante, movimientosRival, hp_rival)
             session["batalla"] = batalla.to_dict()
 
     # Recoger los datos de las sesion
@@ -89,7 +92,7 @@ def BatallaP():
     if request.method == "POST":
         movimiento_usado = request.form.get("movimiento")
         movimiento_usado_rival = random.choice(movimientoR)["name"]
-        hp_Jugador, hp_rival, turno, resultado = battle_service.ejecutarTurno(                 
+        hp_Jugador, hp_rival, turno, resultado = battle_service.ejecutarTurno(
             pokemonJugadorUnico,
             pokemonContrincante,
             movimiento_usado,
@@ -122,10 +125,10 @@ def BatallaP():
 def listar_productos():
     conn = pokemon_Repo.get_connection()
     cur = conn.cursor()
-    cur.execute("SELECT id, nombre, precio FROM productos ORDER BY id;")
+    cur.execute("SELECT id, nombre, password FROM entrenador ORDER BY id;")
 
-    productos = cur.fetchall()
+    entrenadores = cur.fetchall()
 
     cur.close()
     conn.close()
-    return render_template("error404.html", productos=productos)
+    return render_template("error404.html", entrenadores=entrenadores)

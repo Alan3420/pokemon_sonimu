@@ -13,16 +13,18 @@
   <h2>
 
     {{mensaje}}
-    {% for producto in productos %}
+    {% for entrenador in entrenadores %}
     <table border="2px" style="display: flex; background-color: white;">
       <tr>
+        <td style="color: black;">id</td>
         <td style="color: black;">nombre</td>
-        <td style="color: black;">precio</td>
+        <td style="color: black;">Password</td>
 
       </tr>
       <tr>
-        <td style="color: black;">{{producto.nombre}}</td>
-        <td style="color: black;">{{producto.precio}}</td>
+        <td style="color: black;">{{entrenador.id}}</td>
+        <td style="color: black;">{{entrenador.nombre}}</td>
+        <td style="color: black;">{{entrenador.password}}</td>
       </tr>
     </table>
     <br>
