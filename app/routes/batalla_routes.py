@@ -5,7 +5,8 @@ from app.forms.pokemon_form import PokemonForm
 from app.services import battle_service
 from app.services import pokemon_services
 from app.repositories import pokemon_Repo
-from app.models import pokemon, batalla
+from app.models import pokemon
+from app.models.batalla import Batalla
 
 
 batalla_pb = Blueprint('batalla_route', __name__, template_folder='templates')
@@ -36,11 +37,11 @@ def BatallaP():
 
     # Pokemons aleatorios de contrincante
     pokemonContrincante = battle_service.pokemonContrincante()
-    hp_rival = batalla.get_stat(pokemonContrincante, "hp")
+    hp_rival = Batalla.get_stat(pokemonContrincante, "hp")
 
     # Pokemon elegido por el jugador
     pokemonJugadorUnico = battle_service.pokemonJugador(nombrePokemon)
-    hp_Jugador = batalla.get_stat(pokemonJugadorUnico, "hp")
+    hp_Jugador = Batalla.get_stat(pokemonJugadorUnico, "hp")
 
     if pokemonJugadorUnico == None:
         mensaje = "El pokemon "+nombrePokemon + \
@@ -52,13 +53,13 @@ def BatallaP():
         pokemonContrincante)
 
     if "batalla" not in session:
-        batalla = batalla(pokemonJugadorUnico, movimientosJugador,hp_Jugador, pokemonContrincante, movimientosRival, hp_rival)
+        batalla = Batalla(pokemonJugadorUnico, movimientosJugador,hp_Jugador, pokemonContrincante, movimientosRival, hp_rival)
         session["batalla"] = batalla.to_dict()
     else:
         datos = session["batalla"]
         # Comprobacion por si el pokemon esta en sesion, reiniciar la batalla
         if pokemonJugadorUnico.name == datos["datos_pokemon_jugador"].name:
-            batalla = batalla(
+            batalla = Batalla(
             datos_pokemon_jugador=datos["datos_pokemon_jugador"],
             movimientosJugador=datos["movimientosJugador"],
             hp_Jugador=datos["hp_Jugador"],
@@ -70,7 +71,7 @@ def BatallaP():
             )
 
         else:
-            batalla = batalla(pokemonJugadorUnico, movimientosJugador, hp_Jugador, pokemonContrincante, movimientosRival, hp_rival)
+            batalla = Batalla(pokemonJugadorUnico, movimientosJugador, hp_Jugador, pokemonContrincante, movimientosRival, hp_rival)
             session["batalla"] = batalla.to_dict()
 
     # Recoger los datos de las sesion
