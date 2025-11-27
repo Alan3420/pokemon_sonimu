@@ -84,19 +84,35 @@
         </div><br>
         <!-- Fin-Batalla-Interfaz -->
 
-        <form method="POST">
-        <div class="movimientos">
-            {% for movimiento in movimientos %}
-            <button type="submit" name="movimiento" value="{{ movimiento.name }}"  class="moves" style="{{ colorM.get(movimiento.type) }};">
-                {{ movimiento.name }} &nbsp;&nbsp;
-                PC: {{ movimiento.accuracy }}%
-                PW: {{ movimiento.power }}
-                <img src="{{ url_for('static', filename='img/Types_name/' + movimiento.type + '.png') }}"
-                    alt="{{ movimiento.type }}">
-            </button>
-            {% endfor %}
-        </div>
-        </form>
+            {% if batalla.hp_rival == 0 or batalla.hp_Jugador == 0 %}
+                    <div class="mensaje_resultado">
+                        <h1>Has {{resultado}}</h1>
+                        <div class="botones">
+                            <button class="menu-btn" onclick="window.location.href='/pokedexSeleccion'">
+                                Jugar de nuevo
+                            </button>
+
+                            <button class="menu-btn" onclick="window.location.href='/logout'">
+                                Cerrar Sesión
+                            </button>
+                        </div>
+                    </div>
+            {% else %}
+                <form method="POST">
+                    <div class="movimientos">
+                            {% for movimiento in movimientos %}
+                            <button type="submit" name="movimiento" value="{{ movimiento.name }}"  class="moves" style="{{ colorM.get(movimiento.type) }};">
+                                {{ movimiento.name }} &nbsp;&nbsp;
+                                PC: {{ movimiento.accuracy }}%
+                                PW: {{ movimiento.power }}
+                                <img src="{{ url_for('static', filename='img/Types_name/' + movimiento.type + '.png') }}"
+                                    alt="{{ movimiento.type }}">
+                            </button>
+                        {% endfor %}
+                    </div>
+                </form>
+            {% endif %}
+
     </div>
     <div class="movimientos">
         <h2>Log</h2>

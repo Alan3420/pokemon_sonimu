@@ -5,7 +5,6 @@ from app.forms.pokemon_form import PokemonForm
 from app.services import battle_service
 from app.services import pokemon_services
 from app.repositories import pokemon_Repo
-from app.models import pokemon
 from app.models.batalla import Batalla
 
 
@@ -27,7 +26,7 @@ def PokedexS():
 
 @batalla_pb.route('/batallasPokemon', methods=["POST", "GET"])
 def BatallaP():
-
+    resultado=''
     nombrePokemon = session.get("pokemon")
 
     if not nombrePokemon:
@@ -76,7 +75,7 @@ def BatallaP():
 
     # Recoger los datos de las sesion
     pokemonJugadorUnico = batalla.datos_pokemon_jugador
-    hp_Jugador = batalla.hp_rival
+    hp_Jugador = batalla.hp_Jugador
     hp_max_jugador = batalla.get_stat(pokemonJugadorUnico, "hp")
     movimientosJ = batalla.movimientosJugador
     pokemonContrincante = batalla.datos_pokemon_rival
@@ -84,31 +83,37 @@ def BatallaP():
     hp_rival = batalla.hp_rival
     hp_max_rival = batalla.get_stat(pokemonContrincante, "hp")
     log = batalla.log
+    turno = batalla.turno
 
     # Ejecucion de los movimientos
     if request.method == "POST":
         movimiento_usado = request.form.get("movimiento")
         movimiento_usado_rival = random.choice(movimientoR)["name"]
-        hp_Jugador, hp_rival = batalla.ejecutarTurno(
+        hp_Jugador, hp_rival, turno, resultado = battle_service.ejecutarTurno(                 
             pokemonJugadorUnico,
             pokemonContrincante,
             movimiento_usado,
             hp_Jugador,
             movimiento_usado_rival,
-            hp_rival
+            hp_rival,
+            turno,
+            log
         )
 
         if hp_rival <= 0:
             batalla.hp_rival = 0
+            batalla.hp_Jugador = hp_Jugador
         elif hp_Jugador <= 0:
             batalla.hp_Jugador = 0
+            batalla.hp_rival = hp_rival
         else:
             batalla.hp_rival = hp_rival
             batalla.hp_Jugador = hp_Jugador
+            batalla.turno = turno
 
     # devolver datos a la sesion
     session["batalla"] = batalla.to_dict()
-    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, hp_rival=hp_rival, hp_max_rival=hp_max_rival, pokemonJugadorUnico=pokemonJugadorUnico, hp_Jugador=hp_Jugador, hp_max_jugador=hp_max_jugador, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientosJ, batalla=batalla, log=log)
+    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, hp_rival=hp_rival, hp_max_rival=hp_max_rival, pokemonJugadorUnico=pokemonJugadorUnico, hp_Jugador=hp_Jugador, hp_max_jugador=hp_max_jugador, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientosJ, batalla=batalla, log=log, resultado=resultado)
 
 # Ejemplo profesor
 
