@@ -1,8 +1,8 @@
 from flask import Blueprint, redirect, render_template, session, url_for
 from app.forms.trainer_form import TrainerForm
-from app.database.db import db
-from app.models.trainer import trainer
-from app.repositories.entrenador_Repo import crear_entrenador, obtener_entrenador_por_nombre
+from app.repositories import pokemon_Repo
+from app.repositories.entrenador_Repo import crear_entrenador
+
 home_pb = Blueprint('home_route', __name__, template_folder='templates')
 
 
@@ -29,3 +29,17 @@ def Bienvenido():
 def logout():
     session.clear()
     return redirect(url_for('home_route.Bienvenido'))
+
+
+# Ejemplo profesor
+@home_pb.route("/test")
+def listar_productos():
+    conn = pokemon_Repo.get_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT id, nombre, password FROM entrenador ORDER BY id;")
+
+    entrenadores = cur.fetchall()
+
+    cur.close()
+    conn.close()
+    return render_template("error404.html", entrenadores=entrenadores)

@@ -23,7 +23,6 @@ def movimientosContrincante(pokemonContrincanteUnico):
 
 def pokemonJugador(name):
 
-    
     nombre = name.strip().lower()
 
     pokemons = pokemon_services.listar_pokemons()
@@ -46,9 +45,11 @@ def movimientosJugador(pokemonJugadorUnico):
     return movimientos
 
 # Logica de batalla
-def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, habilidadRival, hp_rival,turno, log):        
-    turno +=1
-    resultado = None  
+
+
+def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, habilidadRival, hp_rival, turno, log):
+    turno += 1
+    resultado = None
     bloque = []
     bloque.append(f"___ Turno {turno} ___")
 
@@ -63,7 +64,7 @@ def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, ha
             "habilidad": habilidadRival,
             "hp": hp_rival
         }
-    else :
+    else:
         primero = {
             "name": pokemonRival,
             "habilidad": habilidadRival,
@@ -91,7 +92,8 @@ def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, ha
     # Asi identifico a quien poner la animacion
     orde_ataques.append(primero["name"].name)
     if segundo['hp'] > 0:
-        dano, mult = calcularDano(segundo["name"], segundo["habilidad"], primero["name"])
+        dano, mult = calcularDano(
+            segundo["name"], segundo["habilidad"], primero["name"])
         if mult > 1:
             efecto = "¡Es super efectivo!"
         elif mult < 1:
@@ -109,16 +111,17 @@ def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, ha
     if primero["name"].name == pokemonJugador.name:
 
         if segundo["hp"] < 0:
-            resultado ="Ganado"
+            resultado = "Ganado"
         elif primero["hp"] < 0:
-            resultado="Perdido"
+            resultado = "Perdido"
 
         return primero["hp"], segundo["hp"], turno, resultado, orde_ataques
     else:
         if segundo["hp"] < 0:
-            resultado ="Perdido"
+            resultado = "Perdido"
         elif primero["hp"] < 0:
-            resultado="Ganado"
+            resultado = "Ganado"
+
 
         return segundo["hp"], primero["hp"], turno, resultado, orde_ataques
 
@@ -127,16 +130,19 @@ def efectividad(move_tipo, defensor_tipos):
     for tipo in defensor_tipos:
         mult *= type_chart.get(move_tipo, {}).get(tipo, 1.0)
     return mult
-     
-def calcularDano(pokemonAtaque , habilidad, pokemonAtacado):
-    ataque =  Batalla.get_stat(pokemonAtaque, 'attack')
+
+
+def calcularDano(pokemonAtaque, habilidad, pokemonAtacado):
+    ataque = Batalla.get_stat(pokemonAtaque, 'attack')
     defensa = Batalla.get_stat(pokemonAtacado, 'defense')
 
-    mult = efectividad(get_move_stat(pokemonAtaque, habilidad, "type"), pokemonAtacado.types)
+    mult = efectividad(get_move_stat(
+        pokemonAtaque, habilidad, "type"), pokemonAtacado.types)
 
     power = get_move_stat(pokemonAtaque, habilidad, "power")
     dano = int((power * (ataque / defensa) * mult) / 4) + 1
     return int(dano), mult
+
 
 def get_move_stat(pokemon, move_name, key):
     for move in pokemon.moves:
@@ -144,6 +150,7 @@ def get_move_stat(pokemon, move_name, key):
             return move.get(key)
     return None
 # Fin logica de batalla
+
 
 # Esto esta robado, todos los creditos a mi primo
 type_chart = {
@@ -166,4 +173,3 @@ type_chart = {
     "steel": {"fire": 0.5, "water": 0.5, "electric": 0.5, "ice": 2, "rock": 2, "fairy": 2, "steel": 0.5},
     "fairy": {"fire": 0.5, "fighting": 2, "poison": 0.5, "dragon": 2, "dark": 2, "steel": 0.5},
 }
-

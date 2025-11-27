@@ -4,7 +4,6 @@ import app.colors as color
 from app.forms.pokemon_form import PokemonForm
 from app.services import battle_service
 from app.services import pokemon_services
-from app.repositories import pokemon_Repo
 from app.models.batalla import Batalla
 
 
@@ -118,18 +117,3 @@ def BatallaP():
     # devolver datos a la sesion
     session["batalla"] = batalla.to_dict()
     return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, hp_rival=hp_rival, hp_max_rival=hp_max_rival, pokemonJugadorUnico=pokemonJugadorUnico, hp_Jugador=hp_Jugador, hp_max_jugador=hp_max_jugador, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientosJ, batalla=batalla, log=log, resultado=resultado, orden_ataques=orden_ataques)
-
-# Ejemplo profesor
-
-
-@batalla_pb.route("/test")
-def listar_productos():
-    conn = pokemon_Repo.get_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT id, nombre, password FROM entrenador ORDER BY id;")
-
-    entrenadores = cur.fetchall()
-
-    cur.close()
-    conn.close()
-    return render_template("error404.html", entrenadores=entrenadores)
