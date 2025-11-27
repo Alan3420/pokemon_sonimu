@@ -267,6 +267,17 @@ footer {
     left: 0%;
 }
 
+
+.attack {
+    animation: atacar 0.5s ease;
+}
+
+@keyframes atacar {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(20px); }
+    100% { transform: translateX(0); }
+}
+
 /* Animación suave para la barra de vida */
 .hpBarra {
     height: 100%;
