@@ -38,7 +38,7 @@ app.register_blueprint(pokedex_pb, url_prefix='/pokedex/')
 @app.cli.command("crear_tablas")
 def crear_tablas():
     db.drop_all()
-    print("Vamos a crear tablas de ejemplos...")
+    print("Creando las tablas correspondientes para la base de datos pokemons ...")
     db.create_all()
     print("Tablas creadas")
 
