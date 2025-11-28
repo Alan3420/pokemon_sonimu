@@ -12,13 +12,19 @@ def crear_entrenador(nombreNewTrainer, newPasswd):
     return newTrainer
 
 
-# PENDIENTE...
+# FUNCION  FINALZIADA
 def obtener_entrenador_por_nombre(nombre):
-    infoTrainerDB = db.Query.filter_by(nombre=nombre).all()
+    # Hace una consulta en la base de datos filtrando por nombres y toma el primer resultado
+    infoTrainerDB = db.session.query(trainer).filter(
+        trainer.nombre == nombre).first()
 
-    for entrenador in infoTrainerDB:
-        entrenador = infoTrainerDB
+    if infoTrainerDB is None:
+        return None
 
-    # entrenador = trainer()
+    return infoTrainerDB
 
-    return print(entrenador)
+
+def obtener_todos_los_entrenadores():
+    listaEntrenadores = db.session.query(trainer).all()
+
+    return listaEntrenadores

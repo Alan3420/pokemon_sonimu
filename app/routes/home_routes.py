@@ -1,7 +1,8 @@
 from flask import Blueprint, redirect, render_template, session, url_for
 from app.forms.trainer_form import TrainerForm
 from app.repositories import pokemon_Repo
-from app.repositories.entrenador_Repo import crear_entrenador
+from app.repositories.entrenador_Repo import obtener_todos_los_entrenadores
+from app.services.trainer_service import registrar_entrenador
 
 home_pb = Blueprint('home_route', __name__, template_folder='templates')
 
@@ -19,7 +20,7 @@ def Bienvenido():
         passwdTrainer = form.passwd.data
 
         # Recordar que la funcion crear_entrenador crear y retorna el objeto trainer, lo añade a la session y un commit en la bd.
-        crear_entrenador(nombreTrainer, passwdTrainer)
+        registrar_entrenador(nombreTrainer, passwdTrainer)
         return redirect(url_for('batalla_route.PokedexS'))
 
     return render_template('index.html', form=form)
@@ -31,7 +32,7 @@ def logout():
     return redirect(url_for('home_route.Bienvenido'))
 
 
-# Ejemplo profesor
+# AREA DE PRUEBAS DEL PROYECTO
 @home_pb.route("/test")
 def listar_productos():
     conn = pokemon_Repo.get_connection()
@@ -42,4 +43,6 @@ def listar_productos():
 
     cur.close()
     conn.close()
-    return render_template("error404.html", entrenadores=entrenadores)
+
+    listaEntrenadores = obtener_todos_los_entrenadores()
+    return render_template("error404.html", entrenadores=entrenadores, listaEntrenadores=listaEntrenadores)
