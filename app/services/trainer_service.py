@@ -6,7 +6,7 @@ def registrar_entrenador(nombre, password):
 
     for entrenador in obtener_todos_los_entrenadores():
 
-        if entrenador.nombre == nombre:
+        if entrenador.nombre == nombre and entrenador.verificar_password(password) == True:
             existe = True
 
     if existe == False:

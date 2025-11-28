@@ -100,3 +100,10 @@ Pagina princpal con formulario ✅
 Listado de Pokémon (/pokemons) ✅
 
 Página de batalla (/battle) ✅
+
+
+## Comando para crear las tablas necesarias para el funcionamiento de la base de datos pokemons.db
+
+`flask.exe --app app.main crear_tablas`
+
+Recordar que este comando se ejecutará a nivel de la carpeta donde se encuentra nuestro proyecto.
