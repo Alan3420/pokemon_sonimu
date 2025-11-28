@@ -5,6 +5,7 @@ from app.forms.pokemon_form import PokemonForm
 from app.services import battle_service
 from app.services import pokemon_services
 from app.models.batalla import Batalla
+import app.models.exceptions as Exception
 
 
 batalla_pb = Blueprint('batalla_route', __name__, template_folder='templates')
@@ -27,6 +28,7 @@ def PokedexS():
 def BatallaP():
     # No se guarda en sesion a posta
     num_sini = random.randint(1,1000)
+    
     resultado = ''
     orden_ataques = ''
     nombrePokemon = session.get("pokemon")
@@ -42,10 +44,14 @@ def BatallaP():
     # Pokemon elegido por el jugador
     pokemonJugadorUnico = battle_service.pokemonJugador(nombrePokemon)
 
-    if pokemonJugadorUnico == None:
-        mensaje = "El pokemon "+nombrePokemon + \
-            " no se encuentra en la lista de la Pokedex."
-        return render_template("error404.html", mensaje=mensaje), 404
+    try:
+        if pokemonJugadorUnico is None:
+            raise Exception.PokemonNoEncontrado(
+                f"El Pokémon {nombrePokemon} no se encuentra en la Pokedex."
+            )
+
+    except Exception.PokemonNoEncontrado as e:
+        return render_template("error404.html", mensaje=str(e)), 404
 
     hp_Jugador = Batalla.get_stat(pokemonJugadorUnico, "hp")
     hp_rival = Batalla.get_stat(pokemonContrincante, "hp")
