@@ -454,6 +454,99 @@
     ]
   },
   {
+    "height": 4,
+    "id": 26,
+    "name": "raichu",
+    "stats": [
+      {"name": "hp", "value": 60},
+      {"name": "attack", "value": 90},
+      {"name": "defense", "value": 55},
+      {"name": "special-attack", "value": 90},
+      {"name": "special-defense", "value": 80},
+      {"name": "speed", "value": 110}
+    ],
+    "sprites": {
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png",
+      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/26.png",
+      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/26.png",
+      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/26.png"
+    },
+    "types": ["electric"],
+    "weight": 300,
+    "moves": [
+      {
+        "name": "zap-cannon",
+        "url": "https://pokeapi.co/api/v2/move/192/",
+        "accuracy": 50,
+        "power": 120,
+        "type": "electric"
+      },
+      {
+        "name": "tera-blast",
+        "url": "https://pokeapi.co/api/v2/move/851/",
+        "accuracy": 100,
+        "power": 80,
+        "type": "normal"
+      },
+      {
+        "name": "draining-kiss",
+        "url": "https://pokeapi.co/api/v2/move/577/",
+        "accuracy": 100,
+        "power": 50,
+        "type": "fairy"
+      },
+      {
+        "name": "thunder-punch",
+        "url": "https://pokeapi.co/api/v2/move/9/",
+        "accuracy": 100,
+        "power": 75,
+        "type": "electric"
+      },
+      {
+        "name": "volt-switch",
+        "url": "https://pokeapi.co/api/v2/move/521/",
+        "accuracy": 100,
+        "power": 70,
+        "type": "electric"
+      },
+      {
+        "name": "thunder-shock",
+        "url": "https://pokeapi.co/api/v2/move/84/",
+        "accuracy": 100,
+        "power": 40,
+        "type": "electric"
+      },
+      {
+        "name": "alluring-voice",
+        "url": "https://pokeapi.co/api/v2/move/914/",
+        "accuracy": 100,
+        "power": 80,
+        "type": "fairy"
+      },
+      {
+        "name": "mega-punch",
+        "url": "https://pokeapi.co/api/v2/move/5/",
+        "accuracy": 85,
+        "power": 80,
+        "type": "normal"
+      },
+      {
+        "name": "trailblaze",
+        "url": "https://pokeapi.co/api/v2/move/885/",
+        "accuracy": 100,
+        "power": 50,
+        "type": "grass"
+      },
+      {
+        "name": "thunderbolt",
+        "url": "https://pokeapi.co/api/v2/move/85/",
+        "accuracy": 100,
+        "power": 90,
+        "type": "electric"
+      }
+    ]
+  },
+  {
     "height": 19,
     "id": 59,
     "name": "arcanine",
@@ -907,3 +1000,4 @@
     ]
   }
 ]
+  
