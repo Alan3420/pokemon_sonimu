@@ -30,10 +30,10 @@
       }
     ],
     "sprites": {
-      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
-      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/6.png",
-      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png",
-      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/6.png"
+      "front_default": "https://play.pokemonshowdown.com/sprites/gen5ani/charizard.gif",
+      "back_default": "https://play.pokemonshowdown.com/sprites/gen5ani-back/charizard.gif",
+      "front_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/charizard.gif",
+      "back_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-back-shiny/charizard.gif"
     },
     "types": [
       "fire",
@@ -144,10 +144,10 @@
       }
     ],
     "sprites": {
-      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
-      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/3.png",
-      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/3.png",
-      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/3.png"
+      "front_default": "https://play.pokemonshowdown.com/sprites/gen5ani/venusaur.gif",
+      "back_default": "https://play.pokemonshowdown.com/sprites/gen5ani-back/venusaur.gif",
+      "front_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/venusaur.gif",
+      "back_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-back-shiny/venusaur.gif"
     },
     "types": [
       "grass",
@@ -258,10 +258,10 @@
       }
     ],
     "sprites": {
-      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
-      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/9.png",
-      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/9.png",
-      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/9.png"
+      "front_default": "https://play.pokemonshowdown.com/sprites/gen5ani/blastoise.gif",
+      "back_default": "https://play.pokemonshowdown.com/sprites/gen5ani-back/blastoise.gif",
+      "front_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/blastoise.gif",
+      "back_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-back-shiny/blastoise.gif"
     },
     "types": [
       "water"
@@ -371,10 +371,10 @@
       }
     ],
     "sprites": {
-      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
-      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/25.png",
-      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png",
-      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/25.png"
+      "front_default": "https://play.pokemonshowdown.com/sprites/gen5ani/pikachu.gif",
+      "back_default": "https://play.pokemonshowdown.com/sprites/gen5ani-back/pikachu.gif",
+      "front_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/pikachu.gif",
+      "back_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-back-shiny/pikachu.gif"
     },
     "types": [
       "electric"
@@ -466,10 +466,10 @@
       {"name": "speed", "value": 110}
     ],
     "sprites": {
-      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png",
-      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/26.png",
-      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/26.png",
-      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/26.png"
+      "front_default": "https://play.pokemonshowdown.com/sprites/gen5ani/raichu.gif",
+      "back_default": "https://play.pokemonshowdown.com/sprites/gen5ani-back/raichu.gif",
+      "front_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/raichu.gif",
+      "back_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-back-shiny/raichu.gif"
     },
     "types": ["electric"],
     "weight": 300,
@@ -577,10 +577,10 @@
       }
     ],
     "sprites": {
-      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/59.png",
-      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/59.png",
-      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/59.png",
-      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/59.png"
+      "front_default": "https://play.pokemonshowdown.com/sprites/gen5ani/arcanine.gif",
+      "back_default": "https://play.pokemonshowdown.com/sprites/gen5ani-back/arcanine.gif",
+      "front_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/arcanine.gif",
+      "back_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-back-shiny/arcanine.gif"
     },
     "types": [
       "fire"
@@ -690,10 +690,10 @@
       }
     ],
     "sprites": {
-      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png",
-      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/130.png",
-      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/130.png",
-      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/130.png"
+      "front_default": "https://play.pokemonshowdown.com/sprites/gen5ani/gyarados.gif",
+      "back_default": "https://play.pokemonshowdown.com/sprites/gen5ani-back/gyarados.gif",
+      "front_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/gyarados.gif",
+      "back_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-back-shiny/gyarados.gif"
     },
     "types": [
       "water",
@@ -804,10 +804,10 @@
       }
     ],
     "sprites": {
-      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/497.png",
-      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/497.png",
-      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/497.png",
-      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/497.png"
+      "front_default": "https://play.pokemonshowdown.com/sprites/gen5ani/serperior.gif",
+      "back_default": "https://play.pokemonshowdown.com/sprites/gen5ani-back/serperior.gif",
+      "front_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/serperior.gif",
+      "back_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-back-shiny/serperior.gif"
     },
     "types": [
       "grass"
@@ -917,10 +917,10 @@
       }
     ],
     "sprites": {
-      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/500.png",
-      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/500.png",
-      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/500.png",
-      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/500.png"
+      "front_default": "https://play.pokemonshowdown.com/sprites/gen5ani/emboar.gif",
+      "back_default": "https://play.pokemonshowdown.com/sprites/gen5ani-back/emboar.gif",
+      "front_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/emboar.gif",
+      "back_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-back-shiny/emboar.gif"
     },
     "types": [
       "fire",
@@ -1031,10 +1031,10 @@
       }
     ],
     "sprites": {
-      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/503.png",
-      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/503.png",
-      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/503.png",
-      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/503.png"
+      "front_default": "https://play.pokemonshowdown.com/sprites/gen5ani/samurott.gif",
+      "back_default": "https://play.pokemonshowdown.com/sprites/gen5ani-back/samurott.gif",
+      "front_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/samurott.gif",
+      "back_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-back-shiny/samurott.gif"
     },
     "types": [
       "water"
@@ -1144,10 +1144,10 @@
       }
     ],
     "sprites": {
-      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/181.png",
-      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/181.png",
-      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/181.png",
-      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/181.png"
+      "front_default": "https://play.pokemonshowdown.com/sprites/gen5ani/ampharos.gif",
+      "back_default": "https://play.pokemonshowdown.com/sprites/gen5ani-back/ampharos.gif",
+      "front_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/ampharos.gif",
+      "back_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-back-shiny/ampharos.gif"
     },
     "types": [
       "electric"
@@ -1257,10 +1257,10 @@
       }
     ],
     "sprites": {
-      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/571.png",
-      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/571.png",
-      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/571.png",
-      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/571.png"
+      "front_default": "https://play.pokemonshowdown.com/sprites/gen5ani/zoroark.gif",
+      "back_default": "https://play.pokemonshowdown.com/sprites/gen5ani-back/zoroark.gif",
+      "front_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/zoroark.gif",
+      "back_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-back-shiny/zoroark.gif"
     },
     "types": [
       "dark"
@@ -1335,10 +1335,10 @@
       }
     ],
     "sprites": {
-      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/609.png",
-      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/609.png",
-      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/609.png",
-      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/609.png"
+      "front_default": "https://play.pokemonshowdown.com/sprites/gen5ani/chandelure.gif",
+      "back_default": "https://play.pokemonshowdown.com/sprites/gen5ani-back/chandelure.gif",
+      "front_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/chandelure.gif",
+      "back_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-back-shiny/chandelure.gif"
     },
     "types": [
       "ghost",
@@ -1414,10 +1414,10 @@
       }
     ],
     "sprites": {
-      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/553.png",
-      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/553.png",
-      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/553.png",
-      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/553.png"
+      "front_default": "https://play.pokemonshowdown.com/sprites/gen5ani/krookodile.gif",
+      "back_default": "https://play.pokemonshowdown.com/sprites/gen5ani-back/krookodile.gif",
+      "front_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/krookodile.gif",
+      "back_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-back-shiny/krookodile.gif"
     },
     "types": [
       "ground",
@@ -1463,4 +1463,3 @@
     ]
   }
 ]
-  
