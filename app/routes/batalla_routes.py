@@ -26,8 +26,6 @@ def PokedexS():
 
 @batalla_pb.route('/batallasPokemon', methods=["POST", "GET"])
 def BatallaP():
-    # No se guarda en sesion a posta
-    num_sini = random.randint(1,1000)
     
     resultado = ''
     orden_ataques = ''
@@ -57,12 +55,13 @@ def BatallaP():
     hp_rival = Batalla.get_stat(pokemonContrincante, "hp")
 
     movimientosJugador = battle_service.movimientosJugador(pokemonJugadorUnico)
-    movimientosRival = battle_service.movimientosContrincante(
-        pokemonContrincante)
+    movimientosRival = battle_service.movimientosContrincante(pokemonContrincante)
+    
+    num_sini = random.randint(1,1000)
 
     if "batalla" not in session:
         batalla = Batalla(pokemonJugadorUnico, movimientosJugador,
-                          hp_Jugador, pokemonContrincante, movimientosRival, hp_rival)
+                          hp_Jugador, pokemonContrincante, movimientosRival, hp_rival, num_sini)
         session["batalla"] = batalla.to_dict()
     else:
         datos = session["batalla"]
@@ -75,8 +74,10 @@ def BatallaP():
                 datos_pokemon_rival=datos["datos_pokemon_rival"],
                 movimientosRival=datos["movimientosRival"],
                 hp_rival=datos["hp_rival"],
+                prob_shiny=datos["prob_shiny"],
                 turno=datos["turno"],
                 log=datos["log"]
+
             )
 
         else:
@@ -95,6 +96,7 @@ def BatallaP():
     hp_max_rival = batalla.get_stat(pokemonContrincante, "hp")
     log = batalla.log
     turno = batalla.turno
+    num_sini = batalla.prob_shiny
 
     # Ejecucion de los movimientos
     if request.method == "POST":
