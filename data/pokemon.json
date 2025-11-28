@@ -347,15 +347,15 @@
     "stats": [
       {
         "name": "hp",
-        "value": 60
-      },
-      {
-        "name": "attack",
         "value": 62
       },
       {
+        "name": "attack",
+        "value": 66
+      },
+      {
         "name": "defense",
-        "value": 52
+        "value": 61
       },
       {
         "name": "special-attack",
