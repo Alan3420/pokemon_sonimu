@@ -12,7 +12,7 @@ main {
     width: 90%;
     max-width: 380px;
     padding: 40px 45px;
-    
+
     background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -34,7 +34,6 @@ main {
     font-weight: 600;
     margin-bottom: 25px;
     text-align: center;
-    color: #f5f5f5;
     letter-spacing: 0.3px;
 }
 
@@ -69,7 +68,7 @@ main {
 #formTrainer input[type="text"]:focus,
 #formTrainer input[type="password"]:focus {
     border-color: rgba(255, 255, 255, 0.45);
-    background: rgba(255,255,255,0.25);
+    background: rgba(255, 255, 255, 0.25);
 }
 
 /* --- BOTÓN --- */
@@ -96,7 +95,7 @@ main {
 }
 
 #formTrainer input[type="submit"]:active {
-    background: rgba(20,20,20,0.95);
+    background: rgba(20, 20, 20, 0.95);
 }
 
 /* Animación suave opcional */
@@ -105,8 +104,15 @@ main {
 }
 
 @keyframes fade {
-    from { opacity: 0; transform: translateY(15px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 footer {
