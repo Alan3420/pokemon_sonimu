@@ -838,7 +838,7 @@
       {
         "name": "aerial-ace",
         "url": "https://pokeapi.co/api/v2/move/332/",
-        "accuracy": null,
+        "accuracy": 100,
         "power": 60,
         "type": "flying"
       },
@@ -1277,9 +1277,9 @@
       {
         "name": "nasty-plot",
         "url": "https://pokeapi.co/api/v2/move/417/",
-        "accuracy": null,
-        "power": null,
-        "type": "dark"
+        "accuracy": 100,
+        "power": 85,
+        "type": "dark"      
       },
       {
         "name": "uturn",
