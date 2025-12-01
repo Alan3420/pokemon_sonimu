@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}PokemonSonimu{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/registro.css') }}">
+{% endblock %}
+
+{% block content %}
+      <form method="POST" action="{{ url_for('home_route.registro') }}" id="formTrainer">
+        <input type="hidden" name="csrf_token" value="{{ form.csrf_token._value() }}">
+        <h2 style="color: black;">Registro de Entrenador</h2>
+        <label for="trainer">Nombre</label><br>
+        {{ form.trainer(size=20) }}<br>
+        <label for="passwd">Contraseña</label><br>
+        {{ form.passwd() }}<br>
+        {{ form.enviar() }}<br>
+      </form>
+
+    {% endblock %}
+

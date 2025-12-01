@@ -43,7 +43,7 @@ def BatallaP():
     pokemonJugadorUnico = battle_service.pokemonJugador(nombrePokemon)
 
     try:
-        if pokemonJugadorUnico is None:
+        if pokemonJugadorUnico is None:  
             raise Exception.PokemonNoEncontrado(
                 f"El Pokémon {nombrePokemon} no se encuentra en la Pokedex."
             )

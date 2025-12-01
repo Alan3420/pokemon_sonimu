@@ -10,7 +10,7 @@
 <div id="titulo">
   <img id="tituloPokemon" src="../static/img/index/logopoke-removebg-preview.png" alt="Pokemon Sonimu"><br>
 
-  <form method="POST" action="{{ url_for('home_route.Bienvenido') }}" id="formTrainer">
+    <form method="POST" action="{{ url_for('home_route.Bienvenido') }}" id="formTrainer">
     <input type="hidden" name="csrf_token" value="{{ form.csrf_token._value() }}">
     <label for="trainer">Entrenador</label><br>
     {{ form.trainer(size=20) }}<br>
@@ -21,10 +21,23 @@
 
 </div>
 
+ {% if verifTrainer == False %}
+  <div class="error-mensaje">
+    Usuario o contraseña incorrectos
+  </div>
+  {% endif %}
+
 
 <img id="tabla-tiposact" onclick="abrirPopUp()" src="../static/img/index/tabla_de_tipos_boton-removebg-preview.png"
   alt="tabla_tipos" width="200px" title="mostrar tabla de tipos">
+
+{% if verifTrainer == False %}
+
+  <input id="registro" onclick="window.location.href='/register';" type="button" value="Registrarse">
+  
+{%endif%}
 <input id="jugar" onclick="iniciarSesion()" type="button" value="Jugar">
+
 
 
 {% endblock %}

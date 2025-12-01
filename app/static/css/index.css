@@ -36,11 +36,77 @@ body {
             #6a0dad 100%);
     transition: filter 0.3s ease;
 }
+#registro {
+    font-family: 'MiFuente', sans-serif;
+    width: 25%;
+    height: 50px;
 
-#jugar:hover {
+    position: fixed;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px none;
+    border-radius: 5px;
+    color: white;
+    background: linear-gradient(to right,
+            orange 0%,
+            rgb(255, 106, 0) 40%,
+            #a020f0 60%,
+            #6a0dad 100%);
+    transition: filter 0.3s ease;
+    
+    /* Animación pop */
+    animation: popCentrado 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes popCentrado {
+    0% {
+        transform: translateX(-50%) scale(0.4);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(-50%) scale(1.35);
+    }
+    100% {
+        transform: translateX(-50%) scale(1.15);
+        opacity: 1;
+    }
+}
+
+#jugar:hover, #registro:hover{
     filter: brightness(70%);
     cursor: pointer;
 }
+
+.error-mensaje {
+    background: white;
+    color: #1a1a1a;
+    font-size: 0.875rem;
+    font-weight: 400;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border-left: 5px solid #ef4444;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    
+    animation: fadeSlide 0.3s ease-out;
+    z-index: 9999;
+}
+
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 
 /* Titulo */
