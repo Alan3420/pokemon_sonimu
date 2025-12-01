@@ -149,6 +149,7 @@ def calcularDano(pokemonAtaque, habilidad, pokemonAtacado):
         pokemonAtaque, habilidad, "type"), pokemonAtacado.types)
 
     power = get_move_stat(pokemonAtaque, habilidad, "power")
+ 
     dano = int((power * (ataque / defensa) * mult) / 4) + 1
 
     prob = random.uniform(0,1)
