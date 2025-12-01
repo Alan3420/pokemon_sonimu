@@ -29,9 +29,9 @@ colorT = {
     "flying": "aqua",
     "fairy": "salmon",
     "electric": "background: linear-gradient(to top, white 40%, yellow 100%);",
-    "ghost": "background: linear-gradient(to top, white 40%, rgba(137, 172, 118) 100%);",
+    "ghost": "background: linear-gradient(to top, white 40%, purple 100%);",
     "steel": "gray",
-    "bug": "background: linear-gradient(to top, white 40%, purple 100%);",
+    "bug": "background: linear-gradient(to top, white 40%, rgba(137, 172, 118) 100%);",
     "poison": "purple",
     "ice": "white"
 }
