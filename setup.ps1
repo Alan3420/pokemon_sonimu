@@ -16,7 +16,7 @@ if (Test-Path "requirements.txt") {
     Write-Host "Instalando dependencias desde requirements.txt..."
     pip install -r requirements.txt
 } else {
-    Write-Host "No se encontro requirements.txt."
+    Write-Host "No se encontro requirements.txt. Lea el Readme para mas información"
     return
 }
 
