@@ -9,6 +9,10 @@
 Proyecto dedicado a las batallas pokemon utillizando lenguajes como Python, HTML y CSS
 
 ## Instalacion de flask
+0. Ejecuta un script con la instalación
+.\setup.ps1
+
+
 1. utilizar el siguiente comando en la terminal de visual como en una terminal independiente:
 
         1.1 Instalacion del venv
@@ -28,7 +32,10 @@ Con este comando instalarás el flask.
 Revisa las versiones que tienes que sean iguales al archivo ``requirements.txt``
 
     ./.venv/Script/pip.exe freeze 
+
 Para ver las versiones que tienes.
+
+pip install -r requirements.txt
 
 3. Para ejecutar el proyecto python -m app.main
 
