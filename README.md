@@ -127,28 +127,28 @@ Recordar que este comando se ejecutará a nivel de la carpeta donde se encuentra
 En esta fase creamos la base de datos `pokemons.db` y `entrenador_Repo.py`, dentro de la base de datos tenemos una tabla **entrenador** que creamos desde el modelo `trainer.py`
 
 ### trainer.py
-    En este script se crean la tabla entrenador para la base de datos pokemons.db, tiene un constructor donde resive su nombre y contraseña mas el id que por defecto es None ya que este en la base de datos será autoincremental.
+En este script se crean la tabla entrenador para la base de datos pokemons.db, tiene un constructor donde resive su nombre y contraseña mas el id que por defecto es **None** ya que este en la base de datos será autoincremental.
 
-    tiene funciones de seguridad para la contraseña de la libreria werkzeug.security donde se importan dos funciones, una para "hashear" la contraseña y otra para verificar la contraseña que se pasa por parametro comparando en formato hash.
+tiene funciones de seguridad para la contraseña de la libreria `werkzeug.security` donde se importan dos funciones, una para "hashear" la contraseña y otra para verificar la contraseña que se pasa por parametro comparando en formato hash.
 
 ### entrenador_Repo.py
-    Este script se conecta a la base de datos para acceder a la informacion que contiene esta.
+Este script se conecta a la base de datos para acceder a la informacion que contiene esta.
 
-    Tiene 3 funciones donde se gestiona e inserta los datos de cada entrenador:
+Tiene 3 funciones donde se gestiona e inserta los datos de cada entrenador:
 
-    crear_entrenador(nombre, password): Esta funcion crea (como su nombre lo indica) un entreandor con su nombre y contraseña donde al final de todo lo guarda en la tabla entrenador en la base de datos recordar que es creada por la clase trainer.py asi que este clase see debe importar a este script.
+crear_entrenador(nombre, password): Esta funcion crea (como su nombre lo indica) un entreandor con su nombre y contraseña donde al final de todo lo guarda en la tabla entrenador en la base de datos recordar que es creada por la clase trainer.py asi que este clase see debe importar a este script.
 
-    obtener_entrenador_por_nombre(nombre): Accede a la base de datos y hace una consulta para obtener por nombre un entrenador donde se guarda en una variable donde esta si no tiene nada es decir si es None retorna None en caso contrario retorna el entrenador obtenido.
+obtener_entrenador_por_nombre(nombre): Accede a la base de datos y hace una consulta para obtener por nombre un entrenador donde se guarda en una variable donde esta si no tiene nada es decir si es None retorna None en caso contrario retorna el entrenador obtenido.
 
-    obtener_todos_los_entrenadores(): Retorna una lista de los entrenadores que estan en la base de datos sin "filtros" es decir TODOS.
+obtener_todos_los_entrenadores(): Retorna una lista de los entrenadores que estan en la base de datos sin "filtros" es decir TODOS.
 
 ### trainer_service.py
 
-    En este script se ejecutan a mayores lo programado en el script entrenador_Repo.py utilizando los metodos: crear_entrenador y  obtener_todos_los_entrenadores para las siguientes funciones:
+En este script se ejecutan a mayores lo programado en el script **entrenador_Repo.py** utilizando los metodos: crear_entrenador y  obtener_todos_los_entrenadores para las siguientes funciones:
 
-    registrar_entrenador(nombre, password): Esta funcion en primera instancia utilizamops la funcion obtener_todos_los_entrenadores() (Recordar que devuelve una lista) en un bucle for donde en un condicional verificamos que el nombre y contraseña sean iguales a las de algunos de los que estan en la lista, si esta resulta verdadera la variable <<existe>> retorna True en caso contrario lo crea gracias a la funcion crear_entrenador(nombre, password) del script importado.
+registrar_entrenador(nombre, password): Esta funcion en primera instancia utilizamops la funcion `obtener_todos_los_entrenadores()`(Recordar que devuelve una lista) en un bucle for donde en un condicional verificamos que el nombre y contraseña sean iguales a las de algunos de los que estan en la lista, si esta resulta verdadera la variable existe retorna True en caso contrario lo crea gracias a la funcion `crear_entrenador(nombre, password)` del script importado.
 
-    autenticar_entrenador(nombre, password): Teniendo la misma logica utilizamos la funcion de obtener todos los entrenadores y solo verificamos si la informacion introducida en la funcion es igual a alguno de los nombres y contraseñas establecidos en la base de datos, si es el caso retorna True, en caso contrario False.
+autenticar_entrenador(nombre, password): Teniendo la misma logica utilizamos la funcion de obtener todos los entrenadores y solo verificamos si la informacion introducida en la funcion es igual a alguno de los nombres y contraseñas establecidos en la base de datos, si es el caso retorna True, en caso contrario False.
 
     
 
