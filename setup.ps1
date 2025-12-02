@@ -23,6 +23,9 @@ if (Test-Path "requirements.txt") {
 Write-Host "Paquetes instalados:"
 pip freeze
 
+# 5. Crea tabals
+flask.exe --app app.main crear_tablas
+
 # 5. Ejecutar la aplicación
 Write-Host "Ejecutando la aplicación..."
 python -m app.main

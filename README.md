@@ -9,7 +9,12 @@
 Proyecto dedicado a las batallas pokemon utillizando lenguajes como Python, HTML y CSS
 
 ## Instalacion de flask
-0. Ejecuta un script con la instalación
+0. Ejecuta un script con la instalación 
+
+Con este comando habilitas la instalacion, por defecto windows no permite ejecutar scripts
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+
+Con esto ejecutas el Script
 .\setup.ps1
 
 
