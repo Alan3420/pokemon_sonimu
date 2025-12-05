@@ -5,115 +5,90 @@ main {
     justify-content: center;
     align-items: center;
     padding: 40px 0;
+    min-height: 100vh;
 }
 
 /* --- FORMULARIO --- */
 #formTrainer {
     width: 90%;
-    max-width: 380px;
-    padding: 40px 45px;
+    max-width: 500px;
+    padding: 45px 50px;
 
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-
-    border-radius: 18px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
-
-    font-family: "Inter", "Segoe UI", Arial, sans-serif;
-    color: #e8e8e8;
+    background: rgba(0, 0, 0, 0.75);
+    border: 2px solid #8a7f7f;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 
     text-align: left;
 }
 
 /* --- TÍTULO --- */
 #formTrainer h2 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: 25px;
+    margin-bottom: 28px;
     text-align: center;
-    letter-spacing: 0.3px;
+    color: #2167d7;
+    letter-spacing: -0.3px;
 }
 
 /* --- LABELS --- */
 #formTrainer label {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #dcdcdc;
-    margin-bottom: 6px;
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 2px;
     display: block;
-    opacity: 0.85;
 }
 
-/* --- INPUTS  --- */
+/* --- INPUTS --- */
 #formTrainer input[type="text"],
 #formTrainer input[type="password"] {
     width: 100%;
-    padding: 10px 12px;
-    margin-bottom: 22px;
+    padding: 11px 14px;
+    margin-bottom: 20px;
 
-    border: 1px solid rgba(255, 255, 255, 0.20);
-    background: rgba(255, 255, 255, 0.18);
-    border-radius: 10px;
+    border: 2px solid #e5e7eb;
+    background: #f9fafb;
+    border-radius: 8px;
 
-    color: #f0f0f0;
+    color: #1f2937;
     font-size: 0.95rem;
 
     outline: none;
-    transition: 0.2s;
+    transition: all 0.2s;
 }
 
 #formTrainer input[type="text"]:focus,
 #formTrainer input[type="password"]:focus {
-    border-color: rgba(255, 255, 255, 0.45);
-    background: rgba(255, 255, 255, 0.25);
+    border-color: #404be4;
+    background: #ffffff;
 }
 
-/* --- BOTÓN --- */
+/* --- BOTÓN CENTRADO --- */
 #formTrainer input[type="submit"] {
-    width: 100%;
-    padding: 11px 0;
+    font-family: 'MiFuente', sans-serif;
+
+    display: block;
+    width: 80%;
+    margin: 20px auto 0;
+    padding: 12px 0;
 
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
 
-    background: rgba(45, 45, 45, 0.85);
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%);
     color: #ffffff;
 
-    font-size: 0.95rem;
-    font-weight: 500;
-    letter-spacing: 0.4px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
     cursor: pointer;
 
-    transition: 0.25s;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.25);
 }
 
-#formTrainer input[type="submit"]:hover {
-    background: rgba(30, 30, 30, 0.90);
-}
-
-#formTrainer input[type="submit"]:active {
-    background: rgba(20, 20, 20, 0.95);
-}
-
-/* Animación suave opcional */
-#formTrainer {
-    animation: fade 0.5s ease-out;
-}
-
-@keyframes fade {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+/* ------------FOOTER -----------*/
 
 footer {
     position: fixed;
