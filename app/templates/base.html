@@ -9,24 +9,24 @@
 </head>
 
 <body>
-  <header>   
+  <header>
     <div id="menu">
       <ul>
-        <li><a href="/logout">Cerrar Sesion</a></li>
         <li><a href="/">Inicio</a></li>
         <li><a href="/pokedex">Pokedex</a></li>
         {% block jugar %}{% endblock %}
       </ul>
     </div>
   </header>
-      <main>
-           {% block content %}{% endblock %}
-      </main>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
   <footer>
     <p>
-		<small>&copy; 2026_PokemonSonimu | Creditos Marcos Fernández y Alan Novas | Todos los contenidos son usados para un fin educativo</small>
-	  </p>
-    
+      <small>&copy; 2026_PokemonSonimu | Creditos Marcos Fernández y Alan Novas | Todos los contenidos son usados para
+        un fin educativo</small>
+    </p>
+
   </footer>
 </body>
 

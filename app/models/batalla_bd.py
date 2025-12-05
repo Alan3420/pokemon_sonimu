@@ -4,9 +4,9 @@ from sqlalchemy.orm import relationship
 from app.database.db import db
 
 
-class Batalla(db.Model):
+class batalla_bd(db.Model):
 
-    __tablename__ = "Batalla"
+    __tablename__ = "batalla"
 
     id_batalla = Column(Integer, primary_key=True, autoincrement=True)
     fecha = Column(DateTime, default=datetime.now)
@@ -28,4 +28,4 @@ class participa(db.Model):
     id_Entrenador = Column(Integer, ForeignKey(
         "Entrenador.id"), primary_key=True)
     id_Batalla = Column(Integer, ForeignKey(
-        "Batalla.id_batalla"), primary_key=True)
+        "batalla.id_batalla"), primary_key=True)

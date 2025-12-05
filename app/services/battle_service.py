@@ -1,6 +1,4 @@
 import random
-
-import app.repositories.pokemon_Repo as pokemon_repo
 from app.services import pokemon_services
 from app.models.batalla import Batalla
 
@@ -46,6 +44,7 @@ def movimientosJugador(pokemonJugadorUnico):
 
 # Logica de batalla
 
+
 def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, habilidadRival, hp_rival, turno, log):
     turno += 1
     resultado = None
@@ -77,7 +76,8 @@ def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, ha
 
     orde_ataques = []
 
-    dano, mult, hit = calcularDano(primero["name"], primero["habilidad"], segundo["name"])
+    dano, mult, hit = calcularDano(
+        primero["name"], primero["habilidad"], segundo["name"])
     if mult > 1:
         efecto = "¡Es super efectivo!"
     elif mult < 1:
@@ -88,10 +88,11 @@ def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, ha
     if hit:
         segundo["hp"] -= dano
 
-        bloque.append(f"1º: {primero['name'].name} usó {primero['habilidad']}, el ataque {efecto} hizo {dano} de daño. {segundo['name'].name} tiene ahora {max(0, segundo['hp'])} PS.")
+        bloque.append(
+            f"1º: {primero['name'].name} usó {primero['habilidad']}, el ataque {efecto} hizo {dano} de daño. {segundo['name'].name} tiene ahora {max(0, segundo['hp'])} PS.")
     else:
-        bloque.append(f"1º: {primero['name'].name} usó {primero['habilidad']}, el ataque fallo")
-
+        bloque.append(
+            f"1º: {primero['name'].name} usó {primero['habilidad']}, el ataque fallo")
 
     # Asi identifico a quien poner la animacion
     orde_ataques.append(primero["name"].name)
@@ -108,13 +109,15 @@ def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, ha
         if hit:
             primero["hp"] -= dano
 
-            bloque.append(f"2º: {segundo['name'].name} usó {segundo['habilidad']}, el ataque {efecto} e hizo {dano} de daño. {primero['name'].name} tiene ahora {max(0,primero['hp'])} PS.")
+            bloque.append(
+                f"2º: {segundo['name'].name} usó {segundo['habilidad']}, el ataque {efecto} e hizo {dano} de daño. {primero['name'].name} tiene ahora {max(0, primero['hp'])} PS.")
         else:
-            bloque.append(f"2º: {segundo['name'].name} usó {segundo['habilidad']},pero el ataque fallo")
+            bloque.append(
+                f"2º: {segundo['name'].name} usó {segundo['habilidad']},pero el ataque fallo")
 
         # Por si ataque despues
     orde_ataques.append(segundo["name"].name)
-        
+
     log.insert(0, bloque)
     if primero["name"].name == pokemonJugador.name:
 
@@ -130,8 +133,8 @@ def ejecutarTurno(pokemonJugador, pokemonRival, habilidadJugador, hp_Jugador, ha
         elif primero["hp"] < 0:
             resultado = "Ganado"
 
-
         return segundo["hp"], primero["hp"], turno, resultado, orde_ataques
+
 
 def efectividad(move_tipo, defensor_tipos):
     mult = 1.0
@@ -149,15 +152,15 @@ def calcularDano(pokemonAtaque, habilidad, pokemonAtacado):
         pokemonAtaque, habilidad, "type"), pokemonAtacado.types)
 
     power = get_move_stat(pokemonAtaque, habilidad, "power")
- 
+
     dano = int((power * (ataque / defensa) * mult) / 4) + 1
 
-    prob = random.uniform(0,1)
+    prob = random.uniform(0, 1)
 
-    hit= False
+    hit = False
 
     if precision/100 > prob:
-        hit= True
+        hit = True
 
     return int(dano), mult, hit
 

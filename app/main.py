@@ -6,6 +6,8 @@ from app.routes.home_routes import home_pb
 from app.routes.pokedex_route import pokedex_pb
 from flask_session import Session
 from app.database.db import db
+from app.models.trainer import trainer
+from app.models.batalla_bd import batalla_bd, participa
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = "pokemonSonimu"

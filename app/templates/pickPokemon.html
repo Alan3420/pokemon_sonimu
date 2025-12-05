@@ -5,6 +5,13 @@
 {% endblock %}
 {% block content %}
 
+{% block jugar %}
+{% if nombreUser is not none %}
+<li><a href="/logout">Cerrar Sesion</a></li>
+{% endif %}
+{% endblock %}
+
+
 <div id="contenedor">
 
     <form method="POST" action="{{ url_for('batalla_route.PokedexS') }}">

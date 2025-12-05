@@ -4,11 +4,13 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/batalla.css') }}">
 {% endblock %}
 {% block jugar %}
+<li><a href="/logout">Cerrar Sesion</a></li>
 {% if batalla.hp_rival == 0 or batalla.hp_Jugador == 0 %}
 <li><a href="/pokedexSeleccion">Jugar de nuevo</a></li>
 {% endif %}
 {% endblock %}
 {% block content %}
+
 
 <div class="contenedor-principal">
     <div id="interfaz">
@@ -38,8 +40,8 @@
                 </div>
                 <!-- FIN ESTADO -->
                 <div class="contenedorIa">
-                    <img class="sprites" id="spriteIa" 
-                    src="{% if num_sini_lokete > 950 %}{{pokemonContrincante.sprites.front_shiny}}{%else%}{{pokemonContrincante.sprites.front_default}}{% endif %}"
+                    <img class="sprites" id="spriteIa"
+                        src="{% if num_sini_lokete > 950 %}{{pokemonContrincante.sprites.front_shiny}}{%else%}{{pokemonContrincante.sprites.front_default}}{% endif %}"
                         alt="Foto de {{pokemonContrincante.name}}">
                     <div class="informacion">
                         {{pokemonContrincante.stat}}
@@ -71,8 +73,9 @@
                 </div><br>
                 <!-- FIN ESTADO -->
                 <div class="contenedorJugador">
-                    <img  class="sprites {% if pokemonContrincante.name in orden_ataques %}attack{% endif %}" id="spriteJugador" 
-                    src="{% if num_sini_lokete < 50 %}{{pokemonJugadorUnico.sprites.back_shiny}}{%else%}{{pokemonJugadorUnico.sprites.back_default}}{% endif %}"
+                    <img class="sprites {% if pokemonContrincante.name in orden_ataques %}attack{% endif %}"
+                        id="spriteJugador"
+                        src="{% if num_sini_lokete < 50 %}{{pokemonJugadorUnico.sprites.back_shiny}}{%else%}{{pokemonJugadorUnico.sprites.back_default}}{% endif %}"
                         alt="Foto de {{pokemonJugadorUnico.name}}">
                     <div class="informacion">
                         {{pokemonJugadorUnico.stat}}
