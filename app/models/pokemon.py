@@ -1,8 +1,3 @@
-import datetime
-from xmlrpc.client import DateTime
-from sqlalchemy import Column, Float, ForeignKey, Integer
-
-
 class Pokemon:
 
     def __init__(self, id, name, height, weight, stats, sprites, moves, types):
@@ -17,7 +12,10 @@ class Pokemon:
 
     def __str__(self):
         return f"{self.name.capitalize()} (ID: {self.id})"
-    
+
+
+# Ejemplo PROFESOR
+
 # class Compra():
 #     __tablename__ = "compras"
 

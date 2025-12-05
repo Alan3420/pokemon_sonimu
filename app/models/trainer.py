@@ -1,14 +1,10 @@
 from sqlalchemy import Column, Integer, String
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.database.db import db
+from sqlalchemy.orm import relationship
 
 
 class trainer(db.Model):
-    __tablename__ = "Entrenador"
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    nombre = Column(String(100), nullable=False)
-    password = Column(String(100), nullable=False)
-
     def __init__(self, nombre, password, id=None):
         self.id = id
         self.nombre = nombre
@@ -19,3 +15,13 @@ class trainer(db.Model):
 
     def verificar_password(self, passwd):
         return check_password_hash(self.password, passwd)
+
+    __tablename__ = "Entrenador"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    nombre = Column(String(100), nullable=False)
+    password = Column(String(100), nullable=False)
+    batallas = relationship(
+        "Batalla",
+        secondary="Participar",
+        back_populates="entrenadores"
+    )

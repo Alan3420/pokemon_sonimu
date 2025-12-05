@@ -1,5 +1,6 @@
 import os
 from flask import Flask
+from app.models import trainer
 from app.routes.batalla_routes import batalla_pb
 from app.routes.home_routes import home_pb
 from app.routes.pokedex_route import pokedex_pb
