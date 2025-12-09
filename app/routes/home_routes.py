@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, render_template, session, url_for
 from app.forms.trainer_form import TrainerForm
-from app.repositories import pokemon_Repo
+from app.repositories import pokemon_Repo, batallas_Repo
 from app.repositories.entrenador_Repo import obtener_todos_los_entrenadores
 from app.services.trainer_service import registrar_entrenador, autenticar_entrenador
 
@@ -56,6 +56,21 @@ def logout():
     session.clear()
     return redirect(url_for('home_route.Bienvenido'))
 
+# Historial del jugador
+
+@home_pb.route("/historial")
+def listar_productos():
+    conn = batallas_Repo.get_connection
+    cur = conn.cursor()
+    cur.execute("SELECT id, nombre, password FROM entrenador ORDER BY id;")
+
+    entrenadores = cur.fetchall()
+
+    cur.close()
+    conn.close()
+
+    listaEntrenadores = obtener_todos_los_entrenadores()
+    return render_template("error404.html", entrenadores=entrenadores, listaEntrenadores=listaEntrenadores)
 
 # AREA DE PRUEBAS DEL PROYECTO
 @home_pb.route("/test")

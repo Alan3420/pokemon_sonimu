@@ -6,9 +6,9 @@
 {% block content %}
 
 {% block jugar %}
-{% if nombreUser is not none %}
-<li><a href="/logout">Cerrar Sesion</a></li>
-{% endif %}
+    {% if nombreUser is not none %}
+    <li><a href="/logout">Cerrar Sesion</a></li>
+    {% endif %}
 {% endblock %}
 
 
