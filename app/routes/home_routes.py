@@ -62,9 +62,9 @@ def logout():
 def historial_batallas():
     conn = batallas_Repo.get_connection()
     cur = conn.cursor()
-    # cur.execute("SELECT id, nombre, password FROM entrenador ORDER BY id;")
+    # cur.execute("SELECT id_entrenador1, id_pokemon1, id_entrenador2, id_pokemon2, resultado FROM batalla ORDER BY id_entrenador1;")
 
-    entrenadores = cur.fetchall()
+    batallas = cur.fetchall()
 
     cur.close()
     conn.close()
