@@ -3,7 +3,12 @@
 {% block style %}
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/registro.css') }}">
 {% endblock %}
-
+{% block links %}
+    {% if nombreUser is not none %}
+    <li><a href="/pokedexSeleccion">Jugar</a></li>
+    <li><a href="/logout">Cerrar Sesion</a></li>
+    {% endif %}
+{% endblock %}
 {% block content %}
 
 {% endblock %}
