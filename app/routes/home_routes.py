@@ -59,10 +59,10 @@ def logout():
 # Historial del jugador
 
 @home_pb.route("/historial")
-def listar_productos():
-    conn = batallas_Repo.get_connection
+def historial_batallas():
+    conn = batallas_Repo.get_connection()
     cur = conn.cursor()
-    cur.execute("SELECT id, nombre, password FROM entrenador ORDER BY id;")
+    # cur.execute("SELECT id, nombre, password FROM entrenador ORDER BY id;")
 
     entrenadores = cur.fetchall()
 
@@ -70,7 +70,7 @@ def listar_productos():
     conn.close()
 
     listaEntrenadores = obtener_todos_los_entrenadores()
-    return render_template("error404.html", entrenadores=entrenadores, listaEntrenadores=listaEntrenadores)
+    return render_template("historial.html")
 
 # AREA DE PRUEBAS DEL PROYECTO
 @home_pb.route("/test")

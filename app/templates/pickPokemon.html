@@ -3,13 +3,15 @@
 {% block style %}
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/stylesPickPokemon.css') }}">
 {% endblock %}
-{% block content %}
-
-{% block jugar %}
+{% block links %}
     {% if nombreUser is not none %}
+    <li><a href="/historial">Historial</a></li>
     <li><a href="/logout">Cerrar Sesion</a></li>
     {% endif %}
 {% endblock %}
+{% block content %}
+
+
 
 
 <div id="contenedor">
