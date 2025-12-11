@@ -5,8 +5,10 @@ import sqlite3
 from app.models.pokemon import Pokemon
 
 
-with open(Path("data/pokemon.json"), encoding="utf-8") as fichero_data:
-    _POKEMONS = json.load(fichero_data)
+DATA_PATH = Path(__file__).parent.parent.parent / "data" / "pokemon.json"
+
+with open(DATA_PATH , encoding="utf-8") as fichero_data:
+     _POKEMONS = json.load(fichero_data)
 
 
 def obtener_Pokemons():
