@@ -1,6 +1,8 @@
 from flask import Blueprint, redirect, render_template, session, url_for
 from app.forms.trainer_form import TrainerForm
-from app.repositories import pokemon_Repo, batallas_Repo
+from app.models.trainer import trainer
+from app.repositories import pokemon_Repo
+from app.repositories.batallas_Repo import obtener_batallas_por_entrenador
 from app.repositories.entrenador_Repo import obtener_todos_los_entrenadores
 from app.services.trainer_service import registrar_entrenador, autenticar_entrenador
 
@@ -14,41 +16,41 @@ def Bienvenido():
     verifTrainer = None
 
     if form.validate_on_submit():
-        session["trainer"] = form.trainer.data
-
         # Obtencion de los datos del usuario entrenador que añadio en el formulario.
         nombreTrainer = form.trainer.data
         passwdTrainer = form.passwd.data
 
+        entrenador = trainer(nombreTrainer, passwdTrainer)
+
         verifTrainer = autenticar_entrenador(nombreTrainer, passwdTrainer)
         if verifTrainer == True:
+            session["trainer"] = entrenador.to_dict()
             return redirect(url_for('batalla_route.PokedexS'))
-       
-    return render_template('index.html', form=form, verifTrainer = verifTrainer )
+
+    return render_template('index.html', form=form, verifTrainer=verifTrainer)
+
 
 @home_pb.route('/register', methods=['GET', 'POST'])
 def registro():
 
     form = TrainerForm()
-    verifTrainer = None
 
     if form.validate_on_submit():
-        session["trainer"] = form.trainer.data
 
         # Obtencion de los datos del usuario entrenador que añadio en el formulario.
         nombreTrainer = form.trainer.data
         passwdTrainer = form.passwd.data
 
-        verifTrainer = autenticar_entrenador(nombreTrainer, passwdTrainer)
-        if verifTrainer == True:
-            return redirect(url_for('batalla_route.PokedexS'))
-        else:
-            # Recordar que la funcion crear_entrenador crear y retorna el objeto trainer, lo añade a la session y un commit en la bd.
-            registrar_entrenador(nombreTrainer, passwdTrainer)
-            return redirect(url_for('batalla_route.PokedexS'))
-      
-    return render_template('registro.html', form=form)
+        entrenador = trainer(nombreTrainer, passwdTrainer)
 
+        # Recordar que la funcion crear_entrenador crear y retorna el objeto trainer, lo añade a la session y un commit en la bd.
+        registrar_entrenador(nombreTrainer, passwdTrainer)
+
+        session["trainer"] = entrenador.to_dict()
+
+        return redirect(url_for('batalla_route.PokedexS'))
+
+    return render_template('registro.html', form=form)
 
 
 @home_pb.route("/logout")
@@ -58,19 +60,13 @@ def logout():
 
 # Historial del jugador
 
+
 @home_pb.route("/historial")
 def historial_batallas():
-    conn = batallas_Repo.get_connection()
-    cur = conn.cursor()
-    # cur.execute("SELECT id_entrenador1, id_pokemon1, id_entrenador2, id_pokemon2, resultado FROM batalla ORDER BY id_entrenador1;")
+    entrenadoRepo = session["trainer"]
+    historial = obtener_batallas_por_entrenador(entrenadoRepo)
+    return render_template("historial.html", listaEntrenadores=historial)
 
-    batallas = cur.fetchall()
-
-    cur.close()
-    conn.close()
-
-    listaEntrenadores = obtener_todos_los_entrenadores()
-    return render_template("historial.html")
 
 # AREA DE PRUEBAS DEL PROYECTO
 @home_pb.route("/test")

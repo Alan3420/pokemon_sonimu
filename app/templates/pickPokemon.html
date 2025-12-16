@@ -4,10 +4,10 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/stylesPickPokemon.css') }}">
 {% endblock %}
 {% block links %}
-    {% if nombreUser is not none %}
-    <li><a href="/historial">Historial</a></li>
-    <li><a href="/logout">Cerrar Sesion</a></li>
-    {% endif %}
+{% if nombreUser is not none %}
+<li><a href="/historial">Historial</a></li>
+<li><a href="/logout">Cerrar Sesion</a></li>
+{% endif %}
 {% endblock %}
 {% block content %}
 
@@ -19,7 +19,7 @@
     <form method="POST" action="{{ url_for('batalla_route.PokedexS') }}">
         {{ form.hidden_tag() }}
 
-        <label for="pokemon">Bienvenido {{nombreUser}} ¿Qué Pokémon utilizarás?</label><br>
+        <label for="pokemon">Bienvenido {{nombreUser.nombre}} ¿Qué Pokémon utilizarás?</label><br>
         {{ form.pokemon() }}<br><br>
 
         {{ form.enviar() }}

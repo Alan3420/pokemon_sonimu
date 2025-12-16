@@ -9,9 +9,9 @@ def crear_batalla(id_entrenador1, id_pokemon1, id_entrenador2, id_pokemon2, resu
     # -------------------------------------PENDIENTE--------------------------------------
     # Idea pendiente:  llamo a la funcion de entrenador (obtener_todos_los_entrenadores) para sacar el id de los entrenadores ya que este retorna una
     # lista de los entrenadores que tenemos en la base de datos.
-    id_entrenador1, id_entrenador2 = obtener_todos_los_entrenadores()
 
-    newBatalla = batalla_bd(id_entrenador1, id_pokemon1, id_entrenador2, id_pokemon2, resultado)
+    newBatalla = batalla_bd(id_entrenador1=id_entrenador1, id_pokemon1=id_pokemon1,
+                            id_entrenador2=id_entrenador2, id_pokemon2=id_pokemon2, resultado=resultado)
 
     db.session.add(newBatalla)
     db.session.commit()
@@ -20,8 +20,9 @@ def crear_batalla(id_entrenador1, id_pokemon1, id_entrenador2, id_pokemon2, resu
 
 
 def obtener_batalla_por_id(id):
-        # Hace una consulta en la base de datos filtrando por nombres y toma el primer resultado
-    infoBatallaDB = db.session.query(batalla_bd).filter(batalla_bd.id_batalla == id).first()
+    # Hace una consulta en la base de datos filtrando por nombres y toma el primer resultado
+    infoBatallaDB = db.session.query(batalla_bd).filter(
+        batalla_bd.id_batalla == id).first()
 
     if infoBatallaDB is None:
         return None
@@ -31,7 +32,8 @@ def obtener_batalla_por_id(id):
 # Segun el ejercicio podriamos meter una varible entrenador para que solo muestre las batallas en las que ese entrenador la a iniciado
 def obtener_batallas_por_entrenador(entrenador):
 
-    infoBatallaDB = db.session.query(batalla_bd).filter(batalla_bd.id_entrenador1 == entrenador).first()
+    infoBatallaDB = db.session.query(batalla_bd).filter(
+        batalla_bd.id_entrenador1 == entrenador).first()
 
     if infoBatallaDB is None:
         return None

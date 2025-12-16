@@ -25,3 +25,9 @@ class trainer(db.Model):
 
     def verificar_password(self, passwd):
         return check_password_hash(self.password, passwd)
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "nombre": self.nombre
+        }
