@@ -26,18 +26,18 @@ def obtener_batalla_por_id(id):
 
     if infoBatallaDB is None:
         return None
-    pass
 
 
 # Segun el ejercicio podriamos meter una varible entrenador para que solo muestre las batallas en las que ese entrenador la a iniciado
-def obtener_batallas_por_entrenador(entrenador):
+def obtener_batallas_por_entrenador(id_entrenador):
 
-    infoBatallaDB = db.session.query(batalla_bd).filter(
-        batalla_bd.id_entrenador1 == entrenador).first()
+    batallas = db.session.query(batalla_bd).filter(
+        (batalla_bd.id_entrenador1 == id_entrenador)).all()
 
-    if infoBatallaDB is None:
+    if batallas is None:
         return None
-    pass
+
+    return batallas
 
 
 def get_connection():

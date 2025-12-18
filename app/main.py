@@ -43,6 +43,11 @@ def crear_tablas():
     db.drop_all()
     print("Creando las tablas correspondientes para la base de datos pokemons ...")
     db.create_all()
+    db.session.add(trainer(nombre="Paco", password="1234"))
+    db.session.add(trainer(nombre="Alex El Capo", password="1234"))
+    db.session.add(trainer(nombre="Anuel AA", password="1234"))
+
+    db.session.commit()
     print("Tablas creadas")
 
 

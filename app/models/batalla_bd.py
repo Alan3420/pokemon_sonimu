@@ -21,6 +21,9 @@ class batalla_bd(db.Model):
         back_populates="batallas"
     )
 
+    def info(self):
+        return self.id_batalla, self.fecha, self.id_entrenador1, self.id_pokemon1, self.id_entrenador2, self.id_pokemon2, self.resultado
+
 
 class participa(db.Model):
     __tablename__ = "Participar"

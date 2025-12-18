@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}PokemonSonimu{% endblock %}
 {% block style %}
-<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/registro.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/historial.css') }}">
 {% endblock %}
 {% block links %}
 {% if nombreUser is not none %}
@@ -11,8 +11,23 @@
 {% endblock %}
 {% block content %}
 
-{%for entrenador in listaEntrenadores%}
-<p>{{entrenador.nombre}}</p>
-{%endfor%}
+<div class="container">
+    {%for entrenador in listaEntrenadores%}
+
+    {% if loop.first %}
+    <p>{{ entrenador.id_entrenador1 }}</p>
+    {% endif %}
+    {%if entrenador.resultado == False%}
+    <p>Perdió</p>
+    {% else %}
+    <p>Ganó</p>
+    {% endif %}
+    {% if loop.first %}
+    <p>Fechas de juego</p>
+    {% endif %}
+    <p>{{entrenador.fecha.strftime("%d/%m/%Y")}}</p>
+
+    {%endfor%}
+</div>
 
 {% endblock %}

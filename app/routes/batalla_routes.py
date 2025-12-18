@@ -1,5 +1,5 @@
 import random
-from flask import Blueprint, redirect, render_template, request, session, url_for
+from flask import Blueprint, flash, redirect, render_template, request, session, url_for
 import app.colors as color
 from app.forms.pokemon_form import PokemonForm
 from app.repositories.batallas_Repo import crear_batalla
@@ -140,15 +140,18 @@ def BatallaP():
         entrenadorJugador = obtener_entrenador_por_nombre(
             entrenador_dict["nombre"])
 
-        contrincante = random.choice(obtener_todos_los_entrenadores())
-        while contrincante == entrenadorJugador.id:
-            contrincante = random.choice(obtener_todos_los_entrenadores())
+        todos_entrenadores = obtener_todos_los_entrenadores()
+        contrincantes = [
+            e for e in todos_entrenadores if e.id != entrenadorJugador.id]
+
+        if contrincantes:
+            contrincante = random.choice(contrincantes)
 
         if hp_Jugador == 0:
-            resul = 0
+            resul = 1
 
         else:
-            resul = 1
+            resul = 0
 
         crear_batalla(id_entrenador1=entrenadorJugador.id, id_pokemon1=pokemonJugadorUnico.id,
                       id_entrenador2=contrincante.id, id_pokemon2=pokemonContrincante.id, resultado=resul)
