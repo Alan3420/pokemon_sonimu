@@ -64,16 +64,16 @@ def logout():
 
 @home_pb.route("/historial")
 def historial_batallas():
-    cont = 0
     entrenador_dict = session["trainer"]
     entrenadorJugador = obtener_entrenador_por_nombre(
         entrenador_dict["nombre"])
     historial = obtener_batallas_por_entrenador(entrenadorJugador.id)
 
-    for batalla in historial:
-        print(batalla.info())
-    print(entrenadorJugador.id)
-    return render_template("historial.html", listaEntrenadores=historial, cont=cont)
+    # for batalla in historial:
+    #     # print(batalla.info())
+    #     pass
+    # print(entrenadorJugador.id)
+    return render_template("historial.html", listaEntrenadores=historial, entrenador=entrenadorJugador.id)
 
 
 # AREA DE PRUEBAS DEL PROYECTO

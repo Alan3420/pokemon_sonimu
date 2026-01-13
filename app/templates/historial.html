@@ -12,19 +12,17 @@
 {% block content %}
 
 <div class="container">
+    <p>{{entrenador}}</p>
     {%for entrenador in listaEntrenadores%}
 
-    {% if loop.first %}
-    <p>{{ entrenador.id_entrenador1 }}</p>
-    {% endif %}
     {%if entrenador.resultado == False%}
     <p>Perdió</p>
     {% else %}
     <p>Ganó</p>
     {% endif %}
-    {% if loop.first %}
+
     <p>Fechas de juego</p>
-    {% endif %}
+
     <p>{{entrenador.fecha.strftime("%d/%m/%Y")}}</p>
 
     {%endfor%}
