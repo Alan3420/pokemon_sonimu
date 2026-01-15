@@ -24,6 +24,16 @@ def obtener_entrenador_por_nombre(nombre):
     return infoTrainerDB
 
 
+def obtener_entrenadores_por_id(id):
+    infoTrainerDB = db.session.query(trainer).filter(
+        trainer.id == id).all()
+
+    if infoTrainerDB is None:
+        return None
+
+    return infoTrainerDB
+
+
 def obtener_todos_los_entrenadores():
     listaEntrenadores = db.session.query(trainer).all()
 

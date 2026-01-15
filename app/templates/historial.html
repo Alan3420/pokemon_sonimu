@@ -10,15 +10,29 @@
 {% endif %}
 {% endblock %}
 {% block content %}
+<h1>Historial del jugador</h1>
 
 <div class="container">
-    <p>{{entrenador}}</p>
-    {%for entrenador in listaEntrenadores%}
+    <p>{{entrenador.nombre}}</p>
+    {%for entrenador in listaBatallas%}
 
-    {%if entrenador.resultado == False%}
-    <p>Perdió</p>
+    {%if entrenador.resultado == true%}
+    <p class="lose">
+        Perdió contra
+        {%for contrincante in entrenadorContrincante %}
+        {%if contrincante.id == entrenador.id_entrenador2 %}
+        {{contrincante.nombre}}
+        {%endif%}
+        {%endfor%}
+    </p>
     {% else %}
-    <p>Ganó</p>
+    <p class="win">Ganó a
+        {%for contrincante in entrenadorContrincante %}
+        {%if contrincante.id == entrenador.id_entrenador2 %}
+        {{contrincante.nombre}}
+        {%endif%}
+        {%endfor%}
+    </p>
     {% endif %}
 
     <p>Fechas de juego</p>
