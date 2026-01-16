@@ -1,29 +1,45 @@
 .container {
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    text-align: center;
-
-    background-color: white;
-    max-width: 50%;
-    height: 780px;
-    margin: 3rem;
-    border-radius: 20px;
+    align-items: center;
+    margin: 2rem;
 }
 
-p {
+th,
+td {
     color: black;
 }
 
-.lose {
-    color: red;
+table {
+    background: linear-gradient(rgb(74, 72, 72), rgb(141, 141, 157));
+    border: none;
+    border-radius: 15px;
+
+    padding: 1rem;
 }
 
-.win {
-    color: rgb(58, 213, 58);
+tr {
+    background-color: white;
 }
 
-h1 {
-    text-align: center;
-    margin-top: 5rem;
+tr,
+th,
+td {
+    padding: 1rem;
+    margin: 1rem;
+    border: none;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    border-radius: 15px;
+}
+
+
+
+
+
+
+footer {
+    position: fixed;
+    bottom: 0%;
+    left: 0%;
 }

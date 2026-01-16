@@ -75,7 +75,7 @@ def historial_batallas():
     # print(entrenadorJugador.id)
 
     return render_template("historial.html", listaBatallas=historial,
-                           entrenador=entrenadorJugador,
+                           entrenadorJugador=entrenadorJugador,
                            entrenadorContrincante=obtener_todos_los_entrenadores())
 
 

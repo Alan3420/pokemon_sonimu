@@ -10,36 +10,44 @@
 {% endif %}
 {% endblock %}
 {% block content %}
-<h1>Historial del jugador</h1>
 
 <div class="container">
-    <p>{{entrenador.nombre}}</p>
-    {%for entrenador in listaBatallas%}
+    <h1>Historial del jugador</h1>
+    <table>
+        {%for entrenador in listaBatallas%}
 
-    {%if entrenador.resultado == true%}
-    <p class="lose">
-        Perdió contra
-        {%for contrincante in entrenadorContrincante %}
-        {%if contrincante.id == entrenador.id_entrenador2 %}
-        {{contrincante.nombre}}
-        {%endif%}
+        <tr>
+            <th>Nombre Jugador: {{entrenadorJugador.nombre}}</th>
+
+            {%if entrenador.resultado == true%}
+
+            <th>Perdió contra: </th>
+            <td>
+                {%for contrincante in entrenadorContrincante %}
+                {%if contrincante.id == entrenador.id_entrenador2 %}
+                {{contrincante.nombre}}
+                {%endif%}
+                {%endfor%}
+            </td>
+
+            {% else %}
+
+            <th>Ganó contra: </th>
+            <td>
+                {%for contrincante in entrenadorContrincante %}
+                {%if contrincante.id == entrenador.id_entrenador2 %}
+                {{contrincante.nombre}}
+                {%endif%}
+                {%endfor%}
+            </td>
+
+            {% endif %}
+
+            <th>Fecha de Partida: </th>
+            <td>{{entrenador.fecha.strftime("%d/%m/%Y")}}</td>
+        </tr>
         {%endfor%}
-    </p>
-    {% else %}
-    <p class="win">Ganó a
-        {%for contrincante in entrenadorContrincante %}
-        {%if contrincante.id == entrenador.id_entrenador2 %}
-        {{contrincante.nombre}}
-        {%endif%}
-        {%endfor%}
-    </p>
-    {% endif %}
-
-    <p>Fechas de juego</p>
-
-    <p>{{entrenador.fecha.strftime("%d/%m/%Y")}}</p>
-
-    {%endfor%}
+    </table>
 </div>
 
 {% endblock %}
