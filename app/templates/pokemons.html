@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/stylePokedex.css') }}">
 {% endblock %}
 {% block links %}
-    {% if session["trainer"] is none %}
+    {% if usuario is not none %}
     <li><a href="/pokedexSeleccion">Jugar</a></li>
     <li><a href="/historial">Historial</a></li>
     <li><a href="/logout">Cerrar Sesion</a></li>

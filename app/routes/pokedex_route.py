@@ -1,4 +1,4 @@
-from flask import Blueprint, current_app, render_template
+from flask import Blueprint, current_app, render_template, session
 import app.colors as color
 from app.services import pokemon_services
 import app.models.exceptions as Exception
@@ -7,8 +7,8 @@ pokedex_pb = Blueprint('pokedex_route',__name__,template_folder='templates')
 
 @pokedex_pb.route('/')
 def Pokedex():
-
-    return render_template('pokemons.html', pokemons = pokemon_services.listar_pokemons(), colorM=color.colorT)
+    usuario = session.get("trainer")
+    return render_template('pokemons.html', pokemons = pokemon_services.listar_pokemons(), colorM=color.colorT, usuario = usuario)
 
 @pokedex_pb.route('/<int:id>/')
 def PokedexDetails(id):
