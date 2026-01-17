@@ -1,42 +1,121 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 2rem;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-th,
-td {
-    color: black;
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: calc(100vh - 200px);
+}
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 10%;
 }
 
 table {
-    background: linear-gradient(rgb(74, 72, 72), rgb(141, 141, 157));
-    border: none;
-    border-radius: 15px;
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
 
-    padding: 1rem;
+.thead {
+     background: linear-gradient(135deg, gold 0%, rgb(28, 28, 255) 100%);
+}
+
+.thead th {
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 tr {
-    background-color: white;
+    border-bottom: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
 }
 
-tr,
-th,
+
+tr:last-child {
+    border-bottom: none;
+}
+
 td {
-    padding: 1rem;
-    margin: 1rem;
-    border: none;
-    border-right: 1px solid white;
-    border-bottom: 1px solid white;
-    border-radius: 15px;
+    padding: 1.25rem 1.5rem;
+    color: #2d3748;
+    font-size: 0.95rem;
+    font-weight: 500;
 }
 
+td:first-child {
+    font-weight: 700;
+    color: #667eea;
+    font-size: 1.1rem;
+    text-align: center;
+    width: 80px;
+}
 
+.win {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    color: white;
+    padding: 0.6rem 1.25rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    display: inline-block;
+}
 
+.lose {
+    background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+    color: white;
+    padding: 0.6rem 1.25rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    display: inline-block;
+}
 
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .container {
+        overflow-x: auto;
+    }
+    
+    table {
+        min-width: 800px;
+    }
+}
 
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .container h1 {
+        font-size: 1.75rem;
+    }
+    
+    .thead th,
+    td {
+        padding: 1rem;
+        font-size: 0.85rem;
+    }
+}
 
 footer {
     position: fixed;

@@ -342,9 +342,8 @@ header {
 
 /* Fin-MOVIMIENTOS */
 
-/* Fin-Interfaz-Batalla */
 footer {
-
+    position: fixed;
     bottom: 0%;
     left: 0%;
 }

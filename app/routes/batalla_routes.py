@@ -147,11 +147,11 @@ def BatallaP():
         if contrincantes:
             contrincante = random.choice(contrincantes)
 
-        if hp_Jugador == 0:
-            resul = 1
+        if batalla.hp_Jugador == 0:
+            resul = False
 
         else:
-            resul = 0
+            resul = True
 
         crear_batalla(id_entrenador1=entrenadorJugador.id, id_pokemon1=pokemonJugadorUnico.id,
                       id_entrenador2=contrincante.id, id_pokemon2=pokemonContrincante.id, resultado=resul)

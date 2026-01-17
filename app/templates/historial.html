@@ -14,40 +14,60 @@
 <div class="container">
     <h1>Historial del jugador</h1>
     <table>
+        <tr class="thead">
+            <th>#</th>
+            <th>Jugador</th>
+            <th>Resultado</th>
+            <th>Oponente</th>
+            <th>Fecha</th>
+        </tr>
         {%for entrenador in listaBatallas%}
-
         <tr>
-            <th>Nombre Jugador: {{entrenadorJugador.nombre}}</th>
+            <td>{{entrenador.id_batalla}}</td>
+            <td>{{entrenadorJugador.nombre}}</td>
 
-            {%if entrenador.resultado == true%}
-
-            <th>Perdió contra: </th>
-            <td>
-                {%for contrincante in entrenadorContrincante %}
-                {%if contrincante.id == entrenador.id_entrenador2 %}
-                {{contrincante.nombre}}
-                {%endif%}
-                {%endfor%}
-            </td>
-
+            {%if entrenador.resultado == False%}
+                <td class="lose">Derrota</td>
             {% else %}
-
-            <th>Ganó contra: </th>
-            <td>
-                {%for contrincante in entrenadorContrincante %}
-                {%if contrincante.id == entrenador.id_entrenador2 %}
-                {{contrincante.nombre}}
-                {%endif%}
-                {%endfor%}
-            </td>
-
+                <td class="win">Victoria</td>
             {% endif %}
 
-            <th>Fecha de Partida: </th>
+            <td>
+                {%for contrincante in entrenadorContrincante %}
+                    {%if contrincante.id == entrenador.id_entrenador2 %}
+                        {{contrincante.nombre}}
+                    {%endif%}
+                {%endfor%}
+            </td>
+
+            
+            
+
             <td>{{entrenador.fecha.strftime("%d/%m/%Y")}}</td>
         </tr>
+
         {%endfor%}
     </table>
 </div>
 
 {% endblock %}
+
+<!-- 
+        <tr>
+            <th>Nombre Jugador: </th>
+
+            
+
+            <th>Perdió contra: </th>
+            
+
+            
+
+            <th>Ganó contra: </th>
+            
+
+            
+
+            <th>Fecha de Partida: </th>
+            
+        </tr> -->
