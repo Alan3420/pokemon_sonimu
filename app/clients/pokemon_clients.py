@@ -1,12 +1,18 @@
 import requests
+def get_pokemons():
+    url = "https://pokeapi.co/api/v2/pokemon?limit=20"
+    try:
+        resp = requests.get(url, timeout=5)
+        resp.raise_for_status()
+        return resp.json()
+    except:
+        return None
 
-url = "https://pokeapi.co/api/v2/pokemon?limit=20"
-
-# Ejemplo parametros
-# params = {"q": "laptop"}
-# response = requests.get(url, params=params)
-
-response = requests.get(url)
-
-if response.status_code == 200:
-    data = response.json()
+def get_pokemon(id):
+    url = f"https://pokeapi.co/api/v2/pokemon/{id}"
+    try:
+        resp = requests.get(url, timeout=5)
+        resp.raise_for_status()
+        return resp.json()
+    except:
+        return None
