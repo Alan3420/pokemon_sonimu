@@ -11,14 +11,13 @@ def listar_pokemons():
     pokemons = [adaptar_pokemon_list(p) for p in data["results"]]
     return pokemons
 
-
     # return pokemon_repo.obtener_Pokemons()
 
 
 def obtener_pokemon_por_id(id):
     if id < 0 or id is None:
         return None
-    
+
     data = pokemonClient.get_pokemon(id)
 
     if data is None:
@@ -27,9 +26,8 @@ def obtener_pokemon_por_id(id):
     pokemon = adaptar_pokemon_detalle(data)
     return pokemon
 
-
-
     # return pokemon_repo.buscar_por_id(id)
+
 
 def adaptar_pokemon_list(pokemon):
     url = pokemon.get("url")
@@ -42,11 +40,13 @@ def adaptar_pokemon_list(pokemon):
     }
 
 
-
 def adaptar_pokemon_detalle(data):
+
     return {
         "id": data.get("id"),
         "name": data.get("name"),
         "height": data.get("height"),
         "weight": data.get("weight"),
+        "types": data.get("types"),
+        "stats": data["stats"]["stat"]
     }
