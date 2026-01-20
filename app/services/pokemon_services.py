@@ -41,6 +41,19 @@ def adaptar_pokemon_list(pokemon):
 
 
 def adaptar_pokemon_detalle(data):
+    name = None
+    value = None
+    listaStats = []
+    for stat in data["stats"]:
+            
+        name = stat["stat"]["name"]
+        value = stat["base_stat"]
+
+        listaStats.append({
+            "name": name,
+            "value": value
+        })
+
 
     return {
         "id": data.get("id"),
@@ -48,5 +61,5 @@ def adaptar_pokemon_detalle(data):
         "height": data.get("height"),
         "weight": data.get("weight"),
         "types": data.get("types"),
-        "stats": data["stats"]["stat"]
+        "stats": listaStats
     }
