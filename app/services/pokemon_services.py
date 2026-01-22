@@ -18,10 +18,10 @@ def listar_pokemons():
         id = jsonPokemon["id"]
 
         pokemonAdaptado = pokemonClient.get_pokemon(id)
-        pokemonAdaptado = adaptar_pokemon_detalle(id)
+        pokemonAdaptado = adaptar_pokemon_detalle(pokemonAdaptado)
 
         pokemons.append(pokemonAdaptado)
-    
+    print(pokemons)
     return pokemons
 
 
@@ -82,9 +82,9 @@ def adaptar_pokemon_detalle(data):
         })
 
     # acceso a los sprites: sprites > versions > generation-v > black-white > animated 
-    sprites = []
+    sprites = {}
     for clave, valor in data["sprites"]["versions"]["generation-v"]["black-white"]["animated"].items():
-        sprites.append({
+        sprites.update({
             clave: valor
         })
         
