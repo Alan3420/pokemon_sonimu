@@ -9,13 +9,16 @@ def listar_pokemons():
         return []
     
     pokemons = []
-    for pokemon in data:
-        url = pokemon["results"]["url"]
-        pokemonId = requests.get(url, timeout=5)
-        id = pokemonId.json()
+    for pokemon in data["results"]:
+        url = pokemon["url"]
+
+        response  = requests.get(url, timeout=5)
+        jsonPokemon = response.json()
         
-        pokemonAdaptado = pokemonClient.get_pokemon(id["id"])
-        pokemonAdaptado = adaptar_pokemon_detalle(id["id"])
+        id = jsonPokemon["id"]
+
+        pokemonAdaptado = pokemonClient.get_pokemon(id)
+        pokemonAdaptado = adaptar_pokemon_detalle(id)
 
         pokemons.append(pokemonAdaptado)
     
@@ -39,7 +42,6 @@ def adaptar_pokemon_detalle(data):
     value = None
     listaStats = []
     for stat in data["stats"]:
-            
         name = stat["stat"]["name"]
         value = stat["base_stat"]
 
