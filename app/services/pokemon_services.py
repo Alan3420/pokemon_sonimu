@@ -7,12 +7,19 @@ def listar_pokemons():
     data = pokemonClient.get_pokemons()
     if not data or "results" not in data:
         return []
+    
+    pokemons = []
+    for pokemon in data:
+        url = pokemon["results"]["url"]
+        pokemonId = requests.get(url, timeout=5)
+        id = pokemonId.json()
+        
+        pokemonAdaptado = pokemonClient.get_pokemon(id["id"])
+        pokemonAdaptado = adaptar_pokemon_detalle(id["id"])
 
-    # Iterar sobre cada Pokémon y adaptarlo
-    pokemons = [adaptar_pokemon_list(p) for p in data["results"]]
+        pokemons.append(pokemonAdaptado)
+    
     return pokemons
-
-    # return pokemon_repo.obtener_Pokemons()
 
 
 def obtener_pokemon_por_id(id):
@@ -26,20 +33,6 @@ def obtener_pokemon_por_id(id):
 
     pokemon = adaptar_pokemon_detalle(data)
     return pokemon
-
-    # return pokemon_repo.buscar_por_id(id)
-
-
-def adaptar_pokemon_list(pokemon):
-    url = pokemon.get("url")
-    # Extraer id del URL: "https://pokeapi.co/api/v2/pokemon/1/" -> 1
-    id = int(url.rstrip("/").split("/")[-1]) if url else None
-    return {
-        "id": id,
-        "name": pokemon.get("name"),
-        "url": url
-    }
-
 
 def adaptar_pokemon_detalle(data):
     name = None
