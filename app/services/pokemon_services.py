@@ -1,3 +1,4 @@
+import requests
 import app.repositories.pokemon_Repo as pokemon_repo
 import app.clients.pokemon_clients as pokemonClient
 
@@ -54,12 +55,57 @@ def adaptar_pokemon_detalle(data):
             "value": value
         })
 
+    listaTipo = []
+    for params in data["types"]:
+        
+        
+        name = params["type"]["name"]
 
-    return {
-        "id": data.get("id"),
-        "name": data.get("name"),
-        "height": data.get("height"),
-        "weight": data.get("weight"),
-        "types": data.get("types"),
-        "stats": listaStats
+        listaTipo.append(name)
+
+    listaMovimientos = []
+
+    for params in data["moves"][:10]:
+    
+        name = params["move"]["name"]
+        url = params["move"]["url"]
+        
+
+        movimientos = requests.get(url, timeout=4)
+        mov_acc = movimientos.json()
+        accuracy = mov_acc["accuracy"]
+        power = mov_acc["power"]
+        type = mov_acc["type"]["name"]
+
+        listaMovimientos.append({
+            "name": name,
+            "accuracy": accuracy,
+            "power": power,
+            "type": type
+
+
+        })
+
+    # acceso a los sprites: sprites > versions > generation-v > black-white > animated 
+    sprites = []
+    for clave, valor in data["sprites"]["versions"]["generation-v"]["black-white"]["animated"].items():
+        sprites.append({
+            clave: valor
+        })
+        
+    pokemonAdaptado = {
+        "height": data["height"],
+        "id":data["id"],
+        "name": data["name"],
+        "stats": listaStats,
+        "sprites": sprites,
+        "types": listaTipo,
+        "weight": data["weight"],
+        "moves": listaMovimientos
+
     }
+
+
+
+
+    return pokemonAdaptado

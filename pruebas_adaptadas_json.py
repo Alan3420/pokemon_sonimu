@@ -13765,17 +13765,28 @@ for params in pokemon["moves"][:10]:
   power = mov_acc["power"]
   type = mov_acc["type"]["name"]
 
-  listaMovimientos.append(name)
-  listaMovimientos.append(accuracy)
-  listaMovimientos.append(power)
-  listaMovimientos.append(type)
+  listaMovimientos.append({
+      "name": name,
+      "accuracy": accuracy,
+      "power": power,
+      "type": type
+
+
+  })
+
+# acceso a los sprites: sprites > versions > generation-v > black-white > animated 
+sprites = []
+for clave, valor in pokemon["sprites"]["versions"]["generation-v"]["black-white"]["animated"].items():
+      sprites.append({
+          clave: valor
+      })
       
 pokemonAdaptado = {
     "height": pokemon["height"],
     "id":pokemon["id"],
     "name": pokemon["name"],
     "stats": listaStats,
-    "sprites": pokemon["sprites"],
+    "sprites": sprites,
     "types": listaTipo,
     "weight": pokemon["weight"],
     "moves": listaMovimientos
