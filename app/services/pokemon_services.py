@@ -1,6 +1,6 @@
 import requests
 import app.repositories.pokemon_Repo as pokemon_repo
-import app.clients.pokemon_clients as pokemonClient
+from app.clients.pokemon_clients import PokemonJsonClient as pokemonClient
 
 
 def listar_pokemons():
@@ -11,17 +11,13 @@ def listar_pokemons():
     pokemons = []
     for pokemon in data["results"]:
         url = pokemon["url"]
-
-        response  = requests.get(url, timeout=5)
-        jsonPokemon = response.json()
         
-        id = jsonPokemon["id"]
+        id = int(url.rstrip("/").split("/")[-1])
 
         pokemonAdaptado = pokemonClient.get_pokemon(id)
         pokemonAdaptado = adaptar_pokemon_detalle(pokemonAdaptado)
 
         pokemons.append(pokemonAdaptado)
-    print(pokemons)
     return pokemons
 
 
@@ -37,9 +33,10 @@ def obtener_pokemon_por_id(id):
     pokemon = adaptar_pokemon_detalle(data)
     return pokemon
 
+
 def adaptar_pokemon_detalle(data):
-    name = None
-    value = None
+
+    # ESTADISTICAS
     listaStats = []
     for stat in data["stats"]:
         name = stat["stat"]["name"]
@@ -50,24 +47,25 @@ def adaptar_pokemon_detalle(data):
             "value": value
         })
 
+    # TIPOS
     listaTipo = []
     for params in data["types"]:
-        
-        
         name = params["type"]["name"]
 
         listaTipo.append(name)
 
-    listaMovimientos = []
+    # MOVIMIENTOS
 
+    listaMovimientos = []
     for params in data["moves"][:10]:
     
         name = params["move"]["name"]
         url = params["move"]["url"]
         
+        movimientos = pokemonClient.get_movimientos(url)
 
-        movimientos = requests.get(url, timeout=4)
         mov_acc = movimientos.json()
+        
         accuracy = mov_acc["accuracy"]
         power = mov_acc["power"]
         type = mov_acc["type"]["name"]
@@ -77,17 +75,15 @@ def adaptar_pokemon_detalle(data):
             "accuracy": accuracy,
             "power": power,
             "type": type
-
-
         })
 
-    # acceso a los sprites: sprites > versions > generation-v > black-white > animated 
+    # SPRITES
     sprites = {}
     for clave, valor in data["sprites"]["versions"]["generation-v"]["black-white"]["animated"].items():
         sprites.update({
             clave: valor
         })
-        
+    
     pokemonAdaptado = {
         "height": data["height"],
         "id":data["id"],
@@ -99,8 +95,4 @@ def adaptar_pokemon_detalle(data):
         "moves": listaMovimientos
 
     }
-
-
-
-
     return pokemonAdaptado
