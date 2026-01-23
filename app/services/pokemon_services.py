@@ -3,6 +3,7 @@ import app.repositories.pokemon_Repo as pokemon_repo
 from app.clients.pokemon_clients import PokemonJsonClient
 
 pokemonClient = PokemonJsonClient()
+
 def listar_pokemons():
     data = pokemonClient.get_pokemons()
     if not data or "results" not in data:

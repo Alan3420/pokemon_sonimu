@@ -11,9 +11,6 @@ class PokemonJsonClient:
             resp = requests.get(f"{self.URL}/?limit=5", timeout=5)
             resp.raise_for_status()
             data = resp.json()
-            with open("./pokemons.json", "w", encoding="utf-8") as f:
-                json.dump(data, f, indent=4, ensure_ascii=False)
-                print("exito")
             return data
         except:
             return None
@@ -32,15 +29,14 @@ class PokemonJsonClient:
             return None
         
     def get_movimientos(self, url):
-        if id in self._cache:
-            return self._cache[id]
-        
+        if url in self._cache:
+            return self._cache[url]
         try:   
             resp = requests.get(url, timeout=4)
             resp.raise_for_status()
             data = resp.json()
         
-            self._cache[id] = data
+            self._cache[url] = data
             return data
         except:
             return None
