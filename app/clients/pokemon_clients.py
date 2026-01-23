@@ -1,4 +1,5 @@
-import requests
+import requests, json
+
 class PokemonJsonClient:
     URL = "https://pokeapi.co/api/v2/pokemon"
 
@@ -7,9 +8,13 @@ class PokemonJsonClient:
 
     def get_pokemons(self):
         try:
-            resp = requests.get(f"self.URL?limit=5", timeout=5)
+            resp = requests.get(f"{self.URL}/?limit=5", timeout=5)
             resp.raise_for_status()
-            return resp.json()
+            data = resp.json()
+            with open("./pokemons.json", "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=4, ensure_ascii=False)
+                print("exito")
+            return data
         except:
             return None
 
@@ -17,7 +22,7 @@ class PokemonJsonClient:
         if id in self._cache:
             return self._cache[id]        
         try:
-            resp = requests.get(f"self.URL/{id}", timeout=5)
+            resp = requests.get(f"{self.URL}/{id}", timeout=5)
             resp.raise_for_status()
             data = resp.json()
 

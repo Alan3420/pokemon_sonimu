@@ -1,8 +1,8 @@
 import requests
 import app.repositories.pokemon_Repo as pokemon_repo
-from app.clients.pokemon_clients import PokemonJsonClient as pokemonClient
+from app.clients.pokemon_clients import PokemonJsonClient
 
-
+pokemonClient = PokemonJsonClient()
 def listar_pokemons():
     data = pokemonClient.get_pokemons()
     if not data or "results" not in data:
@@ -64,11 +64,11 @@ def adaptar_pokemon_detalle(data):
         
         movimientos = pokemonClient.get_movimientos(url)
 
-        mov_acc = movimientos.json()
         
-        accuracy = mov_acc["accuracy"]
-        power = mov_acc["power"]
-        type = mov_acc["type"]["name"]
+        
+        accuracy = movimientos["accuracy"]
+        power = movimientos["power"]
+        type = movimientos["type"]["name"]
 
         listaMovimientos.append({
             "name": name,
