@@ -1,6 +1,7 @@
 import requests
 import app.repositories.pokemon_Repo as pokemon_repo
 from app.clients.pokemon_clients import PokemonJsonClient
+from app.models.pokemon import Pokemon
 
 pokemonClient = PokemonJsonClient()
 
@@ -9,7 +10,7 @@ def listar_pokemons():
     if not data or "results" not in data:
         return []
     
-    pokemons = []
+    listaPokemons = []
     for pokemon in data["results"]:
         url = pokemon["url"]
         
@@ -17,9 +18,11 @@ def listar_pokemons():
 
         pokemonAdaptado = pokemonClient.get_pokemon(id)
         pokemonAdaptado = adaptar_pokemon_detalle(pokemonAdaptado)
+        pokemons = Pokemon(**pokemonAdaptado)
 
-        pokemons.append(pokemonAdaptado)
-    return pokemons
+        listaPokemons.append(pokemons)
+
+    return listaPokemons
 
 
 def obtener_pokemon_por_id(id):
@@ -97,3 +100,4 @@ def adaptar_pokemon_detalle(data):
 
     }
     return pokemonAdaptado
+
