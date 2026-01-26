@@ -4,7 +4,8 @@ from app.models.batalla import Batalla
 
 
 def pokemonContrincante():
-    id = random.randint(1, 1000)
+    id = random.randint(1, 1025)
+    print(id)
     pokemon = pokemon_services.obtener_pokemon_por_id(id)
     return pokemon
 
@@ -19,19 +20,10 @@ def movimientosContrincante(pokemonContrincanteUnico):
 
 
 def pokemonJugador(name):
-
     nombre = name.strip().lower()
-
-    pokemons = pokemon_services.listar_pokemons()
-
-    for pokemon in pokemons:
-        # verificamos que el nombre que nos envian desde el formulario esta en la lista de pokemones disponibles
-        if pokemon.name.lower() == nombre:
-            pokemonJugadorUnico = pokemon
-            return pokemonJugadorUnico
-
-    return None
-
+    pokemon = pokemon_services.obtener_pokemon_por_name(nombre)
+    print("Jugador"+name)
+    return pokemon
 
 def movimientosJugador(pokemonJugadorUnico):
 
