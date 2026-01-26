@@ -135,30 +135,30 @@ def BatallaP():
     # devolver datos a la sesion
     session["batalla"] = batalla.to_dict()
 
-    if fin == True:
-        resul = None
-        # CRECION DE LA BATALLA EN LA BD
-        entrenador_dict = session["trainer"]
-        entrenadorJugador = obtener_entrenador_por_nombre(
-            entrenador_dict["nombre"])
+    # if fin == True:
+    #     resul = None
+    #     # CRECION DE LA BATALLA EN LA BD
+    #     entrenador_dict = session["trainer"]
+    #     entrenadorJugador = obtener_entrenador_por_nombre(
+    #         entrenador_dict["nombre"])
 
-        todos_entrenadores = obtener_todos_los_entrenadores()
-        contrincantes = []
+    #     todos_entrenadores = obtener_todos_los_entrenadores()
+    #     contrincantes = []
 
-        for e in todos_entrenadores:
-            if e.id != entrenadorJugador.id:
-                contrincantes.append(e)
+    #     for e in todos_entrenadores:
+    #         if e.id != entrenadorJugador.id:
+    #             contrincantes.append(e)
 
-        if contrincantes:
-            contrincante = random.choice(contrincantes)
+    #     if contrincantes:
+    #         contrincante = random.choice(contrincantes)
 
-        if batalla.hp_Jugador == 0:
-            resul = False
+    #     if batalla.hp_Jugador == 0:
+    #         resul = False
 
-        else:
-            resul = True
+    #     else:
+    #         resul = True
 
-        crear_batalla(id_entrenador1=entrenadorJugador.id, id_pokemon1=pokemonJugadorUnico.id,
-                      id_entrenador2=contrincante.id, id_pokemon2=pokemonContrincante.id, resultado=resul)
+    #     crear_batalla(id_entrenador1=entrenadorJugador.id, id_pokemon1=pokemonJugadorUnico.id,
+    #                   id_entrenador2=contrincante.id, id_pokemon2=pokemonContrincante.id, resultado=resul)
 
     return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, hp_rival=hp_rival, hp_max_rival=hp_max_rival, pokemonJugadorUnico=pokemonJugadorUnico, hp_Jugador=hp_Jugador, hp_max_jugador=hp_max_jugador, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientosJ, batalla=batalla, log=log, resultado=resultado, orden_ataques=orden_ataques, num_sini_lokete=num_sini)

@@ -146,7 +146,8 @@ def calcularDano(pokemonAtaque, habilidad, pokemonAtacado):
     ataque = Batalla.get_stat(pokemonAtaque, 'attack')
     defensa = Batalla.get_stat(pokemonAtacado, 'defense')
     precision = get_move_stat(pokemonAtaque, habilidad, 'accuracy')
-
+    if precision == None:
+        precision = 0
     mult = efectividad(get_move_stat(
         pokemonAtaque, habilidad, "type"), pokemonAtacado.types)
 
