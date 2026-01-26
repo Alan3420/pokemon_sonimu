@@ -28,6 +28,19 @@ class PokemonJsonClient:
         except:
             return None
         
+    def get_pokemonN(self, name):
+        if name in self._cache:
+            return self._cache[name]        
+        try:
+            resp = requests.get(f"{self.URL}/{name}", timeout=5)
+            resp.raise_for_status()
+            data = resp.json()
+
+            self._cache[name] = data
+            return data
+        except:
+            return None
+        
     def get_movimientos(self, url):
         if url in self._cache:
             return self._cache[url]

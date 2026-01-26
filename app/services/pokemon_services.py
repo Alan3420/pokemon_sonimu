@@ -38,6 +38,16 @@ def obtener_pokemon_por_id(id):
     pokemon = Pokemon(**pokemon)
     return pokemon
 
+def obtener_pokemon_por_name(name):
+    data = pokemonClient.get_pokemonN(name)
+
+    if data is None:
+        return None
+
+    pokemon = adaptar_pokemon_detalle(data)
+    pokemon = Pokemon(**pokemon)
+    return pokemon
+
 
 def adaptar_pokemon_detalle(data):
 
@@ -84,10 +94,15 @@ def adaptar_pokemon_detalle(data):
 
     # SPRITES
     sprites = {}
-    for clave, valor in data["sprites"]["versions"]["generation-v"]["black-white"]["animated"].items():
-        sprites.update({
-            clave: valor
-        })
+    animated = data["sprites"]["versions"]["generation-v"]["black-white"]["animated"]
+    
+
+    for clave, valor in animated.items():
+        if valor is not None:
+            sprites[clave] = valor
+        else:
+            sprites[clave] = data["sprites"].get(clave)
+
     
     pokemonAdaptado = {
         "height": data["height"],
@@ -101,4 +116,3 @@ def adaptar_pokemon_detalle(data):
 
     }
     return pokemonAdaptado
-
