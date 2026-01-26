@@ -4,10 +4,9 @@ from app.models.batalla import Batalla
 
 
 def pokemonContrincante():
-
-    pokemons = pokemon_services.listar_pokemons()
-
-    return random.choice(pokemons)
+    id = random.randint(1, 1000)
+    pokemon = pokemon_services.obtener_pokemon_por_id(id)
+    return pokemon
 
 
 def movimientosContrincante(pokemonContrincanteUnico):
@@ -152,7 +151,8 @@ def calcularDano(pokemonAtaque, habilidad, pokemonAtacado):
         pokemonAtaque, habilidad, "type"), pokemonAtacado.types)
 
     power = get_move_stat(pokemonAtaque, habilidad, "power")
-
+    if power == None:
+        power = 0
     dano = int((power * (ataque / defensa) * mult) / 4) + 1
 
     prob = random.uniform(0, 1)

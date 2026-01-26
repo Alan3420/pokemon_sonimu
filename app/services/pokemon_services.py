@@ -35,6 +35,7 @@ def obtener_pokemon_por_id(id):
         return None
 
     pokemon = adaptar_pokemon_detalle(data)
+    pokemon = Pokemon(**pokemon)
     return pokemon
 
 
