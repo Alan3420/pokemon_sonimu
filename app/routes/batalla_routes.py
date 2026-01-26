@@ -37,32 +37,34 @@ def BatallaP():
         return redirect(url_for('batalla_route.PokedexS'))
 
     pokemons = pokemon_services.listar_pokemons()
-
-    # Pokemons aleatorios de contrincante
-    pokemonContrincante = battle_service.pokemonContrincante()
-
     # Pokemon elegido por el jugador
     pokemonJugadorUnico = battle_service.pokemonJugador(nombrePokemon)
-
-    try:
-        if pokemonJugadorUnico is None:
-            raise Exception.PokemonNoEncontrado(
-                f"El Pokémon {nombrePokemon} no se encuentra en la Pokedex."
-            )
-
-    except Exception.PokemonNoEncontrado as e:
-        return render_template("error404.html", mensaje=str(e)), 404
-
-    hp_Jugador = Batalla.get_stat(pokemonJugadorUnico, "hp")
-    hp_rival = Batalla.get_stat(pokemonContrincante, "hp")
-
-    movimientosJugador = battle_service.movimientosJugador(pokemonJugadorUnico)
-    movimientosRival = battle_service.movimientosContrincante(
-        pokemonContrincante)
-
-    num_sini = random.randint(1, 1000)
-
+    
     if "batalla" not in session:
+        # Pokemons aleatorios de contrincante
+        pokemonContrincante = battle_service.pokemonContrincante()
+
+
+
+        try:
+            if pokemonJugadorUnico is None:
+                raise Exception.PokemonNoEncontrado(
+                    f"El Pokémon {nombrePokemon} no se encuentra en la Pokedex."
+                )
+
+        except Exception.PokemonNoEncontrado as e:
+            return render_template("error404.html", mensaje=str(e)), 404
+
+        hp_Jugador = Batalla.get_stat(pokemonJugadorUnico, "hp")
+        hp_rival = Batalla.get_stat(pokemonContrincante, "hp")
+
+        movimientosJugador = battle_service.movimientosJugador(pokemonJugadorUnico)
+        movimientosRival = battle_service.movimientosContrincante(
+            pokemonContrincante)
+
+        num_sini = random.randint(1, 1000)
+
+
         batalla = Batalla(pokemonJugadorUnico, movimientosJugador,
                           hp_Jugador, pokemonContrincante, movimientosRival, hp_rival, num_sini)
         session["batalla"] = batalla.to_dict()
