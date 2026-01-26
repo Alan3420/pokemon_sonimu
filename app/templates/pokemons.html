@@ -4,13 +4,36 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/stylePokedex.css') }}">
 {% endblock %}
 {% block links %}
-    {% if usuario is not none %}
-    <li><a href="/pokedexSeleccion">Jugar</a></li>
-    <li><a href="/historial">Historial</a></li>
-    <li><a href="/logout">Cerrar Sesion</a></li>
-    {% endif %}
+{% if usuario is not none %}
+<li><a href="/pokedexSeleccion">Jugar</a></li>
+<li><a href="/historial">Historial</a></li>
+<li><a href="/logout">Cerrar Sesion</a></li>
+{% endif %}
 {% endblock %}
 {% block content %}
+<div class="nav_pagina">
+
+    {%if pagination.prev_page != none%}
+
+    <!-- Botón Anterior (izquierda) -->
+    <a href="{{ url_for('pokedex_route.Pokedex', page=pagination.prev_page, per_page=pagination.per_page) }}"
+        class="btn-nav btn-prev">
+        Anterior
+    </a>
+    <p>Pagina: {{pagination.page}}</p>
+    {%endif%}
+
+    <!-- Botón Siguiente (derecha) -->
+    {% if pagination.next_page != none %}
+    <a href="{{ url_for('pokedex_route.Pokedex', page=pagination.next_page, per_page=pagination.per_page) }}"
+        class="btn-nav btn-next">
+        Siguiente
+    </a>
+    {% endif %}
+</div>
+
+
+
 <div id="contenedor">
     {%for poke in pokemons%}
     <a href="{{ url_for('pokedex_route.PokedexDetails', id=poke.id) }}">
@@ -28,7 +51,5 @@
     </a>
     {% endfor %}
 
-
-    </table>
 </div>
 {% endblock %}
