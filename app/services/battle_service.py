@@ -5,7 +5,6 @@ from app.models.batalla import Batalla
 
 def pokemonContrincante():
     id = random.randint(1, 1025)
-    print(id)
     pokemon = pokemon_services.obtener_pokemon_por_id(id)
     return pokemon
 
@@ -22,7 +21,6 @@ def movimientosContrincante(pokemonContrincanteUnico):
 def pokemonJugador(name):
     nombre = name.strip().lower()
     pokemon = pokemon_services.obtener_pokemon_por_name(nombre)
-    print("Jugador"+name)
     return pokemon
 
 def movimientosJugador(pokemonJugadorUnico):
