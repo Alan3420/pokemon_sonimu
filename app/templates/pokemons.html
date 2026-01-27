@@ -11,7 +11,7 @@
 {% endif %}
 {% endblock %}
 {% block content %}
-<div class="nav_pagina">
+<div class="{% if pagination.next_page != none %} nav_pagina {% else %}nav_pagina2 {%endif%}">
 
     {%if pagination.prev_page != none%}
 
