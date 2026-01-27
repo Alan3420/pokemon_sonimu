@@ -14,7 +14,8 @@ colorM = {
     "steel": "border: 4px groove rgb(37, 150, 190)",
     "poison": "border: 4px groove rgba(128, 0, 128)",
     "bug": "border: 4px groove rgba(137, 172, 118)",
-    "ice": "border: 4px groove rgba(173, 216, 230)"
+    "ice": "border: 4px groove rgba(173, 216, 230)",
+    "psychic": "border: 4px groove #FF3399"
 }
 
 colorT = {
@@ -33,5 +34,6 @@ colorT = {
     "steel": "gray",
     "bug": "background: linear-gradient(to top, white 40%, rgba(137, 172, 118) 100%);",
     "poison": "purple",
-    "ice": "white"
+    "ice": "white",
+    "psychic": "#FF3399"
 }
