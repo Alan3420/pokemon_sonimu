@@ -11,7 +11,7 @@
 {% endif %}
 {% endblock %}
 {% block content %}
-<div class="{% if pagination.next_page != none %} nav_pagina {% else %}nav_pagina2 {%endif%}">
+<div class="{% if pagination.prev_page != none %} nav_pagina {% else %}nav_pagina2 {%endif%}">
 
     {%if pagination.prev_page != none%}
 
@@ -20,7 +20,6 @@
         class="btn-nav btn-prev">
         Anterior
     </a>
-    <p>Pagina: {{pagination.page}}</p>
     {%endif%}
 
     <!-- Botón Siguiente (derecha) -->
@@ -31,7 +30,7 @@
     </a>
     {% endif %}
 </div>
-
+<p>Pagina: {{pagination.page}}</p>
 
 
 <div id="contenedor">
