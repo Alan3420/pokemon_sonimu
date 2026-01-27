@@ -3,30 +3,27 @@ import requests, time
 
 class PokemonJsonClient:
     URL = "https://pokeapi.co/api/v2/pokemon"
-    TTL = 1600  # segundos de vida de cache
+    TTL = 1600
 
     def __init__(self):
         self._cache = {}
 
-    # 🔹 función interna para obtener de cache con TTL
     def _get_cache(self, key):
         item = self._cache.get(key)
 
         if not item:
             return None
 
-        # si expiró
-        if time.time() > item["expires_at"]:
+        if time.time() > item["tiempo"]:
             del self._cache[key]
             return None
 
         return item["value"]
 
-    # 🔹 función interna para guardar en cache
     def _set_cache(self, key, value):
         self._cache[key] = {
             "value": value,
-            "expires_at": time.time() + self.TTL
+            "tiempo": time.time() + self.TTL
         }
 
     def get_pokemons(self):

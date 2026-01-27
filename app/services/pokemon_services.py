@@ -107,7 +107,7 @@ def adaptar_pokemon_detalle(data):
     pokemonAdaptado = {
         "height": data["height"],
         "id":data["id"],
-        "name": data["name"],
+        "name": data["species"]["name"],
         "stats": listaStats,
         "sprites": sprites,
         "types": listaTipo,
