@@ -158,6 +158,7 @@ button {
 }
 
 /* Botones de navegación de paginación */
+
 .btn-nav {
     background-color: rgba(67, 136, 196, 0.9);
     color: white;
@@ -174,4 +175,14 @@ button {
 .btn-nav:hover {
     background-color: rgba(38, 77, 111, 0.9);
     transform: scale(1.1);
+    
 }
+
+.nav_pagina2{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+
+
