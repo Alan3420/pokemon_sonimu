@@ -57,11 +57,13 @@ def BatallaP():
 
         hp_Jugador = Batalla.get_stat(pokemonJugadorUnico, "hp")
         hp_rival = Batalla.get_stat(pokemonContrincante, "hp")
-
-        movimientosJugador = battle_service.movimientosJugador(pokemonJugadorUnico)
-        movimientosRival = battle_service.movimientosContrincante(
-            pokemonContrincante)
-
+        
+        try:
+            movimientosJugador = battle_service.movimientosJugador(pokemonJugadorUnico)
+            movimientosRival = battle_service.movimientosContrincante(pokemonContrincante)
+        except Exception.PokemonNoEncontrado as e:
+            return render_template("error404.html", mensaje=str(e)), 404
+        
         num_sini = random.randint(1, 1000)
 
 

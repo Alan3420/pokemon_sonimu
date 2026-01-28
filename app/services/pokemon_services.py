@@ -1,3 +1,4 @@
+import random
 import requests
 import app.repositories.pokemon_Repo as pokemon_repo
 from app.clients.pokemon_clients import PokemonJsonClient
@@ -72,25 +73,28 @@ def adaptar_pokemon_detalle(data):
     # MOVIMIENTOS
 
     listaMovimientos = []
-    for params in data["moves"][:10]:
-    
-        name = params["move"]["name"]
+    for params in data["moves"]:
+        if len(listaMovimientos) >= 10:
+            break
+
         url = params["move"]["url"]
-        
-        movimientos = pokemonClient.get_movimientos(url)
+
+        movimiento = pokemonClient.get_movimientos(url)
 
         
-        
-        accuracy = movimientos["accuracy"]
-        power = movimientos["power"]
-        type = movimientos["type"]["name"]
+        if movimiento and movimiento["power"] is not None:
+            name = movimiento["name"]
+            accuracy = movimiento["accuracy"]
+            power = movimiento["power"]
+            type = movimiento["type"]["name"]
 
-        listaMovimientos.append({
-            "name": name,
-            "accuracy": accuracy,
-            "power": power,
-            "type": type
-        })
+            listaMovimientos.append({
+                "name": name,
+                "accuracy": accuracy,
+                "power": power,
+                "type": type
+            })
+
 
     # SPRITES
     sprites = {}

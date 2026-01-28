@@ -1,37 +1,46 @@
 import random
 from app.services import pokemon_services
 from app.models.batalla import Batalla
+import app.models.exceptions as Exception
 
 
 def pokemonContrincante():
     id = random.randint(1, 1025)
-    print(id)
     pokemon = pokemon_services.obtener_pokemon_por_id(id)
     return pokemon
 
 
 def movimientosContrincante(pokemonContrincanteUnico):
+    if not pokemonContrincanteUnico.moves:
+        raise Exception.PokemonNoEncontrado(
+            f"El Pokémon {pokemonContrincanteUnico.name} "
+            "no tiene movimientos en la Pokedex."
+        )
 
-    # Si el jugador a seleccionado un pokemon se cargaran su sets de movimientos de forma aleatoria
-    if pokemonContrincanteUnico != None:
-        movimientos = random.sample(pokemonContrincanteUnico.moves, 4)
+    return random.sample(
+        pokemonContrincanteUnico.moves, 
+        min(4, len(pokemonContrincanteUnico.moves))
+    )
 
-    return movimientos
+
 
 
 def pokemonJugador(name):
     nombre = name.strip().lower()
     pokemon = pokemon_services.obtener_pokemon_por_name(nombre)
-    print("Jugador"+name)
     return pokemon
 
 def movimientosJugador(pokemonJugadorUnico):
+    if not pokemonJugadorUnico.moves:
+        raise Exception.PokemonNoEncontrado(
+            f"El Pokémon {pokemonJugadorUnico.name} "
+            "no tiene movimientos en la Pokedex."
+        )
 
-    # Si el jugador a seleccionado un pokemon se cargaran su sets de movimientos de forma aleatoria
-    if pokemonJugadorUnico != None:
-        movimientos = random.sample(pokemonJugadorUnico.moves, 4)
-
-    return movimientos
+    return random.sample(
+        pokemonJugadorUnico.moves, 
+        min(4, len(pokemonJugadorUnico.moves))
+    )
 
 # Logica de batalla
 
