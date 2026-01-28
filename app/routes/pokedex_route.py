@@ -40,7 +40,6 @@ def Pokedex():
 
     pagination = {
         'page': pagina,
-        'per_page': limite,
         'total': total,
         'total_pages': total_pages,
         'prev_page': prev_page,

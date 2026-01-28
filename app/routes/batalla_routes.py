@@ -135,6 +135,8 @@ def BatallaP():
     # devolver datos a la sesion
     session["batalla"] = batalla.to_dict()
 
+    contrincante = None
+
     if fin == True:
         resul = None
         # CRECION DE LA BATALLA EN LA BD
@@ -148,7 +150,7 @@ def BatallaP():
         for e in todos_entrenadores:
             if e.id != entrenadorJugador.id:
                 contrincantes.append(e)
-
+               
         if contrincantes:
             contrincante = random.choice(contrincantes)
 
@@ -161,4 +163,11 @@ def BatallaP():
         crear_batalla(id_entrenador1=entrenadorJugador.id, id_pokemon1=pokemonJugadorUnico.id,
                       id_entrenador2=contrincante.id, id_pokemon2=pokemonContrincante.id, resultado=resul)
 
-    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, hp_rival=hp_rival, hp_max_rival=hp_max_rival, pokemonJugadorUnico=pokemonJugadorUnico, hp_Jugador=hp_Jugador, hp_max_jugador=hp_max_jugador, colorM=color.colorM, nombrePokemon=nombrePokemon, movimientos=movimientosJ, batalla=batalla, log=log, resultado=resultado, orden_ataques=orden_ataques, num_sini_lokete=num_sini)
+    return render_template('batalla.html', pokemons=pokemons, pokemonContrincante=pokemonContrincante, 
+                           hp_rival=hp_rival, hp_max_rival=hp_max_rival, 
+                           pokemonJugadorUnico=pokemonJugadorUnico, 
+                           hp_Jugador=hp_Jugador, hp_max_jugador=hp_max_jugador, 
+                           colorM=color.colorM, nombrePokemon=nombrePokemon, 
+                           movimientos=movimientosJ, batalla=batalla, log=log, 
+                           resultado=resultado, orden_ataques=orden_ataques, 
+                           num_sini_lokete=num_sini, contrincante=contrincante)

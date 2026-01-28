@@ -16,7 +16,7 @@
     {%if pagination.prev_page != none%}
 
     <!-- Botón Anterior (izquierda) -->
-    <a href="{{ url_for('pokedex_route.Pokedex', page=pagination.prev_page, per_page=pagination.per_page) }}"
+    <a href="{{ url_for('pokedex_route.Pokedex', page=pagination.prev_page) }}"
         class="btn-nav btn-prev">
         Anterior
     </a>
@@ -24,7 +24,7 @@
 
     <!-- Botón Siguiente (derecha) -->
     {% if pagination.next_page != none %}
-    <a href="{{ url_for('pokedex_route.Pokedex', page=pagination.next_page, per_page=pagination.per_page) }}"
+    <a href="{{ url_for('pokedex_route.Pokedex', page=pagination.next_page) }}"
         class="btn-nav btn-next">
         Siguiente
     </a>
