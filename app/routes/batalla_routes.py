@@ -19,6 +19,7 @@ def PokedexS():
 
     if form.validate_on_submit():
         session.pop("batalla", None)
+        session.pop("contrincante", None)
         session["pokemon"] = form.pokemon.data
         return redirect(url_for('batalla_route.BatallaP'))
 
@@ -139,22 +140,29 @@ def BatallaP():
 
     contrincante = None
 
+
+    resul = None
+    # CRECION DE LA BATALLA EN LA BD
+    entrenador_dict = session["trainer"]
+    entrenadorJugador = obtener_entrenador_por_nombre(
+        entrenador_dict["nombre"])
+
+    todos_entrenadores = obtener_todos_los_entrenadores()
+    contrincantes = []
+
+    for e in todos_entrenadores:
+        if e.id != entrenadorJugador.id:
+            contrincantes.append(e)
+
+    if 'contrincante' not in session:
+        contrincante = random.choice(contrincantes)
+        session['contrincante'] = contrincante
+    else:
+        contrincante = session['contrincante']
+
+
     if fin == True:
-        resul = None
-        # CRECION DE LA BATALLA EN LA BD
-        entrenador_dict = session["trainer"]
-        entrenadorJugador = obtener_entrenador_por_nombre(
-            entrenador_dict["nombre"])
 
-        todos_entrenadores = obtener_todos_los_entrenadores()
-        contrincantes = []
-
-        for e in todos_entrenadores:
-            if e.id != entrenadorJugador.id:
-                contrincantes.append(e)
-               
-        if contrincantes:
-            contrincante = random.choice(contrincantes)
 
         if batalla.hp_Jugador == 0:
             resul = False
