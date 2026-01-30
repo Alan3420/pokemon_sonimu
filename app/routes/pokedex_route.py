@@ -10,7 +10,7 @@ def Pokedex():
     usuario = session.get("trainer")
 
     pagina = request.args.get('page', 1, type=int)
-    limite = request.args.get('limit', 2, type=int)  # Por defecto 2 pokémons
+    limite = request.args.get('limit', 5, type=int)  # Por defecto 2 pokémons
     
 
     todos_pokemons = pokemon_services.listar_pokemons()

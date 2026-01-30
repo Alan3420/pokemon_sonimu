@@ -38,6 +38,7 @@ class PokemonJsonClient:
 
 
     def get_pokemons(self):
+        # falta poner una variable limit y un offset
         try:
             resp = requests.get(f"{self.URL}/?limit=5", timeout=5)
             resp.raise_for_status()
