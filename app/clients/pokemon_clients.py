@@ -13,7 +13,7 @@ class PokemonJsonClient:
     def _get_cache(self, key):
         item = self._cache.get(key)
 
-        if not item:
+        if item is None :
             return None
         
 
@@ -28,13 +28,21 @@ class PokemonJsonClient:
 
     def _set_cache(self, key, value):
         
-        self._cache[key] = {
-            "value": value,
-            "tiempo": time.time() + self.TTL
-        }
+        if key in self._cache:
+            self._cache[key] = {
+                "value": value,
+                "tiempo": time.time() + self.TTL
+            }
+            self._cache.move_to_end()
 
-        if len(self._cache) > self.maxima_Cache:
-            self._cache.pop(self._cache[-1])
+        else: 
+            if len(self._cache) > self.maxima_Cache:
+                self._cache.popitem(last= False)
+            
+            self._cache[key] = {
+                "value": value,
+                "tiempo": time.time() + self.TTL
+            }
 
 
     def get_pokemons(self):
@@ -58,7 +66,8 @@ class PokemonJsonClient:
 
             self._set_cache(id, data)
             return data
-        except:
+        except Exception as e:
+            print(f"Error obteniendo Pokemon {id}: {e} ")
             return None
 
     def get_pokemonN(self, name):

@@ -10,7 +10,7 @@ def Pokedex():
     usuario = session.get("trainer")
 
     pagina = request.args.get('page', 1, type=int)
-    limite = request.args.get('limit', 5, type=int)  # Por defecto 2 pokémons
+    limite = request.args.get('limit', 5, type=int)
     
 
     todos_pokemons = pokemon_services.listar_pokemons()
@@ -23,7 +23,7 @@ def Pokedex():
     pokemons_pagina = todos_pokemons[start:end]
 
 
-    total_pages = (total / limite) #limite
+    total_pages = int((total / limite))
     prev_page = None
     next_page = None
     if pagina > 1:
