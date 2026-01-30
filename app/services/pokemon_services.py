@@ -1,5 +1,3 @@
-import random
-import requests
 import app.repositories.pokemon_Repo as pokemon_repo
 from app.clients.pokemon_clients import PokemonJsonClient
 from app.models.pokemon import Pokemon

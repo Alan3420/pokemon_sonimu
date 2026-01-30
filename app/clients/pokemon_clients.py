@@ -1,3 +1,4 @@
+from collections import OrderedDict
 import requests, time
 
 
@@ -6,25 +7,35 @@ class PokemonJsonClient:
     TTL = 1600
 
     def __init__(self):
-        self._cache = {}
+        self._cache = OrderedDict()
+        self.maxima_Cache = 100
 
     def _get_cache(self, key):
         item = self._cache.get(key)
 
         if not item:
             return None
+        
+
 
         if time.time() > item["tiempo"]:
             del self._cache[key]
             return None
-
+        
+        self._cache.move_to_end(key)
         return item["value"]
+            
 
     def _set_cache(self, key, value):
+        
         self._cache[key] = {
             "value": value,
             "tiempo": time.time() + self.TTL
         }
+
+        if len(self._cache) > self.maxima_Cache:
+            self._cache.pop(self._cache[-1])
+
 
     def get_pokemons(self):
         try:
