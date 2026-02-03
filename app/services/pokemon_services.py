@@ -1,5 +1,3 @@
-import random
-import requests
 import app.repositories.pokemon_Repo as pokemon_repo
 from app.clients.pokemon_clients import PokemonJsonClient
 from app.models.pokemon import Pokemon
@@ -18,6 +16,11 @@ def listar_pokemons():
         id = int(url.rstrip("/").split("/")[-1])
 
         pokemonAdaptado = pokemonClient.get_pokemon(id)
+
+        if pokemonAdaptado is None:
+            print(f"Error: No se pudo obtener el Pokémon con ID {id}")
+            continue  # Saltar este Pokémon y continuar con el siguiente
+        
         pokemonAdaptado = adaptar_pokemon_detalle(pokemonAdaptado)
         pokemons = Pokemon(**pokemonAdaptado)
 

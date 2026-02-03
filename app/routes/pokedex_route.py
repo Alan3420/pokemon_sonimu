@@ -9,23 +9,21 @@ pokedex_pb = Blueprint('pokedex_route',__name__,template_folder='templates')
 def Pokedex():
     usuario = session.get("trainer")
 
-    # Obtener parámetros de paginación
     pagina = request.args.get('page', 1, type=int)
-    limite = request.args.get('limit', 5, type=int)  # Por defecto 2 pokémons
+    limite = request.args.get('limit', 5, type=int)
     
-    # Obtener todos los pokémons
+
     todos_pokemons = pokemon_services.listar_pokemons()
 
-    # Calcular índices para la paginación
     total = len(todos_pokemons)
     start = (pagina - 1) * limite
     end = start + limite
 
-    # Obtener pokémons de la página actual
+
     pokemons_pagina = todos_pokemons[start:end]
 
-    # Calcular número total de páginas
-    total_pages = (total / limite) #limite
+
+    total_pages = int((total / limite))
     prev_page = None
     next_page = None
     if pagina > 1:
@@ -47,8 +45,6 @@ def Pokedex():
     }
 
     return render_template('pokemons.html',  pokemons=pokemons_pagina, colorM=color.colorT, usuario=usuario, pagination=pagination)
-
-    #return render_template('pokemons.html', pokemons = pokemon_services.listar_pokemons(), colorM=color.colorT, usuario = usuario)
 
 @pokedex_pb.route('/<int:id>/')
 def PokedexDetails(id):
