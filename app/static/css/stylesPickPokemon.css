@@ -1,5 +1,5 @@
 *{
-        overflow: hidden;
+    overflow: hidden;
 }
 body {
 
@@ -154,9 +154,20 @@ button {
     font-weight: bold;
 }
 
-p {
+.nav_pagina {
+    position: fixed;
+    top: 80%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 80px;
+}
+
+#numPaginas {
     position: absolute;
-    left: 50%;
+    left: 20%;
     bottom: 11%;
     transform: translateX(-50%);
     font-size: 25px;

@@ -163,7 +163,7 @@ button {
     padding: 0 80px;
 }
 
-p {
+#numPaginas {
     position: absolute;
     left: 50%;
     bottom: 11%;
