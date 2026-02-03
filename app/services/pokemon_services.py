@@ -5,8 +5,8 @@ from app.models.pokemon import Pokemon
 
 pokemonClient = PokemonJsonClient()
 
-def listar_pokemons():
-    data = pokemonClient.get_pokemons()
+def listar_pokemons(limit=5, page=1):
+    data = pokemonClient.get_pokemons(limit, page)
     if not data or "results" not in data:
         return []
     
@@ -27,7 +27,7 @@ def listar_pokemons():
 
         listaPokemons.append(pokemons)
 
-    return listaPokemons
+    return listaPokemons, data["count"]
 
 
 def obtener_pokemon_por_id(id):
@@ -130,19 +130,15 @@ def paginacionPokemon():
     limite = request.args.get('limit', 5, type=int)
     
 
-    todos_pokemons = listar_pokemons()
+    todos_pokemons, total = listar_pokemons(limit=limite, page=pagina)
 
-    total = len(todos_pokemons)
-    start = (pagina - 1) * limite
-    end = start + limite
+    pokemons_pagina = todos_pokemons
 
 
-    pokemons_pagina = todos_pokemons[start:end]
-
-
-    total_pages = int((total / limite))
+    total_pages = (total + limite - 1) // limite
     prev_page = None
     next_page = None
+
     if pagina > 1:
         prev_page = pagina - 1
     else:

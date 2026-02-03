@@ -49,7 +49,7 @@ class PokemonJsonClient:
         offset = (page - 1) * limit
 
         try:
-            resp = requests.get(f"{self.URL}/?{limit}&offset={offset}", timeout=5)
+            resp = requests.get(f"{self.URL}/?limit={limit}&offset={offset}", timeout=5)
             resp.raise_for_status()
             return resp.json()
         except:
