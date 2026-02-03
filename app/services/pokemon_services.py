@@ -24,9 +24,6 @@ def listar_pokemons(limit=5, page=1):
         
         pokemonAdaptado = adaptar_pokemon_detalle(pokemonAdaptado)
 
-        if not pokemonAdaptado:
-            continue
-
         pokemons = Pokemon(**pokemonAdaptado)
 
         listaPokemons.append(pokemons)
@@ -115,19 +112,10 @@ def adaptar_pokemon_detalle(data):
         else:
             sprites[clave] = data["sprites"].get(clave)
 
-    tiene_sprite = False
-    for url in sprites.values():
-        if url is not None:
-            tiene_sprite = True
-            break
-
-    if not tiene_sprite:
-        return None
-
     pokemonAdaptado = {
         "height": data["height"],
         "id":data["id"],
-        "name": data["species"]["name"],
+        "name": data["name"],
         "stats": listaStats,
         "sprites": sprites,
         "types": listaTipo,
