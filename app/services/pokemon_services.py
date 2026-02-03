@@ -27,7 +27,7 @@ def listar_pokemons(limit=5, page=1):
 
         listaPokemons.append(pokemons)
 
-    return listaPokemons, data["count"]
+    return listaPokemons
 
 
 def obtener_pokemon_por_id(id):
@@ -129,6 +129,9 @@ def paginacionPokemon():
     pagina = request.args.get('page', 1, type=int)
     limite = request.args.get('limit', 5, type=int)
     
+    data = pokemonClient.get_pokemons(limit=limite, page=pagina)
+
+    total = data["count"]
 
     todos_pokemons, total = listar_pokemons(limit=limite, page=pagina)
 
