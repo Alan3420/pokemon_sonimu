@@ -23,6 +23,10 @@ def listar_pokemons(limit=5, page=1):
             continue  # Saltar este Pokémon y continuar con el siguiente
         
         pokemonAdaptado = adaptar_pokemon_detalle(pokemonAdaptado)
+
+        if not pokemonAdaptado:
+            continue
+
         pokemons = Pokemon(**pokemonAdaptado)
 
         listaPokemons.append(pokemons)
@@ -111,7 +115,9 @@ def adaptar_pokemon_detalle(data):
         else:
             sprites[clave] = data["sprites"].get(clave)
 
-    
+    if not sprites or all(v is None for v in sprites.values()):
+        return None  # No tiene sprites, lo descartamos
+
     pokemonAdaptado = {
         "height": data["height"],
         "id":data["id"],
