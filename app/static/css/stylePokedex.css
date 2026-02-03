@@ -35,21 +35,35 @@ body {
 }
 
 .tarjeta {
+    position: relative;
+    overflow: hidden;
     text-transform: uppercase;
     background-color: #ffffffc5;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     padding: 20px;
-    width: 290px;
+    width: 250px;
     height: 350px;
-    /* Fija la altura */
-    max-width: 250px;
     transition: transform 0.2s;
-    text-align: center;
+    
+    /* Centrado total del contenido */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    /* Distribuye el contenido uniformemente */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.info{
+  position: absolute;
+  bottom: 0;
+
+  text-align: center; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .tarjeta img {

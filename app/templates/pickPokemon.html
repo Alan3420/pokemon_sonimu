@@ -26,11 +26,15 @@
     <div class="tarjeta" style="{{ colorM.get(poke.types[0]) }};">
         <!-- ejecucion de la informacion de los pokemones disponibles en json pokemon -->
         <img class="sprites" src="{{poke.sprites.front_default}}" alt="Foto de {{poke.name}}"><br>
+        <div class="info">
+            <div class="tipo">
+                {% for tipo in poke.types %}
+                <img src="{{ url_for('static', filename='img/Types_name/' + tipo + '.png') }}" alt="{{ tipo }}">
+                {% endfor %}
+            </div>
+            <h2>{{poke.name}}</h2>
+        </div>
 
-        {% for tipo in poke.types %}
-        <img src="{{ url_for('static', filename='img/Types_name/' + tipo + '.png') }}" alt="{{ tipo }}">
-        {% endfor %}
-        <h2>{{poke.name}}</h2>
     </div>
     {% endfor %}
 
