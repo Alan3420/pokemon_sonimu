@@ -115,8 +115,14 @@ def adaptar_pokemon_detalle(data):
         else:
             sprites[clave] = data["sprites"].get(clave)
 
-    if not sprites or all(v is None for v in sprites.values()):
-        return None  # No tiene sprites, lo descartamos
+    tiene_sprite = False
+    for url in sprites.values():
+        if url is not None:
+            tiene_sprite = True
+            break
+
+    if not tiene_sprite:
+        return None
 
     pokemonAdaptado = {
         "height": data["height"],
