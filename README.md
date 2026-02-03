@@ -153,6 +153,13 @@ registrar_entrenador(nombre, password): Esta funcion en primera instancia utiliz
 
 autenticar_entrenador(nombre, password): Teniendo la misma logica utilizamos la funcion de obtener todos los entrenadores y solo verificamos si la informacion introducida en la funcion es igual a alguno de los nombres y contraseñas establecidos en la base de datos, si es el caso retorna True, en caso contrario False.
 
+# Fase 6
+### Fase de Implementación del Sistema de Batallas Persistentes
+
+# Fase 7
+### Integración y Consumo de APIs REST Externas en Flask
+# Fase 8
+### Optimización de Rendimiento y Escalabilidad de la Aplicación
     
 
 
