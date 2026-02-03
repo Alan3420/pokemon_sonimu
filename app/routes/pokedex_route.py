@@ -8,8 +8,8 @@ pokedex_pb = Blueprint('pokedex_route',__name__,template_folder='templates')
 @pokedex_pb.route('/')
 def Pokedex():
     usuario = session.get("trainer")
-    pokemons_pagina = pokemon_services.paginacionPokemon()["pokemon_pagina"]
     pagination = pokemon_services.paginacionPokemon()
+    pokemons_pagina = pagination["pokemon_pagina"]
 
     return render_template('pokemons.html',  pokemons=pokemons_pagina, colorM=color.colorT, usuario=usuario, pagination=pagination)
 

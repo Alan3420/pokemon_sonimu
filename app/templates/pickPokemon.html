@@ -11,12 +11,9 @@
 {% endblock %}
 {% block content %}
 
-
-
-
 <div id="contenedor">
 
-    <form method="POST" action="{{ url_for('batalla_route.PokedexS') }}">
+    <form method="POST" action="{{ url_for('batalla_route.PokedexS', page=pagination.page) }}">
         {{ form.hidden_tag() }}
 
         <label for="pokemon">Bienvenido {{nombreUser.nombre}} ¿Qué Pokémon utilizarás?</label><br>
@@ -40,4 +37,23 @@
 
     </table>
 </div>
+
+<div class="{% if pagination.prev_page != none %} nav_pagina {% else %}nav_pagina2 {%endif%}">
+
+    {%if pagination.prev_page != none%}
+
+    <!-- Botón Anterior (izquierda) -->
+    <a href="{{ url_for('batalla_route.PokedexS', page=pagination.prev_page) }}" class="btn-nav btn-prev">
+        Anterior
+    </a>
+    {%endif%}
+
+    <!-- Botón Siguiente (derecha) -->
+    {% if pagination.next_page != none %}
+    <a href="{{ url_for('batalla_route.PokedexS', page=pagination.next_page) }}" class="btn-nav btn-next">
+        Siguiente
+    </a>
+    {% endif %}
+</div>
+<p>Pagina: {{pagination.page}} de {{pagination.total_pages}}</p>
 {% endblock %}

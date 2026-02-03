@@ -1,11 +1,11 @@
 import random
-from flask import Blueprint, flash, redirect, render_template, request, session, url_for
+from flask import Blueprint, redirect, render_template, request, session, url_for
 import app.colors as color
 from app.forms.pokemon_form import PokemonForm
 from app.repositories.batallas_Repo import crear_batalla
+from app.services import pokemon_services
 from app.repositories.entrenador_Repo import obtener_entrenador_por_nombre, obtener_todos_los_entrenadores
 from app.services import battle_service
-from app.services import pokemon_services
 from app.models.batalla import Batalla
 import app.models.exceptions as Exception
 
@@ -22,9 +22,15 @@ def PokedexS():
         session.pop("contrincante", None)
         session["pokemon"] = form.pokemon.data
         return redirect(url_for('batalla_route.BatallaP'))
+    
+    pagination = pokemon_services.paginacionPokemon()
+    pokemons_pagina = pagination["pokemon_pagina"]
 
     nombre = session["trainer"]
-    return render_template('pickPokemon.html', pokemons=pokemon_services.listar_pokemons(), colorM=color.colorT, nombreUser=nombre, form=form)
+    return render_template('pickPokemon.html', 
+                           pokemons=pokemons_pagina, 
+                           colorM=color.colorT, nombreUser=nombre, 
+                           form=form, pagination=pagination, pokemons_pagina=pokemons_pagina)
 
 
 @batalla_pb.route('/batallasPokemon', methods=["POST", "GET"])
