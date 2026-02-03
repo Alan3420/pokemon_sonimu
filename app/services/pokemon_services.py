@@ -1,3 +1,4 @@
+from flask import request
 import app.repositories.pokemon_Repo as pokemon_repo
 from app.clients.pokemon_clients import PokemonJsonClient
 from app.models.pokemon import Pokemon
@@ -123,3 +124,42 @@ def adaptar_pokemon_detalle(data):
 
     }
     return pokemonAdaptado
+
+def paginacionPokemon():
+    pagina = request.args.get('page', 1, type=int)
+    limite = request.args.get('limit', 5, type=int)
+    
+
+    todos_pokemons = listar_pokemons()
+
+    total = len(todos_pokemons)
+    start = (pagina - 1) * limite
+    end = start + limite
+
+
+    pokemons_pagina = todos_pokemons[start:end]
+
+
+    total_pages = int((total / limite))
+    prev_page = None
+    next_page = None
+    if pagina > 1:
+        prev_page = pagina - 1
+    else:
+        prev_page = None
+    
+    if pagina < total_pages: 
+        next_page = pagina + 1 
+    else:
+        next_page = None   
+
+    pagination = {
+        'page': pagina,
+        'total': total,
+        'total_pages': total_pages,
+        'prev_page': prev_page,
+        'next_page': next_page,
+        'pokemon_pagina': pokemons_pagina
+    }
+
+    return pagination
