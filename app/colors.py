@@ -20,20 +20,20 @@ colorM = {
 
 colorT = {
     "fire": "background: linear-gradient(to top, white 40%, red 100%);",
-    "dragon": "purple",
+    "dragon": "background: linear-gradient(to top, white 40%, purple 100%);",
     "grass": "background: linear-gradient(to top, white 40%, green 100%);",
-    "normal": "gray",
-    "fighting": "brown",
+    "normal": "background: linear-gradient(to top, white 40%, gray 100%);",
+    "fighting": "background: linear-gradient(to top, white 40%, brown 100%);",
     "ground": "background: linear-gradient(to top, white 40%, #802C14 100%);",
     "water": "background: linear-gradient(to top, white 40%, aqua 100%);",
     "dark": "background: linear-gradient(to top, white 40%, gray 100%);",
-    "flying": "aqua",
-    "fairy": "salmon",
+    "flying": "background: linear-gradient(to top, white 40%, aqua 100%);",
+    "fairy": "background: linear-gradient(to top, white 40%, salmon 100%);",
     "electric": "background: linear-gradient(to top, white 40%, yellow 100%);",
     "ghost": "background: linear-gradient(to top, white 40%, purple 100%);",
-    "steel": "gray",
+    "steel": "background: linear-gradient(to top, white 40%, gray 100%);",
     "bug": "background: linear-gradient(to top, white 40%, rgba(137, 172, 118) 100%);",
-    "poison": "purple",
-    "ice": "white",
-    "psychic": "#FF3399"
+    "poison": "background: linear-gradient(to top, white 40%, purple 100%);",
+    "ice": "background: linear-gradient(to top, white 40%, aqua 100%);",
+    "psychic": "background: linear-gradient(to top, white 40%, #FF3399 100%);"
 }
