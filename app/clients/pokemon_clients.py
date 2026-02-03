@@ -26,10 +26,11 @@ class PokemonJsonClient:
             "tiempo": time.time() + self.TTL
         }
 
-    def get_pokemons(self):
-        # falta poner una variable limit y un offset
+    def get_pokemons(self, limit=5, page=1):
+        offset = (page - 1) * limit
+
         try:
-            resp = requests.get(f"{self.URL}/?limit=5", timeout=5)
+            resp = requests.get(f"{self.URL}/?{limit}&offset={offset}", timeout=5)
             resp.raise_for_status()
             return resp.json()
         except:
