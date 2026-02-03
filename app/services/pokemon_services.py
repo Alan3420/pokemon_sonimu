@@ -133,7 +133,7 @@ def paginacionPokemon():
 
     total = data["count"]
 
-    todos_pokemons, total = listar_pokemons(limit=limite, page=pagina)
+    todos_pokemons = listar_pokemons(limit=limite, page=pagina)
 
     pokemons_pagina = todos_pokemons
 
