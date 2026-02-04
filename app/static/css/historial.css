@@ -76,7 +76,9 @@ td:first-child {
     font-weight: 600;
     font-size: 0.9rem;
     text-align: center;
-    display: inline-block;
+    display: flex;
+    max-width: 14rem;
+    justify-content: center;
 }
 
 .lose {
@@ -87,7 +89,10 @@ td:first-child {
     font-weight: 600;
     font-size: 0.9rem;
     text-align: center;
-    display: inline-block;
+    display: flex;
+    max-width: 14rem;
+    justify-content: center;
+    
 }
 
 /* Responsive Design */

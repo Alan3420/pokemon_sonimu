@@ -15,7 +15,6 @@
     <h1>Historial del jugador</h1>
     <table>
         <tr class="thead">
-            <th>#</th>
             <th>Jugador</th>
             <th>Resultado</th>
             <th>Oponente</th>
@@ -23,7 +22,6 @@
         </tr>
         {%for entrenador in listaBatallas%}
         <tr>
-            <td>{{entrenador.id_batalla}}</td>
             <td>{{entrenadorJugador.nombre}}</td>
 
             {%if entrenador.resultado == False%}
