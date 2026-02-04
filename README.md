@@ -2,8 +2,8 @@
 
 ## Integrantes del equipo
 
-### Marcos Fernandez Garcia
-### Alan Novas Mateo
+#### Marcos Fernandez Garcia
+#### Alan Novas Mateo
 
 ## Descripcición
 Proyecto dedicado a las batallas pokemon utillizando lenguajes como Python, HTML y CSS
@@ -127,6 +127,12 @@ Recordar que este comando se ejecutará a nivel de la carpeta donde se encuentra
 
 ## Fase 5 ✅
 
+### Modelo EER de la base de datos del proyecto
+![alt text](image.png)
+
+### Modelo Relacional
+![alt text](image-1.png)
+
 En esta fase creamos la base de datos `pokemons.db` y `entrenador_Repo.py`, dentro de la base de datos tenemos una tabla **entrenador** que creamos desde el modelo `trainer.py`
 
 ### trainer.py
@@ -155,15 +161,67 @@ autenticar_entrenador(nombre, password): Teniendo la misma logica utilizamos la 
 
 # Fase 6
 ### Fase de Implementación del Sistema de Batallas Persistentes
+app
+    ├─ models/
+    │   └─ trainers.py
+
+Dentro de la capa modelos se crea una clase llamada servidor que recibirá en su constructor su nombre, contraseña e id que por defecto será None.
+
+En esta misma a mayores tiene funciones como `set_password(self, newPassword)` y `verificar_password(self, passwd)` modifican y verifican la contraseña del entrenador o usuario. 
+
+app
+    ├─ database/
+    │   └─ db.py
+
+Tambien se crea la tabla para la base de datos dentro de la clase `trainer.py` importando la base de datos desde la capa database `db.py` para permitir crear la tabla y las columnas del usuario o entrenador teniendo en cuenta que en la creacion de la tabla esta relacionado con la creacion de la tabla que se encuentra en la clase `batalla_bd.py`.
+
+app
+    ├─ models/
+    │   └─ batalla_bd.py
+
+En esta clase recaba toda la informacion correspondiente a la batalla para crear la tabla y sus distintas columnas, informacion como el id de la batalla que es autoincremental la fecha en que se creo el id de los entrenadores que se enfrentan, a su vez tambien el id de los pokemons que se enfrentarán y por ultimo el resultado donde si el entrenador a ganado o no la batalla.
+
+#### Repositorio de Batallas
+
+`crear_batalla` Registra una nueva batalla en la base de datos, almacenando los entrenadores participantes, los Pokémon utilizados y el resultado final, por ultimo devuelve la batalla creada tras confirmarse la operación.
+
+`obtener_batalla_por_id` Recupera una batalla concreta a partir de su identificador único. Devuelve None si no existe ninguna batalla con ese ID.
+
+`obtener_batallas_por_entrenador` Obtiene el listado de batallas iniciadas por un entrenador específico, filtrando por su identificador, permite mostrar el historial de batallas del entrenador autenticado.
+
+`eliminar_batalla` Elimina una batalla de la base de datos respetando las reglas de integridad establecidas.
+    
 
 # Fase 7
 ### Integración y Consumo de APIs REST Externas en Flask
+app
+    ├─ clients/
+    │   └─ pokemon_clients.py
+
+Dentro de esta capa se ha creado un cliente específico que realiza peticiones HTTP a la PokeAPI mediante la librería requests, comprueba el estado de las respuestas antes de procesar los datos, sin incluir lógica de negocio, incorpora un sistema básico de caché en memoria con TTL reduciendo llamadas repetidas a la API y mejorando el rendimiento.
+
+La capa de servicios de Pokémon `pokemon_services.py` ha sido adaptada para utilizar exclusivamente este cliente el servicio actúa como único punto de acceso a los datos Pokémon para el resto de la aplicación, se elimina el acceso directo a ficheros JSON, manteniendo la compatibilidad con la lógica existente.
+
 # Fase 8
 ### Optimización de Rendimiento y Escalabilidad de la Aplicación
-    
+
+app
+    ├─ services/
+    │   └─ pokemon_services.py
+
+En la funcion `paginacionPokemon` de la clase `pokemon_services.py` se implementa la paginacion del listado de Pokemon en el servidor.
+
+La funcion obtiene los parametros page y limit desde la peticion HTTP lo que permite controlar la pagina actual y el numero de pokemon mostrados por paginas. A partir de estos valores se consulta la PokeAPI y se calcula el numero total de paginas disponibles.
+
+Se determina si existen paginas anteriores o posteriores habilitando o deshabilitando los botones de navegación (Anterior y Siguiente) segun corresponda.
+
+Esta funcion devuelve un diccionario con toda la informacion necesaria para la manipular en el html que seria la pagina actual, total de Pokemon, numero total de paginas y listado de Pokemon.
 
 
+app
+    ├─ clients/
+    │   └─ pokemon_clients.py
 
+En la clase `PokemonJsonClient` se ha utilizado la clase `OrderedDict` para implementar un sistema de cache en memoria que permite optimizar el acceso a la PokeAPI.
 
-
-
+OrderedDict se usa para almacenar las respuestas obtenidas de la API manteniendo el orden de insercion y uso de los elementos aplicandole un tamaño maximo dentro de la cache, cuando dicho limite se alcanza se elimina automaticamente la entrada mas antigua el limite maximo en cache es de 100 elementos.

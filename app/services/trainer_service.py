@@ -1,4 +1,4 @@
-from app.repositories.entrenador_Repo import crear_entrenador, obtener_todos_los_entrenadores, obtener_entrenador_por_nombre
+from app.repositories.entrenador_Repo import crear_entrenador, obtener_todos_los_entrenadores
 
 
 def registrar_entrenador(nombre, password):

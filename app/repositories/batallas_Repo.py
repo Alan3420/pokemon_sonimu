@@ -1,6 +1,5 @@
 from app.database.db import db
 from app.models.batalla_bd import batalla_bd
-from app.repositories.entrenador_Repo import obtener_todos_los_entrenadores
 import sqlite3
 
 
@@ -8,7 +7,7 @@ def crear_batalla(id_entrenador1, id_pokemon1, id_entrenador2, id_pokemon2, resu
 
     # -------------------------------------PENDIENTE--------------------------------------
     # Idea pendiente:  llamo a la funcion de entrenador (obtener_todos_los_entrenadores) para sacar el id de los entrenadores ya que este retorna una
-    # lista de los entrenadores que tenemos en la base de datos.
+    # lista de los entrenadores que tenemos en la base de datos. (DESCARTADO)
 
     newBatalla = batalla_bd(id_entrenador1=id_entrenador1, id_pokemon1=id_pokemon1,
                             id_entrenador2=id_entrenador2, id_pokemon2=id_pokemon2, resultado=resultado)

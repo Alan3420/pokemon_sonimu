@@ -3,7 +3,7 @@ from app.forms.trainer_form import TrainerForm
 from app.models.trainer import trainer
 from app.repositories import pokemon_Repo
 from app.repositories.batallas_Repo import obtener_batallas_por_entrenador
-from app.repositories.entrenador_Repo import obtener_entrenador_por_nombre, obtener_entrenadores_por_id, obtener_todos_los_entrenadores
+from app.repositories.entrenador_Repo import obtener_entrenador_por_nombre, obtener_todos_los_entrenadores
 from app.services.trainer_service import registrar_entrenador, autenticar_entrenador
 
 home_pb = Blueprint('home_route', __name__, template_folder='templates')
