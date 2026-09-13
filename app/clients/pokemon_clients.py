@@ -33,10 +33,10 @@ class PokemonJsonClient:
                 "value": value,
                 "tiempo": time.time() + self.TTL
             }
-            self._cache.move_to_end()
+            self._cache.move_to_end(key)
 
-        else: 
-            if len(self._cache) > self.maxima_Cache:
+        else:
+            if len(self._cache) >= self.maxima_Cache:
                 self._cache.popitem(last= False)
             
             self._cache[key] = {

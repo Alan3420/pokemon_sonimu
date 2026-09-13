@@ -1,24 +1,31 @@
 from unittest.mock import patch
-import app.repositories.pokemon_Repo as pokemon_repo
 from app.services.pokemon_services import listar_pokemons
 
 
-def test_listar_pokemons():
-    pokemons_mock = ["p1", "p2"]
-
+def test_listar_pokemons_sin_datos_devuelve_lista_vacia():
     with patch(
-        "app.services.pokemon_services.pokemon_repo.obtener_Pokemons"
-    ) as mock_repo:
-        mock_repo.return_value = pokemons_mock
+        "app.services.pokemon_services.pokemonClient.get_pokemons"
+    ) as mock_client:
+        mock_client.return_value = None
 
         resultado = listar_pokemons()
 
-        assert resultado == pokemons_mock
-        # mock_repo.assert_called_once()
+        assert resultado == []
+        mock_client.assert_called_once_with(5, 1)
 
-# def obtener_pokemon_por_id(id):
 
-#     if id < 0 or id is None:
-#         return None
+def test_listar_pokemons_omite_pokemon_no_encontrado():
+    listado = {"results": [{"url": "https://pokeapi.co/api/v2/pokemon/25/"}]}
 
-#     return pokemon_repo.buscar_por_id(id)
+    with patch(
+        "app.services.pokemon_services.pokemonClient.get_pokemons",
+        return_value=listado
+    ), patch(
+        "app.services.pokemon_services.pokemonClient.get_pokemon",
+        return_value=None
+    ) as mock_detalle:
+
+        resultado = listar_pokemons()
+
+        assert resultado == []
+        mock_detalle.assert_called_once_with(25)
