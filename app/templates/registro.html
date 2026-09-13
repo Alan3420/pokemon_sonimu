@@ -15,4 +15,10 @@
   {{ form.enviar() }}<br>
 </form>
 
+{% if nombreEnUso %}
+<div class="error-mensaje">
+  Ese nombre de entrenador ya está en uso
+</div>
+{% endif %}
+
 {% endblock %}

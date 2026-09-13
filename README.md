@@ -8,7 +8,7 @@ Proyecto académico desarrollado en equipo.
 
 ## Funcionalidades
 
-- **Registro e inicio de sesión de entrenadores**, con contraseñas almacenadas como hash (`werkzeug.security`) y formularios validados con Flask-WTF (protección CSRF incluida).
+- **Registro e inicio de sesión de entrenadores** con nombre único, contraseñas almacenadas como hash (`werkzeug.security`) y formularios validados con Flask-WTF (protección CSRF incluida).
 - **Pokédex paginada** con tipos, estadísticas, altura, peso y sprites animados de cada Pokémon.
 - **Sistema de batalla por turnos**:
   - El orden de ataque se decide por la estadística de velocidad.
@@ -110,6 +110,12 @@ La aplicación queda disponible en `http://localhost:8080`.
 
 El comando `crear_tablas` recrea la base de datos desde cero y añade tres entrenadores de ejemplo (`Paco`, `Alex El Capo` y `Anuel AA`, contraseña `1234`), necesarios para que haya rivales en las batallas.
 
+### Variables de entorno
+
+| Variable | Descripción | Requerida |
+|---|---|---|
+| `SECRET_KEY` | Clave para firmar las sesiones y los tokens CSRF. Si no se define, se genera una aleatoria en cada arranque y las sesiones abiertas se invalidan al reiniciar. | No (recomendada en producción) |
+
 ---
 
 ## Tests
@@ -119,7 +125,7 @@ pip install pytest
 python -m pytest -v
 ```
 
-Los tests cubren el cliente de PokeAPI (inserción, límite de capacidad, expulsión LRU y expiración por TTL de la caché) y el servicio de listado de Pokémon, con las llamadas externas simuladas mediante `unittest.mock`.
+Los tests cubren el cliente de PokeAPI (inserción, límite de capacidad, expulsión LRU y expiración por TTL de la caché) el servicio de listado de Pokémon y el registro de entrenadores (incluido el rechazo de nombres duplicados), con las dependencias externas simuladas mediante `unittest.mock`.
 
 ---
 

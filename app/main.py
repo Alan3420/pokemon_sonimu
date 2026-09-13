@@ -1,4 +1,5 @@
 import os
+import secrets
 from flask import Flask
 from app.models import trainer
 from app.routes.batalla_routes import batalla_pb
@@ -9,7 +10,9 @@ from app.database.db import db
 from app.models.trainer import trainer
 
 app = Flask(__name__, template_folder='templates')
-app.secret_key = "pokemonSonimu"
+# Clave de sesion: se lee de la variable de entorno SECRET_KEY.
+# Si no existe se genera una aleatoria en cada arranque (las sesiones no sobreviven a un reinicio).
+app.secret_key = os.environ.get("SECRET_KEY") or secrets.token_hex(32)
 # Configuracion session
 app.config["SESSION_TYPE"] = "filesystem"   # Guardar en ficheros
 app.config["SESSION_PERMANENT"] = False     # Sesiones temporales
@@ -21,9 +24,6 @@ BD_PATH = os.path.join(BASE_DIR, "data", "pokemons.db")
 # Configuracion alchemy
 app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{BD_PATH}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
-# Clave session
-app.secret_key = "clave_super_secreta"
 
 
 # Inicializar la extensión

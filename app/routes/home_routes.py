@@ -34,6 +34,7 @@ def Bienvenido():
 def registro():
 
     form = TrainerForm()
+    nombreEnUso = False
 
     if form.validate_on_submit():
 
@@ -44,13 +45,13 @@ def registro():
         entrenador = trainer(nombreTrainer, passwdTrainer)
 
         # Recordar que la funcion crear_entrenador crear y retorna el objeto trainer, lo añade a la session y un commit en la bd.
-        registrar_entrenador(nombreTrainer, passwdTrainer)
+        if registrar_entrenador(nombreTrainer, passwdTrainer):
+            session["trainer"] = entrenador.to_dict()
+            return redirect(url_for('batalla_route.PokedexS'))
 
-        session["trainer"] = entrenador.to_dict()
+        nombreEnUso = True
 
-        return redirect(url_for('batalla_route.PokedexS'))
-
-    return render_template('registro.html', form=form)
+    return render_template('registro.html', form=form, nombreEnUso=nombreEnUso)
 
 
 @home_pb.route("/logout")
@@ -77,19 +78,3 @@ def historial_batallas():
     return render_template("historial.html", listaBatallas=historial,
                            entrenadorJugador=entrenadorJugador,
                            entrenadorContrincante=obtener_todos_los_entrenadores())
-
-
-# AREA DE PRUEBAS DEL PROYECTO
-@home_pb.route("/test")
-def listar_productos():
-    conn = pokemon_Repo.get_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT id, nombre, password FROM entrenador ORDER BY id;")
-
-    entrenadores = cur.fetchall()
-
-    cur.close()
-    conn.close()
-
-    listaEntrenadores = obtener_todos_los_entrenadores()
-    return render_template("error404.html", entrenadores=entrenadores, listaEntrenadores=listaEntrenadores)

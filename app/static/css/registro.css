@@ -95,3 +95,34 @@ footer {
     bottom: 0%;
     left: 0%;
 }
+
+/* --- MENSAJE DE ERROR --- */
+.error-mensaje {
+    background: white;
+    color: #1a1a1a;
+    font-size: 0.875rem;
+    font-weight: 400;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border-left: 5px solid #ef4444;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+
+    position: fixed;
+    top: 24px;
+    right: 24px;
+
+    animation: fadeSlide 0.3s ease-out;
+    z-index: 9999;
+}
+
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
